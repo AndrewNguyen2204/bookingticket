@@ -1,0 +1,16 @@
+.Movies{
+    @apply container mt-20;
+}
+.types li{
+    display:inline-block;
+    @apply mr-2 p-1 bg-gray-300 rounded-t-md;
+}
+.cards{
+    @apply grid grid-cols-6 gap-4 p-2 w-full;
+}
+.card{
+    @apply w-full;
+}
+.card .img-top{
+    @apply w-full;
+}

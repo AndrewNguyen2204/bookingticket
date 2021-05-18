@@ -1,4 +1,5 @@
 import { Route } from "react-router";
+import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
 
 export const HomeTemPlate = (props) => {
@@ -9,9 +10,9 @@ export const HomeTemPlate = (props) => {
 
     return <Route {...restProps} render={propsRoute => {
         return <>
-            <Header {...propsRoute}/>
+            <Header {...propsRoute} />
             <Component {...propsRoute} />
-            <footer>Footer</footer>
+            <Footer {...propsRoute} />
         </>
     }} />
 }

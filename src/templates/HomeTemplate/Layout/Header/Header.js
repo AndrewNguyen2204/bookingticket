@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+
 export default function Header() {
     return (
-        <header className="p-4 bg-coolGray-100 text-coolGray-800">
+        <header className="p-4 bg-coolGray-100 text-coolGray-800 bg-black bg-opacity-25 text-white fixed z-10 w-full">
             <div className="container flex justify-between h-16 mx-auto">
                 <NavLink to="/home" aria-label="Back to homepage" className="flex items-center p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 text-violet-600">
@@ -21,7 +22,7 @@ export default function Header() {
                     <li className="flex">
                         <NavLink to="/news" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">News</NavLink>
                     </li>
-                    
+
                 </ul>
                 <div className="items-center flex-shrink-0 flex">
                     <button className="self-center px-8 py-3 rounded"><NavLink to="/signin" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">Sign In</NavLink></button>

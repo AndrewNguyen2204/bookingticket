@@ -1,0 +1,32 @@
+.theaters{
+    @apply container mt-20;
+}
+.theaters-content{
+    @apply w-full grid grid-cols-5 gap-1;
+}
+.content-left{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.content-left ul {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
+}
+.content-right{
+    @apply col-span-4 grid grid-cols-3;
+}
+.movie-list{
+    width:100%;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.movie-showtime{
+    @apply col-span-2 p-2;
+    width:100%;
+    border: 1px solid rgba(0,0,0,0.2);
+}
