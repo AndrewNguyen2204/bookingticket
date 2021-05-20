@@ -1,6 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import "./HomeMovies.css";
 export default function HomeMovies() {
+
+    const { movies } = useSelector(state => state.MovieReducer);
+
+    const dispatch = useDispatch();
+
+    const renderMovies = () => {
+        return movies.map((movie, index) => {
+            return (
+                <div className="card">
+                    <img className="img-top" src={movie.hinhAnh} alt={movie.hinhAnh} />
+                    <div className="card-body">
+                        <h2>{movie.tenPhim}</h2>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     return (
         <div className="Movies">
 
@@ -11,42 +30,7 @@ export default function HomeMovies() {
             </ul>
 
             <div className="cards">
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="img-top" src="https://picsum.photos/400/800" alt="pic1" />
-                    <div className="card-body">
-                        <h2>Name of Movie</h2>
-                    </div>
-                </div>
+                {renderMovies()}
             </div>
         </div>
     )

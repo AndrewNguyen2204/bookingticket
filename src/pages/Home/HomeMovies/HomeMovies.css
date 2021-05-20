@@ -1,5 +1,5 @@
 .Movies{
-    @apply container mt-20;
+    @apply container mx-auto mt-20;
 }
 .types li{
     display:inline-block;
@@ -12,5 +12,5 @@
     @apply w-full;
 }
 .card .img-top{
-    @apply w-full;
+    @apply w-full h-2/3 rounded-t-md;
 }

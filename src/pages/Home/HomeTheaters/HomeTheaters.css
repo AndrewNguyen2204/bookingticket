@@ -1,5 +1,5 @@
 .theaters{
-    @apply container mt-20;
+    @apply container mx-auto mt-20;
 }
 .theaters-content{
     @apply w-full grid grid-cols-5 gap-1;

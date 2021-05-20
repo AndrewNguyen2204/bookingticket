@@ -1,0 +1,35 @@
+.slider {
+  @apply relative w-full h-1/2 overflow-hidden;
+}
+.slide.active {
+  @apply opacity-100 w-full h-full duration-300 ease-in-out;
+}
+.slide {
+  @apply opacity-0;
+}
+.slide img {
+  @apply h-full w-full;
+}
+.prev-btn,
+.next-btn {
+  @apply absolute text-6xl top-1/2 transform -translate-y-1/2 text-white text-opacity-30 cursor-pointer;
+}
+.prev-btn:hover,
+.next-btn:hover {
+    @apply text-opacity-70 transform -translate-y-1/2 scale-105;
+}
+.prev-btn {
+  left: 20px;
+}
+.next-btn {
+  right: 20px;
+}
+.dots {
+  @apply absolute flex items-center left-1/2 transform -translate-x-1/2 bottom-2;
+}
+.dot {
+  @apply mr-1 bg-white opacity-50 cursor-pointer duration-300 h-2 w-2 rounded-full;  
+}
+.dot.active {
+  @apply opacity-100 h-3 w-3;
+}
