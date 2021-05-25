@@ -19,7 +19,7 @@ export default function HomeCarousel(props) {
     useEffect(() => {
         dispatch(getBannersAction());
 
-    }, []);
+    }, [dispatch]);
 
 
     const length = banners.length;

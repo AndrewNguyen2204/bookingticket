@@ -36,7 +36,7 @@ export default function HomeMovies() {
 
     useEffect(() => {
         dispatch(getMoviesAction());
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="Movies">

@@ -1,4 +1,4 @@
-import { faAngleLeft, faAngleRight, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import "./Carousel.css";

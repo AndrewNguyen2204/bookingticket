@@ -1,6 +1,7 @@
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import "./MovieCard.css";
 export default function MovieCard(props) {
     const { hinhAnh, tenPhim, trailer, moTa, ngayKhoiChieu, danhGia } = props.movie;
@@ -28,8 +29,8 @@ export default function MovieCard(props) {
                     <p>{moTa}</p>
                 </div>
                 <div className="button">
-                    <a href={trailer} className="btn btn-trailer">Trailer</a>
-                    <a href="#" className="btn btn-booking">Book a Ticket</a>
+                    <NavLink to="/home" className="btn btn-trailer">Trailer</NavLink>
+                    <NavLink to="/home" className="btn btn-booking">Book a Ticket</NavLink>
                 </div>
             </div>
         </div>

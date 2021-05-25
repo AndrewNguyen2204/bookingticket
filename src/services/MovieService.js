@@ -3,10 +3,7 @@ import { baseServices } from "./baseServices";
 
 
 export class MovieService extends baseServices {
-
-    constructor() {
-        super();
-    }
+    
 
     getBanners = () => {
         return this.get(`api/QuanLyPhim/LayDanhSachBanner`);
