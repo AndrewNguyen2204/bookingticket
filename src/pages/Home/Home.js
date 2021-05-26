@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeCarousel from './HomeCarousel/HomeCarousel';
 import HomeMovies from './HomeMovies/HomeMovies';
-import HomeTheaters from './HomeTheaters/HomeTheaters';
+import HomeCinemas from './HomeCinemas/HomeCinemas';
 
 
 
@@ -14,7 +14,7 @@ export default function Home() {
         <div className="w-full">
             <HomeCarousel/>
             <HomeMovies />
-            <HomeTheaters />
+            <HomeCinemas />
         </div>
     )
 }

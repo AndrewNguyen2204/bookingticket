@@ -15,7 +15,7 @@ const CarouselReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_BANNERS: {
 
-            console.log(action);
+           
             return { ...state, banners: action.banners };
         }
         default: return { ...state };
