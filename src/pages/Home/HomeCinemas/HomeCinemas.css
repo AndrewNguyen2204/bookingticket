@@ -1,39 +1,55 @@
-.cinemas{
-    @apply container mx-auto mt-20;
+.cinemas {
+  @apply container mx-auto my-20;
 }
-.cinemas-content{
-    @apply w-full grid grid-cols-5 gap-1;
+.cinemas-content {
+  @apply w-full flex;
+  height:400px;
 }
-.content-left{
-    @apply flex justify-center items-center p-1 border border-black border-opacity-20;    
+
+.content-left {
+  @apply w-36 min-w-max flex justify-center items-center mr-1 border border-black border-opacity-20;
+  width: 150px;
 }
 .content-left ul {
-    @apply h-full flex flex-col items-center justify-center py-1;   
+  @apply w-full h-full flex flex-col items-center justify-center py-1;
 }
-.content-left ul li{
-    @apply w-12 h-12 rounded-sm overflow-hidden opacity-50 hover:opacity-100 duration-300 cursor-pointer my-1;
+.content-left ul li {
+  @apply w-12 h-12 rounded-sm overflow-hidden opacity-50 hover:opacity-100 duration-300 cursor-pointer my-1;
 }
-.content-left ul li.active{
-    @apply opacity-100;
+
+.content-left ul li.active {
+  @apply opacity-100;
 }
-.content-right{
-    @apply col-span-4 grid grid-cols-3;
+.content-right {
+  @apply h-full flex;
+  min-width: calc(100% - 10rem);
+ 
 }
-.cinema-list{
-    @apply w-full border border-black border-opacity-20;    
+.cinema-list {
+  @apply w-1/3 p-2 border border-black border-opacity-20 overflow-y-auto;
+  
 }
-.showtime{
-    @apply col-span-2 p-2 w-full border border-black border-opacity-20 ;   
+.showtime {
+  @apply w-2/3 p-2 border border-black border-opacity-20 overflow-y-auto;
+  
 }
-.showtime-content,.cinema-content{
-    @apply w-full sm:flex sm:space-x-6 mb-2;
+.showtime-content,
+.cinema-content {
+  @apply w-full sm:flex sm:space-x-6 mb-2;
 }
-.showtime-content img, .cinema-content img{
-    @apply object-cover object-center w-full h-full rounded;
+.showtime-content img,
+.cinema-content img {
+  @apply object-cover object-center w-full h-full rounded;
+}
+.cinema-content{
+  @apply opacity-50 hover:opacity-100 cursor-pointer;
+}
+.cinema-content.active{
+  @apply opacity-100;
 }
 .showtime .showtime-details {
-    @apply w-full flex justify-around items-center flex-wrap;
+  @apply w-full flex items-center flex-wrap;
 }
-.showtime .showtime-details span{
-    @apply text-green-400 text-2xl font-bold;
+.showtime .showtime-details span {
+  @apply text-green-400 text-2xl font-bold m-2;
 }
