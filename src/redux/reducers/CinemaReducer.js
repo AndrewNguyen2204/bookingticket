@@ -1,4 +1,4 @@
-import { SET_CINEMAS, SET_LOGOS, SET_SHOWTIMES_DATA } from "../types/CinemaType";
+import { SET_CINEMAS, SET_LOGOS, SET_MOVIE_LIST, SET_SHOWTIMES_DATA } from "../types/CinemaType";
 
 
 
@@ -71,7 +71,18 @@ const CinemaReducer = ((state = initialState, action) => {
             return { ...state, cinemas: action.cinemas };
         }
         case SET_SHOWTIMES_DATA: {
-            return {...state, showtimesData:action.data.lstCumRap};
+            return { ...state, showtimesData: action.data[0].lstCumRap };
+        }
+        case SET_MOVIE_LIST: {
+            let newMovieList = [];
+            let newShowtimesData = state.showtimesData.filter(data => data.maCumRap === action.maCumRap);
+            if (newShowtimesData) {
+                newMovieList = newShowtimesData[0].danhSachPhim;
+            }
+
+
+
+            return { ...state, movieList: newMovieList };
         }
         default: return { ...state };
     }

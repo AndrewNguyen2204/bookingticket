@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCinemasAction, getLogosAction } from '../../../redux/actions/CinemaAction';
-import Cinema from './Cinema';
+import { getCinemasAction, getLogosAction, getShowTimesByIdAction, setMovieListAction } from '../../../redux/actions/CinemaAction';
 import "./HomeCinemas.css";
 import ShowTime from './ShowTime';
 
@@ -9,8 +8,8 @@ import ShowTime from './ShowTime';
 
 export default function HomeCinemas() {
 
-    const { logos, cinemas } = useSelector(state => state.CinemaReducer);
-
+    const { logos, cinemas, movieList } = useSelector(state => state.CinemaReducer);
+    console.log('movieList',movieList);
     const dispatch = useDispatch();
 
     const [activeLogo, setActiveLogo] = useState(0);
@@ -23,11 +22,17 @@ export default function HomeCinemas() {
         setActiveLogo(index);
 
         dispatch(getCinemasAction(maHeThongRap));
+
+        dispatch(getShowTimesByIdAction(maHeThongRap));
+
+        setActiveCinema(0);
     }
 
-    const handleClickCinemas = (index) => {
+    const handleClickCinemas = (index, maCumRap) => {
 
         setActiveCinema(index);
+
+        dispatch(setMovieListAction(maCumRap));
 
     }
 
@@ -41,8 +46,8 @@ export default function HomeCinemas() {
 
     const renderCinemas = () => {
         return cinemas.map((cinema, index) => {
-            return <div className={index === activeCinema ? "cinema-content active" : "cinema-content"} onClick={() => {
-                handleClickCinemas(index);
+            return <div key={index} className={index === activeCinema ? "cinema-content active" : "cinema-content"} onClick={() => {
+                handleClickCinemas(index, cinema.maCumRap);
             }}>
 
                 <div className="flex flex-col">
@@ -56,11 +61,19 @@ export default function HomeCinemas() {
             </div>
         })
     }
+    const renderMovieList = () => {
+        return movieList?.map((movie, index) => {
+            return <ShowTime movie={movie} key={index} />
+        });
+    }   
 
     useEffect(() => {
         dispatch(getLogosAction());
 
         dispatch(getCinemasAction(logos[0].maHeThongRap));
+
+        dispatch(getShowTimesByIdAction(logos[0].maHeThongRap));
+       
 
     }, []);
 
@@ -81,7 +94,7 @@ export default function HomeCinemas() {
                     </div>
                     <div className="showtime">
 
-                        <ShowTime />
+                        {renderMovieList()}
 
 
                     </div>

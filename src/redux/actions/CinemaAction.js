@@ -1,6 +1,13 @@
 import { cinemaService } from "../../services/CinemaService";
-import { SET_CINEMAS, SET_LOGOS, SET_SHOWTIMES_DATA } from "../types/CinemaType";
+import { SET_CINEMAS, SET_LOGOS, SET_MOVIE_LIST, SET_SHOWTIMES_DATA } from "../types/CinemaType";
 
+
+
+export const setMovieListAction = (maCumRap)=>({
+
+        type: SET_MOVIE_LIST,
+        maCumRap
+});
 
 
 
