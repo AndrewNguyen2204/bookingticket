@@ -7,11 +7,18 @@ import { RESET_MOVIES } from '../../../redux/types/MovieType';
 import "./HomeMovies.css";
 export default function HomeMovies() {
 
+    /** useSelector, useDispatch */
     const { movies } = useSelector(state => state.MovieReducer);
 
     const dispatch = useDispatch();
 
+    /** useState */
+
     const [isActive, setIsActive] = useState(true);
+
+    const [show, setShow] = useState(0);
+
+    /** Render Function */
 
     const renderMovies = () => {
 
@@ -26,7 +33,7 @@ export default function HomeMovies() {
 
     }
 
-    const resetMovies = (key) => {
+    const reRenderMovies = (key) => {
         setIsActive(!isActive);
         dispatch({
             type: RESET_MOVIES,
@@ -34,19 +41,42 @@ export default function HomeMovies() {
         })
     }
 
+    /** Reponsive */
+
+    const showCard = () => {
+        let width = window.innerWidth;
+
+        if (width <= 500) {
+            setShow(1)
+        } else if (width <= 768) {
+            setShow(2)
+        } else if (width <= 992) {
+            setShow(3)
+        } else {
+            setShow(4)
+        }
+    }
+    window.addEventListener('resize', showCard);
+
+    /** useEffect */
+
     useEffect(() => {
+
         dispatch(getMoviesAction());
-    }, [dispatch])
+
+        showCard()
+
+    }, [])
 
     return (
         <div className="Movies">
 
             <ul className="types mb-5">
-                <li className={isActive ? "active" : ""} onClick={() => { resetMovies(true) }}><span>Now Showing</span></li>
-                <li className={!isActive ? "active" : ""} onClick={() => { resetMovies(false) }}><span >Coming Soon</span></li>
+                <li className={isActive ? "active" : ""} onClick={() => { reRenderMovies(true) }}><span>Now Showing</span></li>
+                <li className={!isActive ? "active" : ""} onClick={() => { reRenderMovies(false) }}><span >Coming Soon</span></li>
             </ul>
 
-            <Carousel show={4}>
+            <Carousel show={show}>
                 {renderMovies()}
             </Carousel>
 

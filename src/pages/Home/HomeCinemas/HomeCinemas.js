@@ -70,12 +70,14 @@ export default function HomeCinemas() {
     useEffect(() => {
         dispatch(getLogosAction());
 
-        dispatch(getCinemasAction(logos[0].maHeThongRap));
+        dispatch(getCinemasAction(logos[0]?.maHeThongRap));
 
-        dispatch(getShowTimesByIdAction(logos[0].maHeThongRap));
+        dispatch(getShowTimesByIdAction(logos[0]?.maHeThongRap));
+
+        // dispatch(setMovieListAction(cinemas[0]?.maCumRap));
        
 
-    }, []);
+    }, [logos]);
 
     return (
         <div className="cinemas">

@@ -28,7 +28,7 @@
   @apply absolute flex items-center left-1/2 transform -translate-x-1/2 bottom-2;
 }
 .dot {
-  @apply mr-1 bg-white opacity-50 cursor-pointer duration-300 h-2 w-2 rounded-full;  
+  @apply mr-1 bg-yellow-500 opacity-50 cursor-pointer duration-300 h-2 w-2 rounded-full;  
 }
 .dot.active {
   @apply opacity-100 h-3 w-3;

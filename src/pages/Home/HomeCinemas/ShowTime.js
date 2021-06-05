@@ -13,7 +13,7 @@ export default function ShowTime(props) {
 
             showtimes = [...showtimes, showtime.ngayChieuGioChieu.slice(-5)];
         });
-
+        
         return _.uniq(showtimes).map((showtime, index) => {
             return <span key={index}>{showtime}</span>
         })
@@ -31,9 +31,9 @@ export default function ShowTime(props) {
                 <div className="w-full">
                     <h2 className="text-sm font-semibold">{movie.tenPhim}</h2>
                     <span className="text-sm text-coolGray-600">{movie.sapChieu ? "Coming Soon" : "Now Showing"}</span>
-                    <span className="text-sm text-red-600 ml-2 bg-black px-2 rounded-md">{movie.hot ? "Hot !" : ""}</span>
+                    <span className={`text-sm text-white ml-2 bg-yellow-600 px-2 rounded-md ${movie.hot ? "" : "hidden"}`}>Hot !</span>
                     <div className="showtime-details">
-                        {renderShowTimes()}                        
+                        {renderShowTimes()}
                     </div>
                 </div>
             </div>

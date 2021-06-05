@@ -1,5 +1,5 @@
 .cinemas {
-  @apply container mx-auto my-20;
+  @apply container mx-auto  bg-white py-5 mt-10;
 }
 .cinemas-content {
   @apply w-full flex;
@@ -51,5 +51,5 @@
   @apply w-full flex items-center flex-wrap;
 }
 .showtime .showtime-details span {
-  @apply text-green-400 text-2xl font-bold m-2;
+  @apply text-purple-400 text-2xl font-bold m-2;
 }
