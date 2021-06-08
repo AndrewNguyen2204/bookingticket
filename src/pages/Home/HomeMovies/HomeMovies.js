@@ -46,12 +46,13 @@ export default function HomeMovies() {
     const showCard = () => {
         let width = window.innerWidth;
 
-        if (width <= 500) {
+        if (width < 768) {
             setShow(1)
-        } else if (width <= 768) {
+        } else if (width <= 1040) {
             setShow(2)
-        } else if (width <= 992) {
+        } else if (width <= 1260) {
             setShow(3)
+
         } else {
             setShow(4)
         }

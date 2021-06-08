@@ -1,4 +1,4 @@
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCaretRight, faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
@@ -26,11 +26,11 @@ export default function MovieCard(props) {
 
                 </div>
                 <div className="info">
-                    <p>{moTa}</p>
+                    <p>{moTa.length <= 80? moTa: moTa.slice(0, 80) + '...'}</p>
                 </div>
                 <div className="button">
-                    <NavLink to="/home" className="btn btn-trailer">Trailer</NavLink>
-                    <NavLink to="/home" className="btn btn-booking">Book a Ticket</NavLink>
+                    <NavLink to="/home" className="btn-trailer"><FontAwesomeIcon className="btn-play" icon={faCaretRight} /></NavLink>
+                    <NavLink to="/home" className="btn-booking"><span>Buy Ticket</span></NavLink>
                 </div>
             </div>
         </div>
