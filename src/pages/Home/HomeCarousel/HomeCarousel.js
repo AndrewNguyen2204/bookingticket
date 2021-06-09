@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./HomeCarousel.css";
-import { useSelector, useDispatch } from 'react-redux';
-import { getBannersAction } from '../../../redux/actions/CarouselAction';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,16 +9,11 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function HomeCarousel(props) {
 
-    const { banners } = useSelector(state => state.CarouselReducer);
-    const dispatch = useDispatch();
+    const { banners } = props;
 
 
     const [current, setCurrent] = useState(0);
 
-    useEffect(() => {
-        dispatch(getBannersAction());
-
-    }, [dispatch]);
 
 
     const length = banners.length;

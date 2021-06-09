@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import MovieCard from '../../../components/Card/MovieCard/MovieCard';
 import Carousel from '../../../components/Carousel/Carousel';
-import { getMoviesAction } from '../../../redux/actions/MovieAction';
+
 import { RESET_MOVIES } from '../../../redux/types/MovieType';
 import "./HomeMovies.css";
-export default function HomeMovies() {
+export default function HomeMovies(props) {
 
     /** useSelector, useDispatch */
-    const { movies } = useSelector(state => state.MovieReducer);
-
     const dispatch = useDispatch();
-
     /** useState */
 
     const [isActive, setIsActive] = useState(true);
@@ -19,6 +17,8 @@ export default function HomeMovies() {
     const [show, setShow] = useState(0);
 
     /** Render Function */
+
+    const { movies } = props;
 
     const renderMovies = () => {
 
@@ -63,7 +63,7 @@ export default function HomeMovies() {
 
     useEffect(() => {
 
-        dispatch(getMoviesAction());
+
 
         showCard()
 

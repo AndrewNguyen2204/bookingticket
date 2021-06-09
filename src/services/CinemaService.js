@@ -5,15 +5,11 @@ import { baseServices } from "./baseServices";
 export class CinemaService extends baseServices {
     
 
-    getLogos = () => {
-        return this.get(`api/QuanLyRap/LayThongTinHeThongRap`);
+    
+    getCinemasData = () => {
+        return this.get(`api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`);
     }
-    getCinemas = (maHeThong) => {
-        return this.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThong}`);
-    }
-    getShowTimesById = (maHeThong)=>{
-        return this.get(`api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThong}&maNhom=${GROUPID}`);
-    }
+   
    
 }
 

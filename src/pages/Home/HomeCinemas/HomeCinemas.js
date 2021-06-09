@@ -1,53 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCinemasAction, getLogosAction, getShowTimesByIdAction, setMovieListAction } from '../../../redux/actions/CinemaAction';
+import React, { useState } from 'react';
 import "./HomeCinemas.css";
 import ShowTime from './ShowTime';
 
 
 
-export default function HomeCinemas() {
+export default function HomeCinemas(props) {
 
-    const { logos, cinemas, movieList } = useSelector(state => state.CinemaReducer);
-    console.log('movieList',movieList);
-    const dispatch = useDispatch();
+    const { cinemasData } = props;
+
+    
 
     const [activeLogo, setActiveLogo] = useState(0);
 
     const [activeCinema, setActiveCinema] = useState(0);
 
-    const handleClickLogos = (index, item) => {
-        const { maHeThongRap } = item;
-
+    const handleClickLogos = (index) => {
         setActiveLogo(index);
 
-        dispatch(getCinemasAction(maHeThongRap));
 
-        dispatch(getShowTimesByIdAction(maHeThongRap));
-
-        setActiveCinema(0);
     }
 
-    const handleClickCinemas = (index, maCumRap) => {
+    const handleClickCinemas = (index) => {
 
-        setActiveCinema(index);
-
-        dispatch(setMovieListAction(maCumRap));
+        setActiveCinema(index)
 
     }
 
     const renderLogos = () => {
-        return logos.map((item, index) => {
+        return cinemasData?.map((item, index) => {
             return <li key={index} className={index === activeLogo ? "active" : ""}><img src={item.logo} alt={item.maHeThongRap} onClick={() => {
-                handleClickLogos(index, item);
+                handleClickLogos(index);
             }} /></li>
         })
     }
 
     const renderCinemas = () => {
-        return cinemas.map((cinema, index) => {
+        const cinemas = cinemasData[activeLogo]?.lstCumRap;
+
+        return cinemas?.map((cinema, index) => {
             return <div key={index} className={index === activeCinema ? "cinema-content active" : "cinema-content"} onClick={() => {
-                handleClickCinemas(index, cinema.maCumRap);
+                handleClickCinemas(index);
             }}>
 
                 <div className="flex flex-col">
@@ -62,22 +54,14 @@ export default function HomeCinemas() {
         })
     }
     const renderMovieList = () => {
+        const movieList = cinemasData[activeLogo]?.lstCumRap[activeCinema].danhSachPhim;
+
         return movieList?.map((movie, index) => {
             return <ShowTime movie={movie} key={index} />
         });
-    }   
+    }
 
-    useEffect(() => {
-        dispatch(getLogosAction());
 
-        dispatch(getCinemasAction(logos[0]?.maHeThongRap));
-
-        dispatch(getShowTimesByIdAction(logos[0]?.maHeThongRap));
-
-        // dispatch(setMovieListAction(cinemas[0]?.maCumRap));
-       
-
-    }, [logos]);
 
     return (
         <div className="cinemas">
