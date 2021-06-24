@@ -1,21 +1,18 @@
 import React from 'react'
 import _ from 'lodash';
-
+import moment from 'moment';
 
 export default function ShowTime(props) {
 
     const { movie } = props;
 
     const renderShowTimes = () => {
-        let showtimes = [];
-
-        movie.lstLichChieuTheoPhim.forEach(showtime => {
-
-            showtimes = [...showtimes, showtime.ngayChieuGioChieu.slice(-5)];
-        });
+       
+        const {lstLichChieuTheoPhim} = movie;
+        const showtimes =  _.map(lstLichChieuTheoPhim,showtime => moment(showtime.ngayChieuGioChieu).format('hh:mm A'));
         
         return _.uniq(showtimes).map((showtime, index) => {
-            return <span key={index}>{showtime}</span>
+            return <span key={index}>{showtime.slice(0,-2)}<small>{showtime.slice(-2)}</small></span>
         })
 
     }

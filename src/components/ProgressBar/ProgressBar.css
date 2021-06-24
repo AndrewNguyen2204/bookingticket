@@ -1,0 +1,25 @@
+.progressBar {
+  position: relative;
+}
+.progressBar .svg {
+  display: block;
+  max-width: 100%;
+}
+
+.progressBar .svg-circle-bg {
+  fill: none;
+}
+
+.progressBar .svg-circle {
+  fill: none;
+}
+
+.progressBar .svg-circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 3rem;
+  color: red;
+  font-weight: bold;
+}

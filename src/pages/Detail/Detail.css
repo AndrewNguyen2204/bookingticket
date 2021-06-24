@@ -1,0 +1,26 @@
+.detail {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.detail-container {
+  @apply w-full h-full;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.movie-infomations .types span{
+  @apply text-white opacity-20;
+}
+.types li:hover span {
+  @apply opacity-100;
+}
+.types li.active span{
+  @apply text-red-400 opacity-100;
+}
+.movie-infomations .showtimes-content .content-right {
+  display:block;
+}
+.content-right .showtimes span {
+  @apply text-purple-400 text-2xl font-bold m-2 cursor-pointer;
+}

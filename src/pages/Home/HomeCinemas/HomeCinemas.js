@@ -8,7 +8,7 @@ export default function HomeCinemas(props) {
 
     const { cinemasData } = props;
 
-    
+
 
     const [activeLogo, setActiveLogo] = useState(0);
 
@@ -17,7 +17,7 @@ export default function HomeCinemas(props) {
     const handleClickLogos = (index) => {
         setActiveLogo(index);
 
-
+        setActiveCinema(0);
     }
 
     const handleClickCinemas = (index) => {
@@ -42,10 +42,13 @@ export default function HomeCinemas(props) {
                 handleClickCinemas(index);
             }}>
 
-                <div className="flex flex-col">
-                    <div>
-                        <h2 className="text-sm font-semibold">{cinema.tenCumRap}</h2>
-                        <span className="text-sm text-coolGray-600">
+                <div className="flex">
+                    <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-10 sm:w-10 sm:mb-0">
+                        <img src={cinemasData[activeLogo].logo} className="w-full h-full" />
+                    </div>
+                    <div className="ml-2">
+                        <h2 className="text-xs md:text-sm font-semibold">{cinema.tenCumRap}</h2>
+                        <span className="text-xs">
                             {cinema.diaChi}
                         </span>
                     </div>

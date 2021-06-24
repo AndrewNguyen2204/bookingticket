@@ -1,5 +1,6 @@
-import { SET_MOVIES } from "../types/MovieType";
+import { SET_MOVIES} from "../types/MovieType";
 import { movieService } from "../../services/MovieService";
+
 
 
 
@@ -13,6 +14,8 @@ export const getMoviesAction = () => {
     return async (dispatch) => {
         try {
             const result = await movieService.getMovies();
+
+            
             
             dispatch({
                 type: SET_MOVIES,
@@ -25,3 +28,4 @@ export const getMoviesAction = () => {
     }
 
 }
+

@@ -27,10 +27,10 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="w-full bg-black">
+        <section className="w-full">
             <HomeCarousel banners={banners}/>
             <HomeMovies movies ={movies} />
             <HomeCinemas cinemasData ={cinemasData} />
-        </div>
+        </section>
     )
 }

@@ -1,41 +1,44 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import _ from 'lodash';
+import './Footer.css';
 
-export default function Footer() {
+export default function Footer(props) {
+
+    const { cinemasData } = useSelector(state => state.CinemaReducer);
+
+    const cinemas = _.map(cinemasData, cinema => _.pick(cinema, ['maHeThongRap', 'tenHeThongRap', 'logo']));
+
+    const renderPartners = () => {
+        return cinemas.map((cinema, index) => {
+            return <div key={index} className="w-8 my-2 mr-1 lg:mr-4">
+                <img src={cinema.logo} alt={cinema.tenHeThongRap} className="w-full" />
+            </div>
+        })
+    }
+
     return (
-        <footer className="py-6 bg-black text-white">
+        <footer className="relative py-6 bg-black text-white footer" >
+
             <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
-                <div className="grid grid-cols-12">
+                <div className="grid grid-cols-12 gap-2">
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
                         <NavLink to="/home" className="flex justify-center space-x-3 md:justify-start">
                             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-violet-600">
-                                <img className="w-full" src="./images/logo.png" alt="logo" />
+                                <img className="w-full" src="./Images/logo.png" alt="logo" />
                             </div>
                             <span className="self-center text-2xl font-semibold">Andrew Movie</span>
                         </NavLink>
                     </div>
                     <div className="col-span-6 text-center md:text-left md:col-span-3">
-                        <p className="pb-1 text-lg font-medium">Services</p>
-                        <ul>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Booking Ticket</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>{/**/}
-                        </ul>
+                        <p className="pb-1 text-lg font-medium ">Partners</p>
+                        <div className="flex flex-wrap">
+                            {renderPartners()}
+                        </div>
                     </div>
                     <div className="col-span-6 text-center md:text-left md:col-span-3">
-                        <p className="pb-1 text-lg font-medium">Contact Us</p>
+                        <p className="pb-1 text-lg font-medium">Mobile Apps</p>
                         <ul>
                             <li>
                                 <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
@@ -43,15 +46,7 @@ export default function Footer() {
                             <li>
                                 <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/home" className="hover:text-purple-600">Link</NavLink>
-                            </li>{/**/}
+
                         </ul>
                     </div>
                 </div>

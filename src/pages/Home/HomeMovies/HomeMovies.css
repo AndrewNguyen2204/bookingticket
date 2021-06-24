@@ -2,11 +2,16 @@
   @apply container mx-auto mt-20;
 }
 
-.types li {
- 
-  @apply inline-block mr-2 py-1 px-3 bg-gray-400 text-white rounded-t-md cursor-pointer;
+.types li { 
+  @apply inline-block text-gray-600 mx-10 cursor-pointer  transform hover:scale-150 duration-200;
+}
+.types li:hover {
+  margin: 0 70px; 
+}
+.types li span {
+  @apply text-2xl font-bold;
 }
 
-.types li.active{
-  @apply bg-red-400;
+.types li.active {
+  @apply text-red-400 scale-150;  
 }
