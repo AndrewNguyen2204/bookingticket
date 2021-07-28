@@ -40,7 +40,7 @@ export const getMoviesDetails = (maPhim) => {
     return async (dispatch) => {
         try {
             const result = await cinemaService.getMovieDetails(maPhim);
-            console.log({result});
+            
             dispatch({
                 type: SET_MOVIE_DETAILS,
                 movieDetails: result.data.content

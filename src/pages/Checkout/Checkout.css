@@ -1,0 +1,33 @@
+.checkout-container {
+  background: url("../../assets/Images/bg2.jpg");
+}
+.checkout-container .container {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-height:90vh;
+  border-radius: 30px;
+}
+.seatmap-screen .screen-shadow {
+  width: 100%;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 80px solid rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(0 5px 0 30px white);
+  margin-bottom: 50px;
+}
+.input-group {
+  @apply my-4;
+}
+.input-group label {
+  @apply text-coolGray-400 inline-block mb-2;
+}
+.input-group .form-control {
+  @apply w-full outline-none border-none bg-transparent;
+}
+.tabs .tabPane {
+  @apply text-xl font-thin opacity-70 mr-10 duration-300;
+}
+.tabs .tabPane.active {
+  @apply text-4xl font-bold text-orange-500 opacity-100;
+}

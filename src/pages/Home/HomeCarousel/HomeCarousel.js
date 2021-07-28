@@ -30,13 +30,13 @@ export default function HomeCarousel(props) {
     const renderDots = () => {
         return banners.map((banner, index) => {
             return (
-                <span key={index} className={index === current ? "dot active" : "dot"} abc={index} onClick={()=>{handleClickDots(index)}}></span>
+                <span key={index} className={index === current ? "dot active" : "dot"} abc={index} onClick={() => { handleClickDots(index) }}></span>
             )
         })
     }
     const handleClickDots = (i) => {
 
-       setCurrent(i);
+        setCurrent(i);
 
     }
 
@@ -58,7 +58,7 @@ export default function HomeCarousel(props) {
 
 
                         <div key={index} className={index === current ? "slide active" : "slide"}>
-                            {index === current && (<img src='https://picsum.photos/1600/900'  alt={slide.hinhAnh} />)}
+                            {index === current && (<img src={slide.hinhAnh} alt={slide.hinhAnh} />)}
                         </div>
 
                     )

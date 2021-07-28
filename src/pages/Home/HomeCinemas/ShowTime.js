@@ -1,18 +1,23 @@
 import React from 'react'
 import _ from 'lodash';
 import moment from 'moment';
+import { NavLink } from 'react-router-dom';
 
 export default function ShowTime(props) {
 
     const { movie } = props;
 
     const renderShowTimes = () => {
-       
-        const {lstLichChieuTheoPhim} = movie;
-        const showtimes =  _.map(lstLichChieuTheoPhim,showtime => moment(showtime.ngayChieuGioChieu).format('hh:mm A'));
+
+        const { lstLichChieuTheoPhim } = movie;
         
-        return _.uniq(showtimes).map((showtime, index) => {
-            return <span key={index}>{showtime.slice(0,-2)}<small>{showtime.slice(-2)}</small></span>
+        const showtimes = _.map(lstLichChieuTheoPhim, lichChieu => ({
+            showtime: moment(lichChieu.ngayChieuGioChieu).format('hh:mm A'),
+            showtimeId: lichChieu.maLichChieu
+        }));
+
+        return _.uniqBy(showtimes, 'showtime').map((item, index) => {
+            return <NavLink to={`/checkout/${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
         })
 
     }

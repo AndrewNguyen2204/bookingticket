@@ -50,6 +50,6 @@
 .showtime .showtime-details {
   @apply w-full flex items-center flex-wrap;
 }
-.showtime .showtime-details span {
+.showtime .showtime-details a {
   @apply text-purple-400 text-2xl font-bold m-2;
 }

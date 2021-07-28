@@ -1,27 +1,52 @@
+import { useFormik } from 'formik'
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom'
+import {loginAction} from '../../redux/actions/UserAction';
 
-export default function SignIn() {
+
+export default function SignIn(props) {
+
+    const dispatch = useDispatch();
+    
+    const formik = useFormik({
+
+        initialValues: {
+            taiKhoan: '',
+            matKhau: ''
+        },
+
+        onSubmit: values => {
+
+            dispatch(loginAction(values));
+           
+        },
+
+    });
+
+
+
     return (
-        <div className="container mx-auto flex justify-center items-center py-48 bg-gray">
-            <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-coolGray-50 text-coolGray-800">
+        <div className="container h-screen mx-auto flex justify-center items-center bg-gray px-2">
+            <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-white bg-opacity-10 text-white backdrop-filter backdrop-blur-sm border border-t-2 border-l-2 border-white border-opacity-10 shadow-md">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
-                <form noValidate action className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form noValidate  className="space-y-6 ng-untouched ng-pristine ng-valid" onSubmit={formik.handleSubmit}>
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="username" className="block text-coolGray-600">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 text-coolGray-800" />
+                        <label htmlFor="username" className="block text-white">Username</label>
+                        <input type="text" name="taiKhoan" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white" onChange={formik.handleChange} />
                     </div>
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="password" className="block text-coolGray-600">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 text-coolGray-800" />
-                        <div className="flex justify-end text-xs text-coolGray-600">
+                        <label htmlFor="password" className="block text-white">Password</label>
+                        <input type="password" name="matKhau" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white" onChange={formik.handleChange} />
+                        <div className="flex justify-end text-xs text-white">
                             <a href="#">Forgot Password?</a>
                         </div>
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm text-coolGray-50 bg-violet-600">Sign in</button>
+                    <button className="block w-full p-3 text-center rounded-sm text-white text-xl bg-violet-600 bg-opacity-40 hover:bg-opacity-90">Sign in</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-coolGray-300" />
-                    <p className="px-3 text-sm text-coolGray-600">Login with social accounts</p>
+                    <p className="px-3 text-sm text-white">Login with social accounts</p>
                     <div className="flex-1 h-px sm:w-16 bg-coolGray-300" />
                 </div>
                 <div className="flex justify-center space-x-4">
@@ -41,8 +66,8 @@ export default function SignIn() {
                         </svg>
                     </button>
                 </div>
-                <p className="text-xs text-center sm:px-6 text-coolGray-600">Don't have an account?
-                    <a href="#" className="underline text-coolGray-800">Sign up</a>
+                <p className="text-xs text-center sm:px-6 text-white">Don't have an account?
+                    <NavLink to="/register" className="underline text-white ml-2">Sign up</NavLink>
                 </p>
             </div>
 

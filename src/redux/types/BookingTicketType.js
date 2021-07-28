@@ -1,0 +1,6 @@
+export const SET_ROOM_DETAILS = 'SET_ROOM_DETAILS';
+
+export const SET_TICKETS = 'SET_TICKETS';
+
+
+export const CLEAR_TICKETS = 'CLEAR_TICKETS';

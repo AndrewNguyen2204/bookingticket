@@ -1,7 +1,7 @@
 .detail {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;  
 }
 .detail-container {
   @apply w-full h-full;
@@ -21,6 +21,6 @@
 .movie-infomations .showtimes-content .content-right {
   display:block;
 }
-.content-right .showtimes span {
+.content-right .showtimes a {
   @apply text-purple-400 text-2xl font-bold m-2 cursor-pointer;
 }

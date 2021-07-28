@@ -6,13 +6,14 @@ import { getMoviesDetails } from '../../redux/actions/CinemaAction';
 import Rating from '../../components/Rating/Rating';
 import _ from 'lodash';
 import moment from 'moment';
+import { NavLink } from 'react-router-dom';
 
 
 
 export default function Detail(props) {
 
     const { heThongRapChieu, tenPhim, danhGia, hinhAnh } = useSelector(state => state.MovieReducer.movieDetails);
-
+    console.log({heThongRapChieu});
     const dispatch = useDispatch();
 
     const [active, setActive] = useState(0);
@@ -38,10 +39,13 @@ export default function Detail(props) {
     const renderShowtimes = (list) => {
 
 
-        const showtimes = _.map(list, showtime => moment(showtime.ngayChieuGioChieu).format('hh:mm A'));
+        const showtimes = _.map(list, lichChieu => ({
+            showtime: moment(lichChieu.ngayChieuGioChieu).format('hh:mm A'),
+            showtimeId: lichChieu.maLichChieu
+        }));
 
-        return _.uniq(showtimes)?.map((showtime, index) => {
-            return <span key={index}>{showtime.slice(0, -2)}<small>{showtime.slice(-2)}</small></span>
+        return _.uniqBy(showtimes,'showtime')?.map((item, index) => {
+            return <NavLink to={`/checkout/${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
         })
 
     }
@@ -81,8 +85,8 @@ export default function Detail(props) {
     return (
         <section className="detail" style={{ backgroundImage: `url(${hinhAnh})` }}>
             <div className="detail-container pt-48 pb-20">
-                <div className=" container mx-auto detail-content w-full flex justify-around items-center">
-                    <div className="detail-left w-3/5 flex justify-end items-center">
+                <div className=" container mx-auto detail-content w-full flex flex-col md:flex-row justify-around items-center">
+                    <div className="detail-left w-full md:w-3/5 flex justify-end items-center mb-8 p-2">
                         <div className="left-content flex items-center">
                             <img style={{ width: 300, height: 400 }} src={hinhAnh} alt="movie" />
                             <div className="movie-details text-white ml-4">
