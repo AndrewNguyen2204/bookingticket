@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Seat from '../../components/Seat/Seat';
 import { buyTicketAction, getRoomDetailsAction } from '../../redux/actions/BookingTicketAction';
+import { getUserProfileAction } from '../../redux/actions/UserAction';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import './Checkout.css';
 
@@ -12,6 +13,7 @@ export default function Checkout(props) {
 
     const [done, setDone] = useState(false);
 
+    const { userLogin } = useSelector(state => state.UserReducer);
 
 
     return (
@@ -27,11 +29,11 @@ export default function Checkout(props) {
                             <div className="img-box">
                                 <img className="avatar" src="https://picsum.photos/50" alt="avatar" />
                             </div>
-                            <span className="userName">Nguyen Van A</span>
+                            <span className="userName">{userLogin.hoTen}</span>
                         </div>
                     </div>
                     <div className="checkout-content p-10">
-                        {done ? <CheckoutResult {...props} /> : <SeatCheckout {...props} setDone={setDone} />}
+                        {done ? <BookingResult {...props} /> : <BookingRoom {...props} setDone={setDone} userLogin={userLogin} />}
                     </div>
                 </div>
             </div>
@@ -41,10 +43,10 @@ export default function Checkout(props) {
 
 
 
-function SeatCheckout(props) {
+function BookingRoom(props) {
 
 
-    const { email, soDT, taiKhoan } = useSelector(state => state.UserReducer.userLogin);
+    const { email, soDT, taiKhoan } = props.userLogin;
 
     const { tickets, roomDetails } = useSelector(state => state.BookingTicketReducer);
 
@@ -53,7 +55,7 @@ function SeatCheckout(props) {
     const total = tickets.reduce((total, ticket) => {
         return total += ticket.giaVe;
     }, 0);
-    console.log({ danhSachGhe });
+
     const dispatch = useDispatch();
 
 
@@ -170,13 +172,62 @@ function SeatCheckout(props) {
 }
 
 
-function CheckoutResult(props) {
+function BookingResult(props) {
 
+    const { thongTinDatVe } = useSelector(state => state.UserReducer.userProfile);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserProfileAction());
+    }, []);
+
+
+
+    console.log({ thongTinDatVe });
+
+    const renderSeats = (lst) => {
+        return lst.map((seat, index) => {
+           return <span className="text-white" key={index}>{`[${seat.tenGhe}]`}</span>
+        })
+    }
+
+    const renderItems = () => {
+        return thongTinDatVe.map(({
+            hinhAnh,
+            tenPhim,
+            ngayDat,
+            thoiLuongPhim,
+            danhSachGhe
+        },
+            index) => {
+
+
+
+            return (
+                <div key={index} className="item flex w-full bg-black bg-opacity-70">
+                    <div className="card-img w-48 p-2">
+                        <img className="w-full" src={hinhAnh} alt='poster' />
+                    </div>
+                    <div className="card-text p-4">
+                        <h5>{tenPhim}</h5>
+                        <div>Seat: {renderSeats(danhSachGhe)}</div>
+                    </div>
+                </div>
+            )
+        })
+    }
 
 
     return (
-        <div className="checkout-result">
-            this is checkout-results
+        <div className="booking-result">
+            <div className="booking-result-text text-center mb-40">
+                <h1 className="booking-result-titles lg:text-4xl font-bold">Recent Booking History</h1>
+                <p>lorem ipsum dolor sit amet, consectet</p>
+            </div>
+            <div className="booking-result-cards grid grid-cols-3 gap-2 overflow-scroll">
+                {renderItems()}
+            </div>
         </div>
     )
 }

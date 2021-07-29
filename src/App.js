@@ -11,12 +11,16 @@ import Detail from './pages/Detail/Detail';
 import Checkout from './pages/Checkout/Checkout';
 import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
+import LoadingRing from './components/Loading/LoadingRing';
+
+
 
 export const history = createBrowserHistory();
 
 function App() {
   return (
     <Router history={history}>
+      <LoadingRing />
       <Switch>
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/contact" exact Component={Contact} />
