@@ -4,3 +4,5 @@ export const SET_TICKETS = 'SET_TICKETS';
 
 
 export const CLEAR_TICKETS = 'CLEAR_TICKETS';
+
+export const SET_OTHER_TICKETS = 'SET_OTHER_TICKETS';

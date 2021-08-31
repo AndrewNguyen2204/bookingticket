@@ -16,6 +16,21 @@
   filter: drop-shadow(0 5px 0 30px white);
   margin-bottom: 50px;
 }
+.seatmap-description {
+  @apply flex flex-col items-center;
+}
+.seat-description{
+  @apply flex flex-wrap items-center justify-center;
+}
+.seat-description .description-item{
+  @apply flex flex-col items-center m-4;
+}
+.description-item span{
+  @apply inline-block w-10 h-10;
+  cursor: default !important;
+  pointer-events: none;
+}
+
 .input-group {
   @apply my-4;
 }

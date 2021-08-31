@@ -1,9 +1,16 @@
-.Movies {
-  @apply container mx-auto mt-20;
+.home-section{
+  /* @apply bg-gradient-to-b from-black via-gray-600 to-black; */
+  background:  url('../../../assets//Images/bg-5.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.movies {
+  @apply py-20;  
 }
 
 .types li { 
-  @apply inline-block text-gray-600 mx-10 cursor-pointer  transform hover:scale-150 duration-200;
+  @apply inline-block text-gray-600 mx-10 cursor-pointer  transform hover:scale-150 duration-300;
 }
 .types li:hover {
   margin: 0 70px; 
@@ -13,5 +20,5 @@
 }
 
 .types li.active {
-  @apply text-red-400 scale-150;  
+  @apply text-red-400 scale-150 duration-300;  
 }

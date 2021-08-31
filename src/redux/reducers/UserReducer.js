@@ -1,8 +1,8 @@
 import { USER_LOGIN, TOKEN } from "../../util/settings/config";
 import { ThongTinTaiKhoan } from "../../_core/models/ThongTinTaiKhoan";
-import { LOG_IN, SET_USER_PROFILE } from "../types/UserType";
+import { LOG_IN, LOG_OUT, SET_USERS, SET_USER_EDIT, SET_USER_PROFILE } from "../types/UserType";
 
-let userDefault = {};
+let userDefault = null;
 
 if (localStorage.getItem(USER_LOGIN)) {
     userDefault = JSON.parse(localStorage.getItem(USER_LOGIN));
@@ -11,7 +11,9 @@ if (localStorage.getItem(USER_LOGIN)) {
 
 const initialState = {
     userLogin: userDefault,
-    userProfile: new ThongTinTaiKhoan()
+    userProfile: new ThongTinTaiKhoan(),
+    users: [],
+    userEdit: new ThongTinTaiKhoan()
 }
 
 const UserReducer = (state = initialState, action) => {
@@ -25,9 +27,23 @@ const UserReducer = (state = initialState, action) => {
 
             return { ...state, userLogin: userLogin }
         }
+        case LOG_OUT: {
+            localStorage.removeItem(USER_LOGIN);
+            localStorage.removeItem(TOKEN);
+            userDefault = {};
+            return { ...state, userLogin: null }
+        }
 
         case SET_USER_PROFILE: {
             return { ...state, userProfile: action.userProfile };
+        }
+
+        case SET_USERS: {
+            return { ...state, users: action.users };
+        }
+
+        case SET_USER_EDIT:{
+            return {...state, userEdit: action.userEdit[0]};
         }
 
         default:

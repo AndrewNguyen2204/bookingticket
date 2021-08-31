@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 * {
   margin: 0;
@@ -8,4 +10,33 @@
   box-sizing: border-box;
   font-family: "Poppins", san-seref;
   font-size: 16px;
+}
+body {
+  background: black;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 166, 0, 0.555);
+  border-radius: 5px;
+  box-shadow: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: orange;
+  box-shadow: 0 0 0 2px rgba(255, 166, 0, 0.05),
+    0 0 0 4px rgba(255, 166, 0, 0.05), 0 0 0 6px rgba(255, 166, 0, 0.05);
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.25);
+}
+.glass {
+  @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-xl;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }

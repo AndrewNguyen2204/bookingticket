@@ -1,9 +1,10 @@
 import { ThongTinPhongVe } from "../../_core/models/ThongTinPhongVe";
-import { CLEAR_TICKETS, SET_ROOM_DETAILS, SET_TICKETS } from "../types/BookingTicketType";
+import { CLEAR_TICKETS, SET_OTHER_TICKETS, SET_ROOM_DETAILS, SET_TICKETS } from "../types/BookingTicketType";
 
 const initialState = {
     roomDetails: new ThongTinPhongVe(),
-    tickets: []
+    tickets: [],
+    otherTickets: []
 }
 
 const BookingTicketReducer = (state = initialState, action) => {
@@ -25,6 +26,10 @@ const BookingTicketReducer = (state = initialState, action) => {
             }
 
             return { ...state, tickets: tickets }
+        }
+
+        case SET_OTHER_TICKETS: {
+            return { ...state, otherTickets: action.otherTickets };
         }
 
         case CLEAR_TICKETS: {

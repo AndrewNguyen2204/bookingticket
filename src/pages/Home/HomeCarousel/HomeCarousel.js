@@ -63,8 +63,10 @@ export default function HomeCarousel(props) {
 
                     )
                 })}
-                <div className="dots">
-                    {renderDots()}
+                <div className="dots-box">
+                    <div className="dots">
+                        {renderDots()}
+                    </div>
                 </div>
             </div>
         </>

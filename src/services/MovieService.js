@@ -3,7 +3,7 @@ import { baseServices } from "./baseServices";
 
 
 export class MovieService extends baseServices {
-    
+
 
     getBanners = () => {
         return this.get(`api/QuanLyPhim/LayDanhSachBanner`);
@@ -11,6 +11,21 @@ export class MovieService extends baseServices {
 
     getMovies = () => {
         return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
+    }
+    addMovieUploadImage = (formData) => {
+        return this.post('/api/QuanLyPhim/ThemPhimUploadHinh', formData);
+    }
+
+    getMovie = (id) =>{
+        return this.get(`api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+    }
+
+    updateMovie = (formData) =>{
+        return this.post('api/QuanLyPhim/CapNhatPhimUpload',formData);
+    }
+
+    deleteMovie = (id) =>{
+        return this.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${id}`);
     }
 
 }

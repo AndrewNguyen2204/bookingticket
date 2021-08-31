@@ -7,11 +7,10 @@ import "./MovieCard.css";
 export default function MovieCard(props) {
     const { hinhAnh, tenPhim, trailer, moTa, ngayKhoiChieu, danhGia, maPhim } = props.movie;
     return (
-        <div className="card mx-auto">
+        <div className="card mx-auto glass">
             <div className="poster">
                 <img src={hinhAnh} alt={tenPhim} />
-            </div>
-            <div className="details">
+                <div className="details">
                 <h2>{tenPhim}</h2>
                 <Rating value={danhGia} text />
                 <div className="tags">
@@ -26,6 +25,8 @@ export default function MovieCard(props) {
                     <NavLink to={`/detail/${maPhim}`} className="btn-booking w-full text-center">Buy Ticket</NavLink>
                 </div>
             </div>
+            </div>
+            
         </div>
 
     )

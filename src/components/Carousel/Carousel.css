@@ -38,8 +38,8 @@
     z-index: 1;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 64px; 
-    color: purple;
+    font-size: 120px; 
+    color: #fff;
     opacity: 0.5; 
     cursor: pointer;
     transition: all 0.3s;      
@@ -48,11 +48,11 @@
   opacity: 0.8;   
 }
 .left-arrow {
-    left: -24px;
+    left: 0;
 }
 
 .right-arrow {
-    right: -24px;
+    right: 0;
 }
 
 

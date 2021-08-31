@@ -18,6 +18,12 @@ const Carousel = (props) => {
 
     const [length, setLength] = useState(children.length);
 
+     /** useEffect */
+
+     useEffect(() => {
+        setLength(children.length);
+    }, [children])
+
     /** Callback function */
     // handle next button
     const next = () => {
@@ -61,11 +67,8 @@ const Carousel = (props) => {
         setTouchPosition(null);
     }
 
-    /** useEffect */
-
-    useEffect(() => {
-        setLength(children.length);
-    }, [children])
+   
+   
 
     return (
         <div className="carousel-container">
@@ -79,7 +82,7 @@ const Carousel = (props) => {
 
 
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
-                    <div className={`carousel-content w-1/${show}`} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                    <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)`,width:`${(1/show)*100}%` }}>
                         {children}
                     </div>
                 </div>

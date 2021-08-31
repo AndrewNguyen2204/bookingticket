@@ -53,8 +53,10 @@ export default function HomeMovies(props) {
         } else if (width <= 1260) {
             setShow(3)
 
-        } else {
+        } else if (width <= 1900) {
             setShow(4)
+        }else {
+            setShow(6)
         }
     }
     window.addEventListener('resize', showCard);
@@ -70,7 +72,7 @@ export default function HomeMovies(props) {
     }, [])
 
     return (
-        <div className="Movies">
+        <div className="movies">
 
             <ul className="types mb-10 flex justify-center">
                 <li className={isActive ? "active" : ""} onClick={() => { reRenderMovies(true) }}><span>Now Showing</span></li>

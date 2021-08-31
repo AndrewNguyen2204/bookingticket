@@ -13,7 +13,14 @@ export class CinemaService extends baseServices {
     getMovieDetails = (maPhim) => {
         return this.get(`api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
     }
+
+    getGroups = () => {
+        return this.get('api/QuanLyRap/LayThongTinHeThongRap');
+    } 
    
+    getCinemas = (maHeThongRap) => {
+        return this.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`);
+    }
    
 }
 

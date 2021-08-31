@@ -1,7 +1,8 @@
-import { CLEAR_TICKETS, SET_ROOM_DETAILS, SET_TICKETS } from "../types/BookingTicketType";
+import { CLEAR_TICKETS, SET_OTHER_TICKETS, SET_ROOM_DETAILS, SET_TICKETS } from "../types/BookingTicketType";
 import { ticketService } from '../../services/TicketService';
 import { STATUS } from "../../util/settings/config";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
+import { connection } from "../..";
 
 
 export const setRoomDetailsAction = (roomDetails) => ({
@@ -19,7 +20,10 @@ export const clearTicketsAction = () => ({
     type: CLEAR_TICKETS
 })
 
-
+export const setOtherTicketsAction = (otherTickets)=>({
+    type: SET_OTHER_TICKETS,
+    otherTickets
+})
 
 // Thunk Actions
 
@@ -48,7 +52,7 @@ export const buyTicketAction = (info = new ThongTinDatVe()) => {
 
 
 
-    return async (dispatch) => {
+    return async (dispatch,getState) => {
 
 
         try {
@@ -56,12 +60,38 @@ export const buyTicketAction = (info = new ThongTinDatVe()) => {
             const result = await ticketService.buyTicket(info);
             
             if (result.status === STATUS.SUCCESS){
-               dispatch(clearTicketsAction());
+               await dispatch(clearTicketsAction());
+               let userLogin = getState().UserReducer.userLogin;
+
+               connection.invoke('datGheThanhCong',userLogin.taiKhoan,info.maLichChieu);
             }
 
 
         }catch (err) {
             console.log('error', err);
         }
+    }
+}
+
+export const checkingSeatAction = (seat,maLichChieu) => {
+
+
+
+    return async (dispatch,getState) => {
+
+        await dispatch(setTicketsAction(seat));
+
+        // send checking-seats  to backend
+
+        // const taiKhoan = getState().UserReducer.userLogin.taiKhoan;
+
+        // const tickets = getState().BookingTicketReducer.tickets;
+
+        // console.log('tickets', tickets);
+
+        // const danhSachGheDangDat = JSON.stringify(tickets);
+
+        // connection.invoke('datGhe',taiKhoan,danhSachGheDangDat,maLichChieu);
+
     }
 }

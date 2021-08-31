@@ -1,0 +1,14 @@
+.user-login .user-dropdown {
+  @apply absolute top-16 left-1/2 transform -translate-x-1/2  bg-black bg-opacity-80 p-4 w-40 rounded-md;
+}
+
+.user-login .user-dropdown:before {
+  content: "";
+  position: absolute;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.8);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}

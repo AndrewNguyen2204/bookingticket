@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Seat from '../../components/Seat/Seat';
-import { buyTicketAction, getRoomDetailsAction } from '../../redux/actions/BookingTicketAction';
+import { buyTicketAction, getRoomDetailsAction, setOtherTicketsAction } from '../../redux/actions/BookingTicketAction';
 import { getUserProfileAction } from '../../redux/actions/UserAction';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import './Checkout.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { connection } from '../..';
+import _ from 'lodash';
+import UserAvatar from '../../components/UserAvatar/UserAvatar';
+import { USER_LOGIN } from '../../util/settings/config';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -15,22 +21,23 @@ export default function Checkout(props) {
 
     const { userLogin } = useSelector(state => state.UserReducer);
 
+    // Fix client click sign out button
 
+    if (!localStorage.getItem(USER_LOGIN)) {
+        return <Redirect to='/login' />
+    }
+
+    
     return (
         <div className="checkout w-full">
             <div className="checkout-container w-full min-h-screen text-white flex justify-center items-center">
                 <div className="container mx-auto">
                     <div className="checkout-navbar w-full flex justify-between items-center p-10">
                         <ul className="tabs flex items-center">
-                            <li className={`tabPane ${done ? '' : 'active'}`}>01 Checkout & Payment</li>
+                            <li className={`tabPane ${done ? '' : 'active'}`}>01 Booking & Payment</li>
                             <li className={`tabPane ${done ? 'active' : ''}`}>02 Results</li>
                         </ul>
-                        <div className="user-login flex items-center">
-                            <div className="img-box">
-                                <img className="avatar" src="https://picsum.photos/50" alt="avatar" />
-                            </div>
-                            <span className="userName">{userLogin.hoTen}</span>
-                        </div>
+                        <UserAvatar user={userLogin} />
                     </div>
                     <div className="checkout-content p-10">
                         {done ? <BookingResult {...props} /> : <BookingRoom {...props} setDone={setDone} userLogin={userLogin} />}
@@ -48,7 +55,7 @@ function BookingRoom(props) {
 
     const { email, soDT, taiKhoan } = props.userLogin;
 
-    const { tickets, roomDetails } = useSelector(state => state.BookingTicketReducer);
+    const { tickets, roomDetails, otherTickets } = useSelector(state => state.BookingTicketReducer);
 
     const { danhSachGhe, thongTinPhim } = roomDetails;
 
@@ -63,7 +70,43 @@ function BookingRoom(props) {
         const id = props.match.params.id;
 
         dispatch(getRoomDetailsAction(id));
+
+        // connection.invoke('loadDanhSachGhe', id);
+
+        // connection.on('datVeThanhCong', () => {
+        //     dispatch(getRoomDetailsAction(id));
+        // });
+
+        // Load checking-Seats from server
+        connection.on("loadDanhSachGheDaDat", (checkingSeats) => {
+            console.log({ checkingSeats });
+
+            // checkingSeats = checkingSeats.filter(seat => seat.taiKhoan !== taiKhoan);
+
+            // let otherSeats = checkingSeats.reduce((results, seats, index) => {
+            //     let currentSeats = JSON.parse(seats.danhSachGhe);
+            //     return [...results, ...currentSeats];
+            // }, []);
+
+            // // Set redux            
+            // otherSeats = _.uniqBy(otherSeats, 'maGhe');
+
+            // dispatch(setOtherTicketsAction(otherSeats));
+        });
+
+        // set event while reload pages
+
+        // window.addEventListener('beforeunload', clearSeats);
+
+        // return () => {
+        //     clearSeats();
+        //     window.addEventListener('beforeunload', clearSeats);
+        // }
     }, []);
+
+    // const clearSeats = function (e) {
+    //     connection.invoke('huyDat', taiKhoan, props.match.params.id);
+    // }
 
 
     const { setDone } = props;
@@ -71,7 +114,12 @@ function BookingRoom(props) {
     const renderSeats = () => {
         return danhSachGhe.map((seat, index) => {
 
-            return <Seat key={index} seat={seat} user={taiKhoan} />
+            let check = tickets.findIndex(s => s.maGhe === seat.maGhe);
+            let otherCheck = otherTickets?.findIndex(s => s.maGhe === seat.maGhe);
+
+            const id = props.match.params.id;
+
+            return <Seat key={index} seat={seat} user={taiKhoan} other={otherCheck} check={check} id={id} />
 
         })
     }
@@ -92,7 +140,7 @@ function BookingRoom(props) {
 
         setDone(true);
 
-        // call api to save infomation 
+        // call api 
 
         const info = new ThongTinDatVe();
         info.maLichChieu = props.match.params.id;
@@ -126,8 +174,32 @@ function BookingRoom(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="seats grid grid-cols-16 grid-rows-10 gap-1 lg:gap-3">
+                        <div className="seats grid grid-cols-16 grid-rows-10 gap-1 lg:gap-3 my-10">
                             {renderSeats()}
+                        </div>
+                        <div className="seatmap-description">
+                            <div className="seat-description">
+                                <div className="description-item">
+                                    <h5>Normal</h5>
+                                    <span className="seat"></span>
+                                </div>
+                                <div className="description-item">
+                                    <h5>VIP</h5>
+                                    <span className="seat vip"></span>
+                                </div>
+                                <div className="description-item">
+                                    <h5>Booked</h5>
+                                    <span className="seat checked"></span>
+                                </div>
+                                <div className="description-item">
+                                    <h5>Checking</h5>
+                                    <span className="seat check"></span>
+                                </div>
+                            </div>
+                            <div className="user-description">
+                                <span className="mx-2"><FontAwesomeIcon icon={faUser} /> : Your seat</span>
+                                <span className="mx-2"><FontAwesomeIcon icon={faUserFriends} /> : Other's seat</span>
+                            </div>
                         </div>
                     </div>
                     <div className="ticket-details w-full md:w-1/4  h-full px-5 py-10 flex flex-col items-center bg-black bg-opacity-25 rounded-md">
@@ -188,7 +260,7 @@ function BookingResult(props) {
 
     const renderSeats = (lst) => {
         return lst.map((seat, index) => {
-           return <span className="text-white" key={index}>{`[${seat.tenGhe}]`}</span>
+            return <span className="text-white" key={index}>{`[${seat.tenGhe}]`}</span>
         })
     }
 

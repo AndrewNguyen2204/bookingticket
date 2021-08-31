@@ -27,7 +27,7 @@ export default function Home() {
     }, []);
 
     return (
-        <section className="w-full">
+        <section className="home-section w-full">
             <HomeCarousel banners={banners}/>
             <HomeMovies movies ={movies} />
             <HomeCinemas cinemasData ={cinemasData} />

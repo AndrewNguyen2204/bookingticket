@@ -14,19 +14,19 @@ export default function SideBar(props) {
                 <div className="close-btn" onClick={() => { setClose(!open) }}><FontAwesomeIcon icon={faTimes} /></div>
                 <ul className="menu">
                     <li className="flex">
-                        <NavLink to="/home" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">Home</NavLink>
+                        <NavLink to="/home" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white">Home</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink to="/contact" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">Contact</NavLink>
+                        <NavLink to="/contact" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white">Contact</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink to="/news" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">News</NavLink>
+                        <NavLink to="/news" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white">News</NavLink>
                     </li>
 
                 </ul>
                 <div className="items-center flex-shrink-0 flex flex-col">
-                    <button className="self-center px-8 py-3 rounded"><NavLink to="/signin" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">Sign In</NavLink></button>
-                    <button className="self-center px-8 py-3 font-semibold rounded bg-violet-600 text-coolGray-50"><NavLink to="/register" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600">Register</NavLink></button>
+                    <button className="self-center px-8 py-3 rounded"><NavLink to="/login" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white">Sign In</NavLink></button>
+                    <button className="self-center px-8 py-3 font-semibold rounded bg-violet-600 text-coolGray-50"><NavLink to="/register" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white border-violet-600">Register</NavLink></button>
                 </div>
             </div>
         </div>

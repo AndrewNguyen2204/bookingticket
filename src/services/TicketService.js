@@ -13,6 +13,9 @@ export class TicketService extends baseServices {
         return this.post('api/QuanLyDatVe/DatVe',info);
     }
    
+    createShowtime = (info) =>{
+        return this.post('api/QuanLyDatVe/TaoLichChieu',info);
+    }
 
 }
 

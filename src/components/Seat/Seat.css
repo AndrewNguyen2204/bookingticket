@@ -2,39 +2,47 @@
   @apply w-full flex justify-center items-center;
 }
 .seat {
-  @apply text-sm lg:text-xl h-4 w-4 lg:h-12 lg:w-12 md:rounded-md;
+  @apply text-sm lg:text-xl h-8 w-8 lg:h-12 lg:w-12;
+  border-radius: 40% 40% 0 0;
   background: grey;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   cursor: pointer;
   opacity: 0.8;
   transition: all 0.3 ease;
 }
 .seat:hover {
-  box-shadow: inset -2px -2px 10px rgba(255,255,255,0.8),
-              inset 2px 2px 10px rgba(0,0,0,0.4),
-                    2px 2px  2px rgba(0,0,0,0.4),
-                    2px 2px  4px rgba(0,0,0,0.4),
-                    2px 2px  6px rgba(0,0,0,0.4);
+  box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 10px rgba(0, 0, 0, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.4), 2px 2px 6px rgba(0, 0, 0, 0.4);
   opacity: 1;
 }
 .seat.check {
   opacity: 1;
-  background: purple !important;
-  box-shadow: inset -2px -2px 10px rgba(255,255,255,0.8),
-              inset 2px 2px 10px rgba(0,0,0,0.4),
-                    2px 2px  2px rgba(0,0,0,0.4),
-                    2px 2px  4px rgba(0,0,0,0.4),
-                    2px 2px  6px rgba(0,0,0,0.4);
+  background: green !important;
+  box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 10px rgba(0, 0, 0, 0.8), 2px 2px 2px rgba(0, 0, 0, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.4), 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+.seat.check.other {
+  opacity: 1;
+  background: green !important;
+  cursor: no-drop;
+}
+.seat.check.other:hover {
+  box-shadow: none !important;
 }
 .seat.vip {
   background: orange;
 }
 .seat.checked {
   opacity: 1;
-  background: black;
+  background: purple;
   cursor: no-drop;
+}
+.seat.checked:hover {
+  box-shadow: none !important;
 }

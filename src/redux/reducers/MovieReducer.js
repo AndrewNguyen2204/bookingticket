@@ -1,10 +1,11 @@
-import { RESET_MOVIES, SET_MOVIES, SET_MOVIE_DETAILS } from "../types/MovieType";
+import { RESET_MOVIES, SET_EDIT_MOVIE, SET_MOVIES, SET_MOVIE_DETAILS } from "../types/MovieType";
 
 
 const initialState = {
     movies: [],
     defaultMovies: [],
-    movieDetails: {}
+    movieDetails: {},
+    editMovie:{}
 }
 
 const MovieReducer = ((state = initialState, action) => {
@@ -25,6 +26,10 @@ const MovieReducer = ((state = initialState, action) => {
         case SET_MOVIE_DETAILS: {           
                       
             return{...state,movieDetails:action.movieDetails};
+        }
+        case SET_EDIT_MOVIE: {           
+                      
+            return{...state,editMovie:action.editMovie};
         }
         default: return { ...state };
     }

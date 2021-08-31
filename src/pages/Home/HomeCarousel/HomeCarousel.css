@@ -2,12 +2,14 @@
   @apply relative w-full overflow-hidden;
   max-height: 600px;
 }
-.slide.active {
-  @apply opacity-100 w-full h-full duration-300 ease-in-out;
-}
+
 .slide {
   @apply opacity-0;
 }
+.slide.active {
+  @apply opacity-100 w-full h-full duration-300 ease-in-out;
+}
+
 .slide img {
   @apply h-full w-full;
 }
@@ -22,12 +24,16 @@
 .next-btn {
   right: 20px;
 }
+.dots-box {
+  @apply absolute bottom-0 w-full h-1/2  flex items-end justify-center bg-gradient-to-t from-black to-transparent py-10;
+}
 .dots {
-  @apply absolute flex items-center left-1/2 transform -translate-x-1/2 bottom-8;
+  @apply flex items-center;
 }
 .dot {
-  @apply mr-3 bg-purple-700 opacity-50 cursor-pointer duration-300 h-2 w-2 rounded-full;
+  @apply mr-3 bg-gray-600 cursor-pointer duration-300 h-2 w-2 rounded-full;
 }
 .dot.active {
-  @apply opacity-100 h-4 w-4;
+  @apply h-4 w-4 bg-purple-700;
+  box-shadow: 0 0 5px purple, 0 0 10px purple;
 }
