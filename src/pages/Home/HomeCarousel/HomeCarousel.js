@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./HomeCarousel.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +14,24 @@ export default function HomeCarousel(props) {
 
     const [current, setCurrent] = useState(0);
 
+    const autoPlayRef = useRef();
+
+    useEffect(() => {
+        autoPlayRef.current = nextSlide;
+    });
+
+    useEffect(() => {
+        const play = () => {
+            autoPlayRef.current()
+        }
+        if (props.autoPlay !== null) {
+            const interval = setInterval(play, props.autoPlay * 1000);
+
+            return () => clearInterval(interval);
+        }
+
+
+    }, [props.autoPlay])
 
 
     const length = banners.length;
@@ -44,7 +62,18 @@ export default function HomeCarousel(props) {
         return null;
     }
 
+    const renderSlide = () => {
+        return banners.map((slide, index) => {
+            return (
 
+
+                <div key={index} className={index === current ? "slide active" : "slide"}>
+                    {index === current && (<img src={slide.hinhAnh} alt={slide.hinhAnh} />)}
+                </div>
+
+            )
+        })
+    }
 
 
     return (
@@ -53,16 +82,9 @@ export default function HomeCarousel(props) {
             <div className="slider">
                 <FontAwesomeIcon className="prev-btn" icon={faAngleLeft} onClick={prevSlide} />
                 <FontAwesomeIcon className="next-btn" icon={faAngleRight} onClick={nextSlide} />
-                {banners.map((slide, index) => {
-                    return (
 
+                {renderSlide()}
 
-                        <div key={index} className={index === current ? "slide active" : "slide"}>
-                            {index === current && (<img src={slide.hinhAnh} alt={slide.hinhAnh} />)}
-                        </div>
-
-                    )
-                })}
                 <div className="dots-box">
                     <div className="dots">
                         {renderDots()}

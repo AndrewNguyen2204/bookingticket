@@ -1,14 +1,15 @@
+
 .user-login .user-dropdown {
-  @apply absolute top-16 left-1/2 transform -translate-x-1/2  bg-black bg-opacity-80 p-4 w-40 rounded-md;
+  @apply flex flex-col items-center absolute left-1/2 transform -translate-x-1/2 p-4 w-full rounded-md;
+  top: 130%;
+  opacity: 1;
+  transition: all 0.3s ease-out;  
+}
+.user-login .user-dropdown.hide{
+  visibility: hidden;
+  opacity: 0;
+  top: 100%; 
+  transition: all 0.3s ease-in;
 }
 
-.user-login .user-dropdown:before {
-  content: "";
-  position: absolute;
-  border-bottom: 10px solid rgba(0, 0, 0, 0.8);
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+

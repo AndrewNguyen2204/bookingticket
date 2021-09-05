@@ -1,13 +1,12 @@
 .slider {
-  @apply relative w-full overflow-hidden;
-  max-height: 600px;
+  @apply relative w-full h-auto max-h-[550px] xl:max-h-[800px] overflow-hidden; 
 }
 
 .slide {
-  @apply opacity-0;
+  @apply transform -translate-x-full opacity-0;
 }
 .slide.active {
-  @apply opacity-100 w-full h-full duration-300 ease-in-out;
+  @apply transform translate-x-0 opacity-100 w-full h-full duration-500 ease-in-out;
 }
 
 .slide img {
@@ -15,7 +14,7 @@
 }
 .prev-btn,
 .next-btn {
-  @apply absolute text-6xl top-1/2 transform -translate-y-1/2 hover:scale-150 text-white hover:text-purple-700 text-opacity-30 hover:text-opacity-70 cursor-pointer;
+  @apply absolute text-8xl top-1/2 transform -translate-y-1/2  text-white hover:text-opacity-90  text-opacity-30 duration-300 cursor-pointer z-50;
 }
 
 .prev-btn {
@@ -35,5 +34,8 @@
 }
 .dot.active {
   @apply h-4 w-4 bg-purple-700;
-  box-shadow: 0 0 5px purple, 0 0 10px purple;
+  box-shadow: 0 0 5px rgba(128, 0, 128, 0.5), 
+              0 0 10px rgba(128, 0, 128, 0.5),
+              0 0 20px rgba(128, 0, 128, 0.5),
+              0 0 40px rgba(128, 0, 128, 0.5);
 }

@@ -1,0 +1,36 @@
+.btn {
+  @apply self-center mx-4 relative px-8 py-3 rounded-full outline-none cursor-pointer overflow-hidden;
+  border: 1px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.btn:hover {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease-out;
+}
+
+.btn--outline {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+.btn--transparent {
+  background: transparent;
+  box-shadow: none;
+}
+.btn--outline::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  transition: all 0.3s ease-out;
+  @apply bg-purple-500;
+  z-index: -1;
+}
+.btn--outline:hover:before {
+  width: 100%;
+}

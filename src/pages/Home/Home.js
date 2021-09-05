@@ -28,7 +28,7 @@ export default function Home() {
 
     return (
         <section className="home-section w-full">
-            <HomeCarousel banners={banners}/>
+            <HomeCarousel banners={banners} autoPlay={5}/>
             <HomeMovies movies ={movies} />
             <HomeCinemas cinemasData ={cinemasData} />
         </section>

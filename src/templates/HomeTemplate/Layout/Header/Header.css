@@ -1,0 +1,49 @@
+header .logo {
+  @apply flex items-center h-[50px] w-[50px] rounded-full p-1;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+header .logo:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25),
+    inset 0 0 5px rgba(255, 255, 255, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+header .navbar { 
+  @apply relative lg:flex hidden text-white h-full justify-center items-center overflow-hidden bg-white bg-opacity-10 rounded-full border border-white border-opacity-50;
+  
+}
+.navbar li:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 30px;
+  height: 20px;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff, 0 0 60px #fff,
+    0 0 75px #fff, 0 0 90px #fff;
+}
+.navbar li.active:before,
+.navbar li:hover:before {  
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+.navbar li.active:before{
+  box-shadow: 0 0 15px purple, 0 0 30px purple, 0 0 45px purple, 0 0 60px purple,
+    0 0 75px purple, 0 0 90px purple;
+  background: purple;
+
+}
+
+.navbar li > * {
+  @apply capitalize backdrop-blur px-8 py-4  opacity-25 duration-300;
+}
+.navbar li:hover > *,
+.navbar li.active > * {
+  @apply opacity-100;
+}

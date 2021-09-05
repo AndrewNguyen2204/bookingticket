@@ -1,9 +1,10 @@
-.home-section{
-  /* @apply bg-gradient-to-b from-black via-gray-600 to-black; */
-  background:  url('../../../assets//Images/bg-5.jpg');
+.home-section{ 
+  background-color: rgba(0,0,0);
+  background-image:  url('../../../assets/Images/bg2.jpg');  
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 .movies {
   @apply py-20;  
