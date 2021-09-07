@@ -10,6 +10,7 @@ const STYLES = [
 ];
 
 const SIZES = [
+    'btn--small',
     'btn--medium',
     'btn--large'
 ]
@@ -18,12 +19,12 @@ export const Button = ({
     children,
     type,
     onClick,
-    style,
+    buttonStyle,
     size
 }) => {
 
-    const checkStyle = STYLES.includes(style) ? style : STYLES[0];
-    const checkSize = SIZES.includes(size) ? size : SIZES[0];
+    const checkStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+    const checkSize = SIZES.includes(size) ? size : SIZES[1];
 
     return (
 

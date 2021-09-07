@@ -43,12 +43,12 @@ export default function HomeCinemas(props) {
             }}>
 
                 <div className="flex">
-                    <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-10 sm:w-10 sm:mb-0">
+                    <div className="flex-shrink-0 mb-2 sm:h-12 sm:w-12 w-8 h-8 sm:mb-6">
                         <img src={cinemasData[activeLogo].logo} className="w-full h-full" />
                     </div>
                     <div className="ml-2">
                         <h2 className="text-xs md:text-sm font-semibold">{cinema.tenCumRap}</h2>
-                        <span className="text-xs">
+                        <span className="hidden lg:block  text-xs font-thin">
                             {cinema.diaChi}
                         </span>
                     </div>
@@ -68,7 +68,7 @@ export default function HomeCinemas(props) {
 
     return (
         <div className="cinemas">
-            <div className="cinemas-content">
+            <div className="cinemas-content glass">
                 <div className="content-left">
                     <ul>
                         {renderLogos()}
@@ -81,7 +81,7 @@ export default function HomeCinemas(props) {
                         {renderCinemas()}
 
                     </div>
-                    <div className="showtime">
+                    <div className="showtime divide-y divide-white divide-opacity-20">
 
                         {renderMovieList()}
 

@@ -72,8 +72,7 @@ export default function HomeMovies(props) {
     }, [])
 
     return (
-        <div className="movies">
-
+        <div className="movies">           
             <ul className="types mb-10 flex justify-center">
                 <li className={isActive ? "active" : ""} onClick={() => { reRenderMovies(true) }}><span>Now Showing</span></li>
                 <li className={!isActive ? "active" : ""} onClick={() => { reRenderMovies(false) }}><span >Coming Soon</span></li>

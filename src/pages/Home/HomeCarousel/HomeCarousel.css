@@ -3,7 +3,7 @@
 }
 
 .slide {
-  @apply transform -translate-x-full opacity-0;
+  @apply transform -translate-x-full opacity-0 duration-500 ease-in-out;
 }
 .slide.active {
   @apply transform translate-x-0 opacity-100 w-full h-full duration-500 ease-in-out;

@@ -11,7 +11,8 @@ import { connection } from '../..';
 import _ from 'lodash';
 import UserAvatar from '../../components/UserAvatar/UserAvatar';
 import { USER_LOGIN } from '../../util/settings/config';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 
 
@@ -27,11 +28,40 @@ export default function Checkout(props) {
         return <Redirect to='/login' />
     }
 
-    
+
     return (
-        <div className="checkout w-full">
-            <div className="checkout-container w-full min-h-screen text-white flex justify-center items-center">
-                <div className="container mx-auto">
+        <div className="checkout w-full flex min-height-screen  flex-col">
+            <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
+                <ol className="flex h-8 space-x-2">
+                    <li className="flex items-center">
+                        <NavLink to="/home" title="Back to homepage" className="hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                        </NavLink>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
+                            <path d="M32 30.031h-32l16-28.061z" />
+                        </svg>
+                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
+                            <path d="M32 30.031h-32l16-28.061z" />
+                        </svg>
+                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
+                            <path d="M32 30.031h-32l16-28.061z" />
+                        </svg>
+                        <a href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
+                    </li>{/**/}
+                </ol>
+            </nav>
+            <div className="w-full h-full text-white flex justify-center items-center py-20">
+                <div className="checkout-container glass">
                     <div className="checkout-navbar w-full flex justify-between items-center p-10">
                         <ul className="tabs flex items-center">
                             <li className={`tabPane ${done ? '' : 'active'}`}>01 Booking & Payment</li>
@@ -202,6 +232,7 @@ function BookingRoom(props) {
                             </div>
                         </div>
                     </div>
+
                     <div className="ticket-details w-full md:w-1/4  h-full px-5 py-10 flex flex-col items-center bg-black bg-opacity-25 rounded-md">
                         <div className="ticket-details-text">
                             <div className="total-payment w-full text-center">
@@ -255,50 +286,60 @@ function BookingResult(props) {
     }, []);
 
 
-
-    console.log({ thongTinDatVe });
-
-    const renderSeats = (lst) => {
-        return lst.map((seat, index) => {
-            return <span className="text-white" key={index}>{`[${seat.tenGhe}]`}</span>
-        })
-    }
-
-    const renderItems = () => {
-        return thongTinDatVe.map(({
-            hinhAnh,
-            tenPhim,
-            ngayDat,
-            thoiLuongPhim,
-            danhSachGhe
-        },
-            index) => {
+    const renderTicketInfomation = () => {
 
 
-
+        if (thongTinDatVe.length === 0 || thongTinDatVe === null) {
             return (
-                <div key={index} className="item flex w-full bg-black bg-opacity-70">
-                    <div className="card-img w-48 p-2">
-                        <img className="w-full" src={hinhAnh} alt='poster' />
-                    </div>
-                    <div className="card-text p-4">
-                        <h5>{tenPhim}</h5>
-                        <div>Seat: {renderSeats(danhSachGhe)}</div>
-                    </div>
+                <div className="h-full w-full flex justify-center items-center">
+                    <span className="text-4xl">Empty</span>
                 </div>
             )
-        })
+        } else {
+            return thongTinDatVe.map((item, index) => {
+
+                const { danhSachGhe, hinhAnh, tenPhim, ngayDat, thoiLuongPhim } = item;
+
+                return (
+                    <div key={index} className="glass p-4 flex rounded-md my-5">
+                        <div className="movie-poster rounded-md overflow-hidden">
+                            <img className="w-[150px] h-[150px]" src={hinhAnh} alt="movie poster" />
+                        </div>
+                        <div className="w-full pl-5">
+                            <div className="bg-coolGray-50 text-coolGray-800 w-full h-full rounded-md p-2">
+                                <h4 className="text-xl font-bold">{tenPhim} - {thoiLuongPhim} minutes</h4>
+                                <p>{danhSachGhe[0].tenHeThongRap} - {danhSachGhe[0].tenCumRap}</p>
+                                <p>At: {moment(ngayDat).format('DD/MM/YYYY hh:mm:ss')}</p>
+                                <span>Ticket:</span>
+                                {danhSachGhe.map((seat, i) => {
+                                    return <span key={i} className="text-blue-500">
+                                        {` [${seat.tenGhe}] `}
+                                    </span>
+                                })}
+                            </div>
+                        </div>
+
+                    </div>
+                )
+            })
+        }
+
     }
 
 
     return (
+
         <div className="booking-result">
             <div className="booking-result-text text-center mb-40">
                 <h1 className="booking-result-titles lg:text-4xl font-bold">Recent Booking History</h1>
                 <p>lorem ipsum dolor sit amet, consectet</p>
             </div>
-            <div className="booking-result-cards grid grid-cols-3 gap-2 overflow-scroll">
-                {renderItems()}
+            <div className="flex w-[90%] mx-auto glass rounded-md flex-col p-10 mt-4">
+               
+                <div className="h-[400px] w-full overflow-y-scroll">
+                    {renderTicketInfomation()}
+
+                </div>
             </div>
         </div>
     )

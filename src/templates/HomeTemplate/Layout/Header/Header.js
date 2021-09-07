@@ -25,19 +25,24 @@ export default function Header() {
     }
 
     return (
-        <header className="w-full p-1 lg:p-4  text-coolGray-800  text-white fixed z-10">
-            <div className="flex justify-between bg-black bg-opacity-25 border border-white border-opacity-50 items-center h-8 md:h-16 mx-auto rounded-full py-2 px-10">
-                <NavLink to="/home" aria-label="Back to homepage" className="logo">
-                    <img className="w-full" src="./Images/logo.png" alt="logo" />
+        <header className="w-full p-1 lg:p-4  text-coolGray-800  text-white fixed z-50">
+            <div className="overlay glass"></div>
+            <div className="flex flex-auto justify-between items-center h-8 md:h-16 mx-auto">
+                <div className="w-1/2 md:w-1/4 h-full flex items-center">
+                    <NavLink to="/home" aria-label="Back to homepage" className="logo">
+                        <img className="w-full" src="./Images/logo.png" alt="logo" />
 
 
-                </NavLink>
-                <ul className="navbar">
+                    </NavLink>
+                </div>
+                <div className="w-1/2 flex justify-center">
+                    <ul className="navbar">
 
-                    {renderMenuItems()}
-                    
-                </ul>
-                <div className="items-center flex-shrink-0 hidden lg:flex text-white">
+                        {renderMenuItems()}
+
+                    </ul>
+                </div>
+                <div className="items-center flex-shrink-0 hidden lg:flex text-white w-1/4 h-full justify-end">
                     {userLogin !== null ? <UserAvatar user={userLogin} /> : <>
                         <Button type="button" style="btn--transparent">
                             <NavLink to="/login">Sign In</NavLink>
@@ -48,13 +53,13 @@ export default function Header() {
 
                     </>}
                 </div>
-                <button onClick={() => { setClick(!click) }} className="p-0 md:p-4 lg:hidden opacity-60 duration-300 hover:opacity-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-purple-700 font-bold">
+                <button onClick={() => { setClick(!click) }} className="p-0 md:p-4 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-white font-bold opacity-60 duration-300 hover:opacity-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
-            <SideBar open={click} setClose={setClick} />
+            <SideBar open={click} setClose={setClick} userLogin={userLogin} />
         </header>
 
     )
@@ -64,10 +69,10 @@ function NavbarItem({ item }) {
 
 
 
-    let match = useRouteMatch({       
+    let match = useRouteMatch({
         path: item.url
     })
-    
+
 
     const checkActive = match ? 'active' : '';
 

@@ -10,7 +10,7 @@ export default function ShowTime(props) {
     const renderShowTimes = () => {
 
         const { lstLichChieuTheoPhim } = movie;
-        
+
         const showtimes = _.map(lstLichChieuTheoPhim, lichChieu => ({
             showtime: moment(lichChieu.ngayChieuGioChieu).format('hh:mm A'),
             showtimeId: lichChieu.maLichChieu
@@ -25,15 +25,17 @@ export default function ShowTime(props) {
 
 
     return (
-        <div className="showtime-content">
-            <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-10 sm:w-10 sm:mb-0">
+        <div className="showtime-content py-2 opacity-50 hover:opacity-100">
+            <div className="flex-shrink-0 mb-2 sm:h-12 sm:w-12 w-8 h-8 sm:mb-6">
                 <img src={movie.hinhAnh} alt={movie.tenPhim} />
             </div >
             <div className="flex w-full">
                 <div className="w-full">
-                    <h2 className="text-sm font-semibold">{movie.tenPhim}</h2>
-                    <span className="text-sm text-coolGray-600">{movie.sapChieu ? "Coming Soon" : "Now Showing"}</span>
-                    <span className={`text-sm text-white ml-2 bg-yellow-600 px-2 rounded-md ${movie.hot ? "" : "hidden"}`}>Hot !</span>
+                    <div>
+                        <h2 className="text-sm font-semibold">{movie.tenPhim}</h2>
+                        <span className="text-sm text-yellow-600">{movie.sapChieu ? "Coming Soon" : "Now Showing"}</span>
+                        <span className={`text-sm text-white ml-2 bg-red-600 px-2 rounded-md ${movie.hot ? "" : "hidden"}`}>Hot !</span>
+                    </div>
                     <div className="showtime-details">
                         {renderShowTimes()}
                     </div>

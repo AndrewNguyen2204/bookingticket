@@ -1,12 +1,8 @@
-.checkout-container {
+.checkout {
   background: url("../../assets/Images/bg2.jpg");
 }
-.checkout-container .container {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  min-height:90vh;
-  border-radius: 30px;
+.checkout-container {
+  @apply w-[90%] h-[90%] rounded-[30px];
 }
 .seatmap-screen .screen-shadow {
   width: 100%;

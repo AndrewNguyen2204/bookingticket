@@ -1,5 +1,4 @@
-.home-section{ 
-  background-color: rgba(0,0,0);
+.home-section{  
   background-image:  url('../../../assets/Images/bg2.jpg');  
   background-size: cover;
   background-repeat: no-repeat;
@@ -8,6 +7,7 @@
 }
 .movies {
   @apply py-20;  
+  background: linear-gradient(to bottom,black, transparent 80%);
 }
 
 .types li { 
