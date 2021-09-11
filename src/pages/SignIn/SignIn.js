@@ -41,7 +41,7 @@ export default function SignIn(props) {
                         <label htmlFor="password" className="block text-white">Password</label>
                         <input type="password" name="matKhau" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none" onChange={formik.handleChange} />
                         <div className="flex justify-end text-xs text-white">
-                            <a href="#">Forgot Password?</a>
+                            <a href="/">Forgot Password?</a>
                         </div>
                     </div>
                     <button type="submit" className="block w-full p-3 text-center rounded-sm text-white text-xl bg-violet-600 bg-opacity-40 hover:bg-opacity-90">LOGIN</button>

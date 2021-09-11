@@ -1,5 +1,3 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../Button/Button';
@@ -12,7 +10,7 @@ export default function SideBar(props) {
         <div className={open ? "sidebar-container glass active" : "sidebar-container"} onClick={() => { setClose(!open) }}>
 
             <div className="sidebar-content">
-                <div className="close-btn" onClick={() => { setClose(!open) }}><FontAwesomeIcon icon={faTimes} /></div>
+                <div className="close-btn" onClick={() => { setClose(!open) }}><ion-icon name="close-outline"></ion-icon></div>
                 <ul className="menu">
                     <li className="flex">
                         <NavLink to="/home" className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-white">Home</NavLink>

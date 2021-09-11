@@ -1,5 +1,3 @@
-import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import "./Carousel.css";
 
@@ -76,7 +74,7 @@ const Carousel = (props) => {
                 {/* prev button */}
                 {
                     currentIndex > 0 &&
-                    <FontAwesomeIcon onClick={prev} className="left-arrow" icon={faAngleLeft} />
+                    <span onClick={prev} className="left-arrow"><ion-icon name="chevron-back-outline"></ion-icon></span>
 
                 }
 
@@ -90,7 +88,7 @@ const Carousel = (props) => {
                 {/* next button */}
                 {
                     currentIndex < (length - show) &&
-                    <FontAwesomeIcon onClick={next} className="right-arrow" icon={faAngleRight} />
+                    <span onClick={next} className="right-arrow"><ion-icon name="chevron-forward-outline"></ion-icon></span>
 
                 }
             </div>

@@ -48,7 +48,7 @@ export default function AddMovie(props) {
 
             values.maNhom = GROUPID;
             let formData = new FormData();
-            console.log({values});
+            
             for (let key in values) {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);

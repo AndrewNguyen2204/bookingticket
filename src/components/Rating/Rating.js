@@ -1,6 +1,4 @@
-import React from 'react'
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import './Rating.css';
 
 
@@ -10,8 +8,8 @@ import './Rating.css';
 export default function Rating(props) {
     const { value, textColor = 'white', starColor = '#f7f406', text } = props;
     const defaultValue = 3.5;
-    
-    const _value = value? (Number(value)/2).toFixed(1): defaultValue;
+
+    const _value = value ? (Number(value) / 2).toFixed(1) : defaultValue;
 
     const getStars = () => {
         let stars = [];
@@ -25,7 +23,9 @@ export default function Rating(props) {
 
     const renderStars = () => {
         return getStars().map((star, index) => {
-            return <FontAwesomeIcon key={index} className="star" icon={star === 0.5 ? faStarHalfAlt : faStar} style={{ color: star === 0 ? '' : starColor }} />
+            let name = star === 0.5 ? 'star-half' : 'star';
+
+            return <span key={index} className="star" style={{ color: star === 0 ? '' : starColor }} ><ion-icon name={name}></ion-icon></span>
         })
     }
 

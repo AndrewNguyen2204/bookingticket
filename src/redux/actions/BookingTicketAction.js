@@ -58,7 +58,7 @@ export const buyTicketAction = (info = new ThongTinDatVe()) => {
         try {
 
             const result = await ticketService.buyTicket(info);
-            console.log({result});
+           
             if (result.status === STATUS.SUCCESS){
                 alert(result.data.content);
                await dispatch(clearTicketsAction());
@@ -84,15 +84,15 @@ export const checkingSeatAction = (seat,maLichChieu) => {
 
         // send checking-seats  to backend
 
-        // const taiKhoan = getState().UserReducer.userLogin.taiKhoan;
+        const taiKhoan = getState().UserReducer.userLogin.taiKhoan;
 
-        // const tickets = getState().BookingTicketReducer.tickets;
+        const tickets = getState().BookingTicketReducer.tickets;
 
-        // console.log('tickets', tickets);
+        
 
-        // const danhSachGheDangDat = JSON.stringify(tickets);
+        const danhSachGheDangDat = JSON.stringify(tickets);
 
-        // connection.invoke('datGhe',taiKhoan,danhSachGheDangDat,maLichChieu);
+        connection.invoke('datGhe',taiKhoan,danhSachGheDangDat,maLichChieu);
 
     }
 }

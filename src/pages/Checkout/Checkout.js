@@ -5,8 +5,6 @@ import { buyTicketAction, getRoomDetailsAction, setOtherTicketsAction } from '..
 import { getUserProfileAction } from '../../redux/actions/UserAction';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import './Checkout.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { connection } from '../..';
 import _ from 'lodash';
 import UserAvatar from '../../components/UserAvatar/UserAvatar';
@@ -210,8 +208,8 @@ function BookingRoom(props) {
                                 </div>
                             </div>
                             <div className="user-description">
-                                <span className="mx-2"><FontAwesomeIcon icon={faUser} /> : Your seat</span>
-                                <span className="mx-2"><FontAwesomeIcon icon={faUserFriends} /> : Other's seat</span>
+                                <span className="mx-2"><ion-icon name="person-outline"></ion-icon> : Your seat</span>
+                                <span className="mx-2"><ion-icon name="people-outline"></ion-icon> : Other's seat</span>
                             </div>
                         </div>
                     </div>

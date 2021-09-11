@@ -1,9 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { checkingSeatAction} from '../../redux/actions/BookingTicketAction';
+import { checkingSeatAction } from '../../redux/actions/BookingTicketAction';
 import './Seat.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -13,8 +12,8 @@ export default function Seat(props) {
     const dispatch = useDispatch();
 
     const {
-        daDat,       
-        loaiGhe,       
+        daDat,
+        loaiGhe,
         taiKhoanNguoiDat,
         tenGhe
     } = props.seat;
@@ -30,7 +29,7 @@ export default function Seat(props) {
     let content = tenGhe;
 
     if (daDat || isClick !== '') {
-        content = (props.user === taiKhoanNguoiDat ||props.check !== -1) ? <FontAwesomeIcon icon={faUser} /> : <FontAwesomeIcon icon={faUserFriends} />;
+        content = (props.user === taiKhoanNguoiDat || props.check !== -1) ? <ion-icon name="person-outline"></ion-icon> : <ion-icon name="people-outline"></ion-icon>;
     }
 
     const handleClick = () => {

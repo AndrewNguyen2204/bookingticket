@@ -13,7 +13,7 @@ export class UserService extends baseServices {
     }
 
     signup = (user) => {
-        console.log({ user })
+       
         return this.post('api/QuanLyNguoiDung/DangKy', user);
     }
     getUsers = () => {

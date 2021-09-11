@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./HomeCarousel.css";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -80,8 +78,8 @@ export default function HomeCarousel(props) {
         <>
 
             <div className="slider">
-                <FontAwesomeIcon className="prev-btn" icon={faAngleLeft} onClick={prevSlide} />
-                <FontAwesomeIcon className="next-btn" icon={faAngleRight} onClick={nextSlide} />
+                <span className="prev-btn" onClick={prevSlide}><ion-icon name="chevron-back-outline"></ion-icon></span>
+                <span className="next-btn" onClick={nextSlide} ><ion-icon name="chevron-forward-outline"></ion-icon></span>
 
                 {renderSlide()}
 

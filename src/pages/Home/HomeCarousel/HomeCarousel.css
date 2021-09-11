@@ -16,6 +16,10 @@
 .next-btn {
   @apply absolute text-8xl top-1/2 transform -translate-y-1/2  text-white hover:text-opacity-90  text-opacity-30 duration-300 cursor-pointer z-20;
 }
+.prev-btn ion-icon,
+.next-btn ion-icon{
+  @apply text-8xl;
+}
 
 .prev-btn {
   left: 20px;

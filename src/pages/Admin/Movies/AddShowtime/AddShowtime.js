@@ -71,7 +71,7 @@ export default function AddShowtime(props) {
 
             values.ngayChieuGioChieu = ngayChieuGioChieu;
 
-            console.log(values);
+            
             try {
 
                 const result = await ticketService.createShowtime(values);

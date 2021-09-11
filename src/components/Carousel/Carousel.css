@@ -37,12 +37,14 @@
     position: absolute;
     z-index: 1;
     top: 50%;
-    transform: translateY(-50%);
-    font-size: 120px; 
+    transform: translateY(-50%);    
     color: #fff;
     opacity: 0.5; 
     cursor: pointer;
     transition: all 0.3s;      
+}
+.left-arrow ion-icon, .right-arrow ion-icon{
+  font-size: 120px;
 }
 .left-arrow:hover, .right-arrow:hover{
   opacity: 0.8;   

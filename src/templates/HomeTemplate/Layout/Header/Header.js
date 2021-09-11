@@ -1,4 +1,3 @@
-import { LogLevel } from '@aspnet/signalr';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useRouteMatch } from 'react-router-dom';
