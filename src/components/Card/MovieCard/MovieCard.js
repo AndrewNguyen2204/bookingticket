@@ -1,5 +1,3 @@
-import { faCaretRight, faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
@@ -10,8 +8,17 @@ import { Button } from '../../Button/Button';
 
 
 
-export default function MovieCard(props) {
-    const { hinhAnh, tenPhim, trailer, moTa, ngayKhoiChieu, danhGia, maPhim } = props.movie;
+export default function MovieCard({movie, onClick}) {
+    
+    
+    const { hinhAnh, tenPhim, trailer, ngayKhoiChieu, danhGia, maPhim } = movie;
+
+    const handlePlay= () => {
+        onClick(trailer);
+    }
+
+
+
     return (
         <div className="card mx-auto glass">
             <div className="poster">
@@ -26,7 +33,7 @@ export default function MovieCard(props) {
                    
                     <div className="button">
 
-                        <NavLink to="/home" className="btn-trailer"><FontAwesomeIcon className="btn-play" icon={faCaretRight} /></NavLink>
+                        <button onClick={handlePlay} className="btn-trailer"><ion-icon name="play"></ion-icon></button>
                         <Button buttonStyle="btn--outline">
                             <NavLink to={`/detail/${maPhim}`}>Buy Ticket</NavLink>
                         </Button>

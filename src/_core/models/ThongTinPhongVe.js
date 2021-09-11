@@ -1,14 +1,3 @@
-
-
-
-export class ThongTinPhongVe {
-
-    thongTinPhim = new ThongTinPhim();
-    danhSachGhe = [];
-
-}
-
-
 class ThongTinPhim {
 
     maLichChieu = '';
@@ -21,3 +10,13 @@ class ThongTinPhim {
     gioChieu = '';
 
 }
+
+
+export class ThongTinPhongVe {
+
+    thongTinPhim = new ThongTinPhim();
+    danhSachGhe = [];
+
+}
+
+

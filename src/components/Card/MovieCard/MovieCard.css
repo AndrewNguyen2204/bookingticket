@@ -99,14 +99,14 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s;
 }
-.btn-play {
-  font-size: 60px;
+.btn-trailer ion-icon {
+  font-size: 48px;
   opacity: 0.2;
   transition: all 0.3s;
 
 }
 
-.btn-trailer:hover .btn-play {
+.btn-trailer:hover ion-icon {
   opacity: 1;
 }
 .button {

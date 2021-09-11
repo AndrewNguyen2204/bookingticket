@@ -1,26 +1,36 @@
 .detail {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;  
+  @apply bg-cover bg-center bg-no-repeat;
 }
 .detail-container {
-  @apply w-full h-full;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 80%, black);
 }
-.movie-infomations .types span{
+.detail .left-content img {
+  border-radius: inherit;
+}
+.movie-infomations .types span {
   @apply text-white opacity-20;
 }
 .types li:hover span {
   @apply opacity-100;
 }
-.types li.active span{
+.types li.active span {
   @apply text-red-400 opacity-100;
 }
-.movie-infomations .showtimes-content .content-right {
-  display:block;
+.detail .content-right{
+  @apply  flex flex-col py-5 h-[500px] overflow-y-scroll border-none;
+}
+.detail .content-left{
+  @apply border-none;
+}
+.detail .content-left>ul{
+  @apply justify-start py-5  border-r-2 border-opacity-40;
+}
+.detail .content-left>ul>li{
+  @apply mb-5 bg-white rounded-full;
 }
 .content-right .showtimes a {
-  @apply text-purple-400 text-2xl font-bold m-2 cursor-pointer;
+  @apply text-purple-400 text-2xl font-bold m-2 cursor-pointer opacity-70 hover:opacity-90;
+}
+.detail .tab-content {
+  border-radius: inherit;
 }

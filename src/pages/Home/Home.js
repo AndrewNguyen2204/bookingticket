@@ -9,13 +9,13 @@ import { getCinemasDataAction } from '../../redux/actions/CinemaAction';
 
 
 export default function Home() {
-    
 
-     /** useSelector, useDispatch */
-     const { movies } = useSelector(state => state.MovieReducer);
-     const { banners } = useSelector(state => state.CarouselReducer);
-     const { cinemasData } = useSelector(state => state.CinemaReducer);
-     const dispatch = useDispatch();
+
+    /** useSelector, useDispatch */
+    const { movies } = useSelector(state => state.MovieReducer);
+    const { banners } = useSelector(state => state.CarouselReducer);
+    const { cinemasData } = useSelector(state => state.CinemaReducer);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getBannersAction());
@@ -24,13 +24,17 @@ export default function Home() {
 
         dispatch(getCinemasDataAction());
 
+
+        window.scrollTo(0, 0)
+
+
     }, []);
 
     return (
         <section className="home-section w-full">
-            <HomeCarousel banners={banners} autoPlay={5}/>
-            <HomeMovies movies ={movies} />
-            <HomeCinemas cinemasData ={cinemasData} />
+            <HomeCarousel banners={banners} autoPlay={5} />
+            <HomeMovies movies={movies} />
+            <HomeCinemas cinemasData={cinemasData} />
         </section>
     )
 }

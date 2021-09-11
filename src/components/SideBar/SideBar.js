@@ -41,10 +41,10 @@ export default function SideBar(props) {
                         </div>
                     </>
                         : <>
-                            <Button type="button" style="btn--transparent">
+                            <Button type="button" buttonStyle="btn--transparent">
                                 <NavLink to="/login">Sign In</NavLink>
                             </Button>
-                            <Button type="button" style="btn--outline">
+                            <Button type="button" buttonStyle="btn--outline">
                                 <NavLink to="/register">Sign Up</NavLink>
                             </Button>
 

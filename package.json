@@ -5,12 +5,7 @@
   "dependencies": {
     "@aspnet/signalr": "^1.0.27",
     "@brainhubeu/react-carousel": "^2.0.3",
-    "@craco/craco": "^6.1.2",
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@craco/craco": "^6.1.2",    
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -56,11 +51,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@tailwindcss/jit": "^0.1.18",
+  "devDependencies": {   
     "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.36",
-    "postcss-focus": "^5.0.1",
+    "postcss": "^7.0.36",    
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9"
   }
 }

@@ -1,0 +1,49 @@
+.admin-sidebar{
+    @apply fixed top-0 w-12 left-0 h-screen p-3 space-y-2 rounded-lg text-white flex flex-col z-30 overflow-hidden duration-300 ease-in-out;
+}
+
+.admin-sidebar.active{
+    @apply w-60;
+}
+.admin-sidebar .btn-show {
+    text-align: right;
+}
+
+.admin-sidebar .btn-show > ion-icon:last-child {
+    @apply hidden;
+}
+
+.admin-sidebar.active .btn-show > ion-icon:last-child {
+    @apply inline-block;
+}
+.admin-sidebar.active .btn-show > ion-icon:first-child{
+    @apply hidden;
+}
+.admin-sidebar.active .profile {
+    @apply flex items-center p-4 space-x-4 duration-300 ease-in-out;
+}
+.admin-sidebar .profile-avatar{
+    @apply w-6 h-6 rounded-full;
+    transition: all 0.3s;
+}
+.admin-sidebar.active .profile-avatar{
+    @apply w-12 h-12;
+}
+
+.admin-sidebar.active .profile-details {
+    @apply inline-block;
+}
+
+.admin-sidebar .item {
+    @apply hover:bg-white hover:bg-opacity-25 rounded-md;
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-sidebar.active .item-link{
+    @apply  flex items-center  rounded-md p-2 space-x-3;
+   transition: inherit;
+}
+.admin-sidebar.active .item-link span {
+    display: inline-block;
+    transition: inherit;
+}

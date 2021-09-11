@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Contact() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
+
     return (
-        <section className="py-6 bg-coolGray-100 text-coolGray-900">
+        <section className="w-full min-h-screen py-40 px-20 bg-coolGray-100 text-coolGray-900">
             <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                 <div className="py-6 md:py-0 md:px-6">
                     <h1 className="text-4xl font-bold">Get in touch</h1>

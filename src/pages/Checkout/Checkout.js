@@ -11,8 +11,9 @@ import { connection } from '../..';
 import _ from 'lodash';
 import UserAvatar from '../../components/UserAvatar/UserAvatar';
 import { USER_LOGIN } from '../../util/settings/config';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import Breadcrumb from '../../components/Breadcrumd/Breadcrumb';
 
 
 
@@ -22,48 +23,28 @@ export default function Checkout(props) {
 
     const { userLogin } = useSelector(state => state.UserReducer);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
+
     // Fix client click sign out button
 
     if (!localStorage.getItem(USER_LOGIN)) {
         return <Redirect to='/login' />
     }
 
+    const { location: { pathname } } = props;
 
     return (
         <div className="checkout w-full flex min-height-screen  flex-col">
-            <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
-                <ol className="flex h-8 space-x-2">
-                    <li className="flex items-center">
-                        <NavLink to="/home" title="Back to homepage" className="hover:underline">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
-                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                            </svg>
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
-                    </li>{/**/}
-                </ol>
-            </nav>
+
+            <Breadcrumb pathname={pathname} />
+
             <div className="w-full h-full text-white flex justify-center items-center py-20">
                 <div className="checkout-container glass">
                     <div className="checkout-navbar w-full flex justify-between items-center p-10">
-                        <ul className="tabs flex items-center">
+                        <ul className="tabs">
                             <li className={`tabPane ${done ? '' : 'active'}`}>01 Booking & Payment</li>
                             <li className={`tabPane ${done ? 'active' : ''}`}>02 Results</li>
                         </ul>
@@ -101,42 +82,42 @@ function BookingRoom(props) {
 
         dispatch(getRoomDetailsAction(id));
 
-        // connection.invoke('loadDanhSachGhe', id);
+        connection.invoke('loadDanhSachGhe', id);
 
-        // connection.on('datVeThanhCong', () => {
-        //     dispatch(getRoomDetailsAction(id));
-        // });
+        connection.on('datVeThanhCong', () => {
+            dispatch(getRoomDetailsAction(id));
+        });
 
         // Load checking-Seats from server
         connection.on("loadDanhSachGheDaDat", (checkingSeats) => {
-            console.log({ checkingSeats });
 
-            // checkingSeats = checkingSeats.filter(seat => seat.taiKhoan !== taiKhoan);
 
-            // let otherSeats = checkingSeats.reduce((results, seats, index) => {
-            //     let currentSeats = JSON.parse(seats.danhSachGhe);
-            //     return [...results, ...currentSeats];
-            // }, []);
+            checkingSeats = checkingSeats.filter(seat => seat.taiKhoan !== taiKhoan);
 
-            // // Set redux            
-            // otherSeats = _.uniqBy(otherSeats, 'maGhe');
+            let otherSeats = checkingSeats.reduce((results, seats, index) => {
+                let currentSeats = JSON.parse(seats.danhSachGhe);
+                return [...results, ...currentSeats];
+            }, []);
 
-            // dispatch(setOtherTicketsAction(otherSeats));
+            // Set redux            
+            otherSeats = _.uniqBy(otherSeats, 'maGhe');
+
+            dispatch(setOtherTicketsAction(otherSeats));
         });
 
         // set event while reload pages
 
-        // window.addEventListener('beforeunload', clearSeats);
+        window.addEventListener('beforeunload', clearSeats);
 
-        // return () => {
-        //     clearSeats();
-        //     window.addEventListener('beforeunload', clearSeats);
-        // }
+        return () => {
+            clearSeats();
+            window.addEventListener('beforeunload', clearSeats);
+        }
     }, []);
 
-    // const clearSeats = function (e) {
-    //     connection.invoke('huyDat', taiKhoan, props.match.params.id);
-    // }
+    const clearSeats = function (e) {
+        connection.invoke('huyDat', taiKhoan, props.match.params.id);
+    }
 
 
     const { setDone } = props;
@@ -160,7 +141,7 @@ function BookingRoom(props) {
         })
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
 
         // Validate checkout here
 
@@ -168,14 +149,16 @@ function BookingRoom(props) {
             return alert("Please select seat");
         }
 
-        setDone(true);
+
 
         // call api 
 
         const info = new ThongTinDatVe();
         info.maLichChieu = props.match.params.id;
         info.danhSachVe = tickets;
-        dispatch(buyTicketAction(info));
+        await dispatch(buyTicketAction(info));
+
+        setDone(true);
     }
 
     return (
@@ -330,13 +313,13 @@ function BookingResult(props) {
     return (
 
         <div className="booking-result">
-            <div className="booking-result-text text-center mb-40">
+            <div className="booking-result-text text-center mb-20">
                 <h1 className="booking-result-titles lg:text-4xl font-bold">Recent Booking History</h1>
                 <p>lorem ipsum dolor sit amet, consectet</p>
             </div>
             <div className="flex w-[90%] mx-auto glass rounded-md flex-col p-10 mt-4">
-               
-                <div className="h-[400px] w-full overflow-y-scroll">
+
+                <div className="h-[600px] w-full overflow-y-scroll">
                     {renderTicketInfomation()}
 
                 </div>

@@ -45,21 +45,21 @@ export const COLUMNS = [
 
             const dispatch = useDispatch();
             return <div className="flex justify-around items-center">
-                <button className="bg-blue-500 text-white rounded-md mx-2 px-4 py-1 flex-shrink-1" onClick={() => {
+                <button className="bg-blue-500 text-white rounded-full shadow-lg mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
 
                     history.push(`/dashboard/movies/edit/${id}`);
 
-                }}>Edit</button>
-                <button className="bg-rose-500 text-white rounded-md  mx-2 px-4 py-1 flex-shrink-1" onClick={() => {
+                }}><ion-icon name="create-outline"></ion-icon></button>
+                <button className="bg-rose-500 text-white  rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
                     if (window.confirm("Are you sure you want to delete this movie?")) {
                         dispatch(deleteMovieAction(id));
                     }
-                }}>Delete</button>
-                <button className="bg-green-500 text-white rounded-md  mx-2 px-4 py-1 flex-shrink-1" onClick={() => {
+                }}><ion-icon name="trash-outline"></ion-icon></button>
+                <button className="bg-green-500 text-white rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
                     history.push(`/dashboard/movies/showtime/${id}`);
                     localStorage.setItem('movieParams', JSON.stringify(movieParams));
 
-                }}>Showtime</button>
+                }}><ion-icon name="calendar-clear-outline"></ion-icon></button>
             </div>
         }
     }

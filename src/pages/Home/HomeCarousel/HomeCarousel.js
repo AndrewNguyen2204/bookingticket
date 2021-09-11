@@ -31,7 +31,7 @@ export default function HomeCarousel(props) {
         }
 
 
-    }, [props.autoPlay])
+    }, [props.autoPlay]);
 
 
     const length = banners.length;
@@ -68,7 +68,7 @@ export default function HomeCarousel(props) {
 
 
                 <div key={index} className={index === current ? "slide active" : "slide"}>
-                    {index === current && (<img src={slide.hinhAnh} alt={slide.hinhAnh} />)}
+                    {index === current && (<div className="banner" style={{backgroundImage:`url(${slide.hinhAnh})`,backgroundPosition:"center", backgroundRepeat:"no-repeat", backgroundSize:"cover"}}></div>)}
                 </div>
 
             )

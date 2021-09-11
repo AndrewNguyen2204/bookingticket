@@ -2,3 +2,6 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+ion-icon{
+  @apply text-2xl font-bold;
+}

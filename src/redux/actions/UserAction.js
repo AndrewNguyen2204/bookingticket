@@ -49,6 +49,7 @@ export const loginAction = (user) => {
 
         } catch (err) {
             console.log('error', err);
+            alert('account or password is incorrect !');
         }
 
     }
@@ -131,11 +132,13 @@ export const updateUserAction = (user) => {
 
             if (result.status === STATUS.SUCCESS) {
 
+                alert('update success');
 
-                dispatch(setUserProfileAction(result.data.content));
+                dispatch(getUserProfileAction());
             }
 
         } catch (err) {
+            alert('Failed');
             console.log('error', err.response?.data);
         }
 
@@ -157,6 +160,7 @@ export const editUserAction = (user) => {
             }
 
         } catch (err) {
+            alert('Failed !');
             console.log('error', err.response?.data);
         }
 
@@ -199,6 +203,7 @@ export const addUserAction = (user) => {
             }
 
         } catch (err) {
+            alert('Error!')
             console.log('error', err.response?.data);
         }
 

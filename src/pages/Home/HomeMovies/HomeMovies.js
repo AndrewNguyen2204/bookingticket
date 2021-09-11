@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import MovieCard from '../../../components/Card/MovieCard/MovieCard';
 import Carousel from '../../../components/Carousel/Carousel';
+import VideoModal from '../../../components/VideoModal/VideoModal';
 
 import { RESET_MOVIES } from '../../../redux/types/MovieType';
 import "./HomeMovies.css";
@@ -16,6 +17,33 @@ export default function HomeMovies(props) {
 
     const [show, setShow] = useState(0);
 
+    const [modal, setModal] = useState({
+        open: false,
+        url: ''
+    });
+
+    const openModal = (url) => {
+        setModal({
+            open: true,
+            url
+        })
+    }
+
+    const closeModal = () => {
+        setModal({
+            ...modal, open: false
+        })
+    }
+
+    /** useEffect */
+
+    useEffect(() => {
+
+        showCard()
+
+    }, [])
+
+
     /** Render Function */
 
     const { movies } = props;
@@ -26,7 +54,7 @@ export default function HomeMovies(props) {
 
             return (
                 <div className="p-2" key={index}>
-                    <MovieCard movie={movie} />
+                    <MovieCard movie={movie} onClick={openModal} />
                 </div>
             )
         });
@@ -55,24 +83,19 @@ export default function HomeMovies(props) {
 
         } else if (width <= 1900) {
             setShow(4)
-        }else {
+        } else {
             setShow(6)
         }
     }
     window.addEventListener('resize', showCard);
 
-    /** useEffect */
 
-    useEffect(() => {
-
-
-
-        showCard()
-
-    }, [])
 
     return (
-        <div className="movies">           
+        <div className="movies">
+
+            {modal.open && <VideoModal url={modal.url} callback={closeModal} />}
+
             <ul className="types mb-10 flex justify-center">
                 <li className={isActive ? "active" : ""} onClick={() => { reRenderMovies(true) }}><span>Now Showing</span></li>
                 <li className={!isActive ? "active" : ""} onClick={() => { reRenderMovies(false) }}><span >Coming Soon</span></li>

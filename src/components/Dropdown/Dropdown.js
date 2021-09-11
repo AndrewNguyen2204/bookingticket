@@ -15,7 +15,7 @@ function Dropdown({ title, options = [], multiSelect = false, onChange = default
 
     const toggle = () => setOpen(!open);
 
-
+    const isOpen = open ? 'open' : '';
 
     const handleClick = item => {
 
@@ -63,24 +63,23 @@ function Dropdown({ title, options = [], multiSelect = false, onChange = default
                     <p>{!multiSelect ? selection[0] ? selection[0].label : title : title}</p>
                 </div>
                 <div className="dropdown-header-action">
-                    <p>{open ? 'Close' : 'Open'}</p>
+                    <p>{open ? <ion-icon name="chevron-up-outline"></ion-icon> : <ion-icon name="chevron-down-outline"></ion-icon>}</p>
                 </div>
 
             </div>
-            {open && (
-                <ul className="dropdown-items">
-                    {options.map((item, index) => (
-                        <li className="dropdown-item" key={index}>
-                            <button type="button" onClick={() => {
-                                handleClick(item)
-                            }}>
-                                <span>{item.label}</span>
-                                <span>{isItemInSelection(item) && 'Selected'}</span>
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+
+            <ul className={`dropdown-items glass ${isOpen}`}>
+                {options.map((item, index) => (
+                    <li className="dropdown-item" key={index} onClick={() => {
+                        handleClick(item)
+                    }}>
+                        <button type="button">
+                            <span>{item.label}</span>
+                            <span>{isItemInSelection(item) && <ion-icon name="checkmark-outline"></ion-icon>}</span>
+                        </button>
+                    </li>
+                ))}
+            </ul>
 
         </div>
 

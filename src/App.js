@@ -1,6 +1,6 @@
 import './App.css';
 import { createBrowserHistory } from "history";
-import { Router, Switch } from 'react-router';
+import { Route, Router, Switch } from 'react-router';
 import { HomeTemplate } from './templates/HomeTemplate/HomeTemplate';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
@@ -55,7 +55,7 @@ function App() {
         <AdminTemplate path="/dashboard/movies/edit/:id" exact Component={EditMovie} />
         <AdminTemplate path="/dashboard/movies/showtime/:id" exact Component={AddShowtime} />
 
-        <AdminTemplate path="/dashboard/profile" exact Component={Profile} />
+        <Route  path="/profile" exact component={Profile} />
 
         <HomeTemplate path="/" exact Component={Home} />
 

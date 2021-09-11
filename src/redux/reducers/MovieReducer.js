@@ -24,7 +24,7 @@ const MovieReducer = ((state = initialState, action) => {
             return { ...state, movies: resetMovies }
         }
         case SET_MOVIE_DETAILS: {           
-                      
+                  
             return{...state,movieDetails:action.movieDetails};
         }
         case SET_EDIT_MOVIE: {           

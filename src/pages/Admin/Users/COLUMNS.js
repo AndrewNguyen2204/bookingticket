@@ -1,21 +1,29 @@
 import { history } from "../../../App";
 import { useDispatch } from 'react-redux';
-import { deleteMovieAction } from "../../../redux/actions/MovieAction";
 import { deleteUserAction } from "../../../redux/actions/UserAction";
 export const COLUMNS = [
 
 
     {
         Header: 'Account',
-        accessor: 'taiKhoan'
+        accessor: 'taiKhoan',
+        Cell: ({ value }) => {
+
+            return value.length > 10 ? value.substr(0, 10) + '...' : value;
+        }
     },
     {
         Header: 'Name',
-        accessor: 'hoTen'
+        accessor: 'hoTen',
+        
     },
     {
         Header: 'Email',
-        accessor: 'email'
+        accessor: 'email',
+        Cell: ({ value }) => {
+
+            return value.length > 10 ? value.substr(0, 10) + '...' : value;
+        }
     },
     {
         Header: 'Phone',
@@ -37,16 +45,19 @@ export const COLUMNS = [
 
             const dispatch = useDispatch();
             return <div className="flex justify-around items-center">
-                <button className="bg-blue-500 text-white rounded-md mx-2 px-4 py-1 flex-shrink-1" onClick={() => {
+
+                <button className="bg-blue-500 text-white rounded-full shadow-lg mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
 
                     history.push(`/dashboard/users/edit/${account}`);
 
-                }}>Edit</button>
-                <button className="bg-rose-500 text-white rounded-md  mx-2 px-4 py-1 flex-shrink-1" onClick={() => {
+                }}><ion-icon name="create-outline"></ion-icon></button>
+                <button className="bg-rose-500 text-white  rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
                     if (window.confirm("Are you sure you want to delete this user?")) {
                         dispatch(deleteUserAction(account));
                     }
-                }}>Delete</button>
+                }}><ion-icon name="trash-outline"></ion-icon></button>
+
+
 
             </div>
         }

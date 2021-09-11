@@ -1,8 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import './Loading.css';
-export default function LoadingRing() {
-    const {isLoading} = useSelector(state=>state.LoadingReducer);    
+
+
+
+export default function LoadingRing(props) {
+
+    const {isLoading} = useSelector(state=>state.LoadingReducer); 
+    
+    
     if(isLoading){
         return (        
             <div className="loading_container">

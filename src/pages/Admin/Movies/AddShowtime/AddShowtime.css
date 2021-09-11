@@ -1,0 +1,7 @@
+.add-form-content .overlay {
+    @apply absolute top-0 left-0 w-full h-full rounded-[30px];   
+    z-index: 0;
+}
+.add-form-content  .showtime-form>*{
+    z-index: 10;
+}

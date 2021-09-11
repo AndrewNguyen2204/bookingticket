@@ -58,8 +58,9 @@ export const buyTicketAction = (info = new ThongTinDatVe()) => {
         try {
 
             const result = await ticketService.buyTicket(info);
-            
+            console.log({result});
             if (result.status === STATUS.SUCCESS){
+                alert(result.data.content);
                await dispatch(clearTicketsAction());
                let userLogin = getState().UserReducer.userLogin;
 

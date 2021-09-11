@@ -47,7 +47,7 @@ export default function UserAvatar(props) {
                     <div className="flex-shrink-1  flex-grow-1">
                         <h5 className="text-sm capitalize font-semibold">{user.hoTen}</h5>
                         <span className="flex items-center space-x-1">
-                            <NavLink to="/dashboard/profile" className="text-xs hover:text-blue-300 text-white">View profile</NavLink>
+                            <NavLink to="/profile" className="text-xs hover:text-blue-300 text-white">View profile</NavLink>
                         </span>
                     </div>
 

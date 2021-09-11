@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from 'yup';
@@ -9,6 +8,8 @@ import { cinemaService } from '../../../../services/CinemaService';
 import { ticketService } from '../../../../services/TicketService';
 import { STATUS } from '../../../../util/settings/config';
 import moment from 'moment';
+import Breadcrumb from '../../../../components/Breadcrumd/Breadcrumb';
+import './AddShowtime.css';
 
 export default function AddShowtime(props) {
 
@@ -62,22 +63,28 @@ export default function AddShowtime(props) {
 
         validationSchema: formSchema,
 
-        onSubmit: values => {
+        onSubmit: async (values) => {
 
-            console.log({ values });
+
+
+            let ngayChieuGioChieu = moment(values.ngayChieuGioChieu).format('DD/MM/YYYY hh:mm:ss');
+
+            values.ngayChieuGioChieu = ngayChieuGioChieu;
+
+            console.log(values);
             try {
 
-                const result = ticketService.createShowtime(values);
+                const result = await ticketService.createShowtime(values);
 
                 if (result.status === STATUS.SUCCESS) {
                     alert('create success!');
-                    console.log(result.data.content);
+                   
                 }
 
             } catch (e) {
                 console.log(e.response?.data);
             }
-        },
+        }
 
     });
 
@@ -85,9 +92,7 @@ export default function AddShowtime(props) {
 
         setStartDate(date);
 
-        let ngayChieuGioChieu = moment(date).format('DD/MM/YYYY hh:mm:ss');
-
-        formik.setFieldValue('ngayChieuGioChieu', ngayChieuGioChieu);
+        formik.setFieldValue('ngayChieuGioChieu', date);
     }
 
     const handleGroupsChange = async (value) => {
@@ -130,42 +135,20 @@ export default function AddShowtime(props) {
         movieParams = JSON.parse(localStorage.getItem('movieParams'));
     }
 
+    const { location: { pathname } } = props;
+
     return (
         <div className="w-full min-height-screen flex flex-col">
-            <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
-                <ol className="flex h-8 space-x-2">
-                    <li className="flex items-center">
-                        <NavLink to="/home" title="Back to homepage" className="hover:underline">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
-                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                            </svg>
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
-                    </li>{/**/}
-                </ol>
-            </nav>
+
+            <Breadcrumb pathname={pathname} />
+
 
             <div className="add-form w-full h-full flex items-center justify-center">
-                <div className="add-form-content w-[90%] h-[90%] glass p-20">
-                    <h1 className="text-4xl font-bold mb-10">Create Showtime</h1>
-                    <div className="flex flex-grow">
+                <div className="add-form-content w-[90%] h-[90%] p-20 relative z-10">
+                    <div className="overlay glass"></div>
+
+                    <h1 className="relative text-4xl font-bold mb-10 ">Create Showtime</h1>
+                    <div className="flex flex-grow relative">
                         <div className="flex flex-col w-1/3">
                             <div className="text-box">
                                 <h2>{movieParams.tenPhim}</h2>
@@ -216,7 +199,7 @@ export default function AddShowtime(props) {
                                     <div className="relative w-2/3 min-h-[70px] my-0">
                                         <DatePicker
                                             className="w-auto px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none"
-                                            dateFormat="MM/dd/yyyy h:mm aa"
+                                            dateFormat="dd/MM/yyyy h:mm aa"
                                             selected={startDate}
                                             onChange={handleChangeDatePicker}
                                             timeInputLabel="Time:"
@@ -257,9 +240,12 @@ export default function AddShowtime(props) {
                         </div>
                     </div>
 
-                </div>
-            </div>
 
+
+                </div>
+
+
+            </div>
 
         </div>
     )

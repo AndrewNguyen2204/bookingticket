@@ -2,36 +2,48 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom'
-import { getUserProfileAction, updateUserAction } from '../../redux/actions/UserAction';
+import Breadcrumb from '../../components/Breadcrumd/Breadcrumb';
+import { getUserEditAction, getUserProfileAction, updateUserAction } from '../../redux/actions/UserAction';
+import { GROUPID } from '../../util/settings/config';
+import './Profile.css';
+
 
 export default function Profile(props) {
 
-    const { userProfile } = useSelector(state => state.UserReducer);
-    console.log(userProfile);
-    const dispatch = useDispatch();
+    const { userProfile, userEdit } = useSelector(state => state.UserReducer);
 
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
+        // Fix userProfile {loaiNguoiDung, soDT} !== values{maLoaiNguoiDung, soDt}
+
+        let userLogin = JSON.parse(localStorage.getItem('USER_LOGIN'));
+
         dispatch(getUserProfileAction());
+
+        dispatch(getUserEditAction(userLogin.taiKhoan));
+
+
+
+        window.scrollTo(0, 0);
+
+
     }, []);
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: userProfile.taiKhoan,
-            matKhau: userProfile.matKhau,
-            email: userProfile.email,
-            soDt: userProfile.soDT,
-            maNhom: userProfile.maNhom,
-            maLoaiNguoiDung: userProfile.loaiNguoiDung ? userProfile.loaiNguoiDung : "KhachHang",
-            hoTen: userProfile.hoTen
+            taiKhoan: userEdit?.taiKhoan,
+            matKhau: userEdit?.matKhau,
+            email: userEdit?.email,
+            soDt: userEdit?.soDt,
+            maLoaiNguoiDung: userEdit?.maLoaiNguoiDung,
+            hoTen: userEdit?.hoTen
         },
 
         onSubmit: values => {
-
-            console.log({ values });
+            values.maNhom = GROUPID;
 
             dispatch(updateUserAction(values));
 
@@ -43,7 +55,7 @@ export default function Profile(props) {
     const renderTicketInfomation = () => {
         const { thongTinDatVe } = userProfile;
 
-        if (thongTinDatVe.length === 0 || thongTinDatVe === null) {
+        if (thongTinDatVe === null) {
             return (
                 <div className="h-full w-full flex justify-center items-center">
                     <span className="text-4xl">Empty</span>
@@ -80,48 +92,32 @@ export default function Profile(props) {
 
     }
 
+    const { location: { pathname } } = props;
 
     return (
-        <div className="w-full min-height-screen flex flex-col">
-            <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
-                <ol className="flex h-8 space-x-2">
-                    <li className="flex items-center">
-                        <NavLink to="/home" title="Back to homepage" className="hover:underline">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
-                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                            </svg>
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
-                    </li>{/**/}
-                </ol>
-            </nav>
+        <div className="profile-section w-full min-height-screen flex flex-col">
+
+            <Breadcrumb pathname={pathname} />
+            <div className="mt-10 w-[90%] mx-auto">
+
+                <span className="inline-block glass p-4 rounded-full uppercase text-orange-500  text-4xl font-bold opacity-90 ">user profile</span>
+
+            </div>
+
             <div className="profile-content  flex w-[90%] mx-auto">
-                <div className="profile-avatar py-20">
+
+
+
+
+                <div className="profile-avatar py-10">
                     <div className="glass p-4 rounded-xl">
                         <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-coolGray-50 text-coolGray-800">
                             <img src="https://source.unsplash.com/150x150/?portrait" alt="Profile face" className="w-32 h-32 mx-auto rounded-full" />
                             <div className="space-y-4 text-center divide-y divide-coolGray-300">
                                 <div className="my-2 space-y-1">
-                                    <h2 className="text-xl font-semibold sm:text-2xl"> {userProfile.hoTen}</h2>
+                                    <h2 className="text-xl font-semibold sm:text-2xl"> {userEdit?.hoTen}</h2>
                                     <p className="px-5 text-xs sm:text-base text-coolGray-600">
-                                        {userProfile.maLoaiNguoiDung}
+                                        {userEdit?.maLoaiNguoiDung}
                                     </p>
                                 </div>
                                 <div className="flex justify-center pt-2 space-x-4 align-center">
@@ -146,12 +142,16 @@ export default function Profile(props) {
                                         </svg>
                                     </a>
                                 </div>
+                                <div className="pt-2">
+                                    <h1 className="text-2xl text-left">About:</h1>
+                                    <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adip Lorem ipsum dolor sit amet, consectetur adip</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="profile-details  pt-20 w-full ml-4">
+                <div className="profile-details  py-10 w-full ml-4">
                     <div className="glass p-4 rounded-xl">
                         <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 bg-coolGray-50 text-coolGray-800 w-full">
 
@@ -203,7 +203,7 @@ export default function Profile(props) {
 
             <div className="flex w-[90%] mx-auto glass rounded-md flex-col p-10 mt-4">
                 <div className="text-box w-full py-4">
-                    <h2 className="text-2xl font-bold">History</h2>
+                    <h2 className="text-2xl font-bold text-white">Recent Booking History</h2>
                 </div>
                 <div className="h-[400px] w-full overflow-y-scroll">
                     {renderTicketInfomation()}

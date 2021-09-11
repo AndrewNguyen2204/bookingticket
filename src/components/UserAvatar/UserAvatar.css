@@ -1,9 +1,9 @@
 
 .user-login .user-dropdown {
-  @apply flex flex-col items-center absolute left-1/2 transform -translate-x-1/2 p-4 w-full rounded-md;
+  @apply flex flex-col items-center absolute right-0 transform  p-4 w-full min-w-max rounded-md;
   top: 130%;
   opacity: 1;
-  transition: all 0.3s ease-out;  
+  transition: all 0.3s ease-out; 
 }
 .user-login .user-dropdown.hide{
   visibility: hidden;

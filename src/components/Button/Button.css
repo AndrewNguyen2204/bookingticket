@@ -7,13 +7,13 @@
 .btn > * {
   z-index: 1;
 }
-.btn--small{
+.btn.btn--small{
   @apply px-4 py-1;
 }
-.btn--medium{
+.btn.btn--medium{
   @apply px-8 py-3;
 }
-.btn--large{
+.btn.btn--large{
   @apply px-10 py-4;
 }
 
@@ -25,15 +25,15 @@
   transition: all 0.3s ease-out;
 }
 
-.btn--outline {
+.btn.btn--outline {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: transparent; 
 }
-.btn--transparent {
+.btn.btn--transparent {
   background: transparent;
   box-shadow: none;
 }
-.btn--outline::before {
+.btn.btn--outline::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -44,6 +44,6 @@
   @apply bg-purple-500;
   z-index: 0;
 }
-.btn--outline:hover:before {
+.btn.btn--outline:hover:before {
   width: 100%;
 }

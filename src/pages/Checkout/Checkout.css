@@ -1,5 +1,6 @@
 .checkout {
   background: url("../../assets/Images/bg2.jpg");
+  min-height: 100vh;
 }
 .checkout-container {
   @apply w-[90%] h-[90%] rounded-[30px];
@@ -36,15 +37,13 @@
 .input-group .form-control {
   @apply w-full outline-none border-none bg-transparent;
 }
+.tabs{
+  @apply flex items-end;
+}
 .tabs .tabPane {
-  @apply text-xl font-thin opacity-70 mr-10 duration-300;
+  @apply text-xl font-thin border-b-2 border-white border-opacity-70 opacity-70 mr-10 pb-4 duration-300;
 }
 .tabs .tabPane.active {
-  @apply text-4xl font-bold text-orange-500 opacity-100;
+  @apply text-4xl font-bold text-orange-500 border-orange-500 opacity-90 border-opacity-90;
 }
 
-
-/* fix */
-.booking-result-cards{
-  height:50vh;
-}

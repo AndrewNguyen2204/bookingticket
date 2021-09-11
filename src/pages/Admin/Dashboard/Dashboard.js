@@ -1,41 +1,22 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import Breadcrumb from '../../../components/Breadcrumd/Breadcrumb';
 
-export default function Dashboard() {
+
+
+export default function Dashboard(props) {
+
+
+    const { location: { pathname } } = props;
+
+
     return (
         <div className="w-full min-height-screen flex flex-col">
-            <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
-                <ol className="flex h-8 space-x-2">
-                    <li className="flex items-center">
-                        <NavLink to="/home" title="Back to homepage" className="hover:underline">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
-                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                            </svg>
-                        </NavLink>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline">Parent</a>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" className="w-2.5 h-2.5 mt-0.5 transform rotate-90 fill-current text-white">
-                            <path d="M32 30.031h-32l16-28.061z" />
-                        </svg>
-                        <a href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
-                    </li>{/**/}
-                </ol>
-            </nav>
-            <div className="w-full h-full flex items-center justify-center">
-                <div className="glass w-2/3 h-2/3">
-                    <div className="flex flex-col items-center p-8 rounded-md w-60 sm:px-12 bg-coolGray-50 text-coolGray-800">
+
+            <Breadcrumb pathname={pathname} />
+
+            <div className="w-[90%] mx-auto my-10 p-10 glass rounded-[30px] grid grid-cols-2 grid-rows-2 gap-10">
+                <div className="w-full">
+                    <div className="flex flex-col mx-auto items-center p-8 rounded-md w-60 sm:px-12 bg-coolGray-50 text-coolGray-800">
                         <div className="text-center">
                             <h2 className="text-xl font-semibold">Dubai</h2>
                             <p className="text-sm text-coolGray-600">July 29</p>
@@ -57,6 +38,50 @@ export default function Dashboard() {
                         <p className="text-coolGray-600">Partly cloudy</p>
                     </div>
                 </div>
+                <div className="w-full flex flex-wrap mb-10">
+                    <div className="min-w-max mx-2">
+                        <div className="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                            <div className="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
+                                <ion-icon name="person-add-outline"></ion-icon>
+
+                            </div>
+                            <div className="mx-5">
+                                <h4 className="text-2xl font-semibold text-gray-700">8,282</h4>
+                                <div className="text-gray-500">New Users</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="min-w-max mx-2">
+                        <div className="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                            <div className="p-3 bg-blue-600 bg-opacity-75 rounded-full">
+
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </div>
+                            <div className="mx-5">
+                                <h4 className="text-2xl font-semibold text-gray-700">200,521</h4>
+                                <div className="text-gray-500">Total Orders</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="min-w-max mx-2">
+                        <div className="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                            <div className="p-3 bg-pink-600 bg-opacity-75 rounded-full">
+                                <ion-icon name="videocam-outline"></ion-icon>
+                            </div>
+                            <div className="mx-5 ">
+                                <h4 className="text-2xl font-semibold text-gray-700">215,542</h4>
+                                <div className="text-gray-500">Available Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+                   
+
+               
+
             </div>
         </div>
     )
