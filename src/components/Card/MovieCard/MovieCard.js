@@ -1,4 +1,4 @@
-import moment from 'moment';
+
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Rating from '../../Rating/Rating';
@@ -8,12 +8,12 @@ import { Button } from '../../Button/Button';
 
 
 
-export default function MovieCard({movie, onClick}) {
-    
-    
-    const { hinhAnh, tenPhim, trailer, ngayKhoiChieu, danhGia, maPhim } = movie;
+export default function MovieCard({ movie, onClick }) {
 
-    const handlePlay= () => {
+
+    const { hinhAnh, tenPhim, trailer, danhGia, maPhim } = movie;
+
+    const handlePlay = () => {
         onClick(trailer);
     }
 
@@ -24,18 +24,25 @@ export default function MovieCard({movie, onClick}) {
             <div className="poster">
                 <img src={hinhAnh} alt={tenPhim} />
                 <div className="details">
-                    <h2>{tenPhim}</h2>
-                    <Rating value={danhGia} text />
+                    <h2 className="text-2xl text-orange-500">{tenPhim}</h2>
+                    <Rating value={danhGia} text starColor='#F5059D' />
                     <div className="tags">
-                        <span className="fantasy">{moment(ngayKhoiChieu).format('DD-MM-YYYY')}</span>
+
+                        <span>Action/Adventure</span>
+                        <div className="w-full my-5">
+                            <span className="px-2 py-1 bg-purple-500 text-white rounded-xl ml-2">PG-13</span>
+                            <span className="px-2 py-1 bg-orange-500 text-white rounded-xl  ml-2">120 min</span>
+                            <span className="px-2 py-1 bg-red-500 text-white rounded-xl  ml-2">CC</span>
+                        </div>
+
 
                     </div>
-                   
+
                     <div className="button">
 
                         <button onClick={handlePlay} className="btn-trailer"><ion-icon name="play"></ion-icon></button>
                         <Button buttonStyle="btn--outline">
-                            <NavLink to={`/detail/${maPhim}`}>Buy Ticket</NavLink>
+                            <NavLink to={`/detail/${maPhim}`}>Details</NavLink>
                         </Button>
 
 

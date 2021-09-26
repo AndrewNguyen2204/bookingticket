@@ -1,18 +1,18 @@
 .cinemas {
-  @apply p-20  bg-red-400 bg-opacity-25;
+  @apply py-10 md:py-20 px-5;
   background: linear-gradient(to bottom, transparent 80%,black);
 }
 .cinemas-content {
-  @apply w-full flex  text-white  p-5 rounded-xl h-[400px];
+  @apply w-full flex flex-col md:flex-row  text-white  p-5 rounded-xl h-[400px];
  
 }
 
 .content-left {
-  @apply w-36 min-w-max flex justify-center items-center mr-1 border border-white border-opacity-20;
+  @apply w-full md:w-36 min-w-max px-5 flex justify-center items-center mr-1 border border-white border-opacity-20;
  
 }
 .content-left ul {
-  @apply w-full h-full flex flex-col items-center justify-between py-1;
+  @apply w-full h-full flex flex-row md:flex-col items-center justify-between py-1;
 }
 .content-left ul li {
   @apply w-8 h-8 md:w-12 md:h-12 rounded-sm overflow-hidden opacity-50 hover:opacity-100 duration-300 cursor-pointer my-1;
@@ -22,15 +22,15 @@
   @apply opacity-100;
 }
 .content-right {
-  @apply h-full w-full flex flex-col  md:flex-row border border-white border-opacity-20;  
+  @apply h-[300px] md:h-full w-full flex border border-white border-opacity-20;  
  
 }
 .cinema-list {
-  @apply  w-full h-1/2 md:w-1/3 md:h-full p-2 border border-white border-opacity-20 overflow-y-auto;
+  @apply  w-full  md:w-1/3 h-full p-2 border border-white border-opacity-20 overflow-y-auto;
   
 }
 .showtime {
-  @apply w-full h-1/2 md:w-2/3 md:h-full p-2 border border-white border-opacity-20 overflow-y-auto;
+  @apply w-full md:w-2/3 h-full p-2 border border-white border-opacity-20 overflow-y-auto;
   
 }
 .showtime-content,

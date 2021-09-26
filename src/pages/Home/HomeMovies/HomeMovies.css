@@ -1,25 +1,18 @@
-.home-section{  
-  background-image:  url('../../../assets/Images/bg2.jpg');  
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-}
 .movies {
   @apply py-20;  
   background: linear-gradient(to bottom,black, transparent 80%);
 }
 
 .types li { 
-  @apply inline-block text-gray-600 mx-10 cursor-pointer  transform hover:scale-150 duration-300;
+  @apply inline-block text-gray-600  my-5 md:my-0 md:mx-10 cursor-pointer  transform hover:scale-150 duration-300;
 }
 .types li:hover {
-  margin: 0 70px; 
+  @apply mx-20; 
 }
 .types li span {
   @apply text-2xl font-bold;
 }
 
 .types li.active {
-  @apply text-red-400 scale-150 duration-300;  
+  @apply text-mainColor scale-150 md:mx-5 my-0  duration-300;  
 }

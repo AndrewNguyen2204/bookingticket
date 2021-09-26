@@ -18,7 +18,7 @@ export default function Users(props) {
 
     useEffect(() => {
         dispatch(getUsersAction());
-    }, []);
+    }, [dispatch]);
 
     const { location: { pathname } } = props;
 

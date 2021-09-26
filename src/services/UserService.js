@@ -36,8 +36,8 @@ export class UserService extends baseServices {
         return this.delete(`api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${account}`)
     }
 
-    searchUser = (account) => {
-        return this.get(`api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUPID}&tuKhoa=${account}`);
+    searchUser = (account,groupID) => {
+        return this.get(`api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${groupID}&tuKhoa=${account}`);
     }
 
 }

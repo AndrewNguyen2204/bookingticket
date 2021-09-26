@@ -24,24 +24,24 @@ export default function Header() {
     }
 
     return (
-        <header className="w-full p-1 lg:p-4  text-coolGray-800  text-white fixed z-50">
-            <div className="overlay glass z-50"></div>
+        <header className="w-full p-1 lg:p-4 text-white fixed z-50">
+            <div className="overlay glass"></div>
             <div className="flex flex-auto justify-between items-center h-8 md:h-16 mx-auto">
-                <div className="w-1/2 md:w-1/4 h-full flex items-center">
+                <div className="h-full flex items-center">
                     <NavLink to="/home" aria-label="Back to homepage" className="logo">
-                        <img className="w-full" src="./Images/logo.png" alt="logo" />
+                        ADM
 
 
                     </NavLink>
                 </div>
-                <div className="w-1/2 flex justify-center">
+                <div className="flex justify-center">
                     <ul className="navbar">
 
                         {renderMenuItems()}
 
                     </ul>
                 </div>
-                <div className="items-center flex-shrink-0 hidden lg:flex text-white w-1/4 h-full justify-end">
+                <div className="items-center flex-shrink-0 hidden lg:flex text-white h-full justify-end">
                     {userLogin !== null ? <UserAvatar user={userLogin} /> : <>
                         <Button type="button" buttonStyle="btn--transparent">
                             <NavLink to="/login">Sign In</NavLink>

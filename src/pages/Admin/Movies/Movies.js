@@ -17,7 +17,7 @@ export default function Movies(props) {
 
     useEffect(() => {
         dispatch(getMoviesAction());
-    }, []);
+    }, [dispatch]);
 
 
     const { location: { pathname } } = props;

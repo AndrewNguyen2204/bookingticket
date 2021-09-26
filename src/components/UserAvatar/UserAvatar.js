@@ -41,7 +41,7 @@ export default function UserAvatar(props) {
             <div className={`user-dropdown glass ${isHide}`}>
 
                 <div className="flex items-center p-2 space-x-4">
-                    <div className="img-box  rounded-full overflow-hidden cursor-pointer border-white border-2 border-opacity-50 flex-shrink-1 flex-grow-1">
+                    <div className="img-box  rounded-full overflow-hidden cursor-pointer border-white border-2 border-opacity-50 flex-shrink-0">
                         <img className="avatar" src={`https://i.pravatar.cc/40?u=${user.taiKhoan}`} alt="avatar" />
                     </div>
                     <div className="flex-shrink-1  flex-grow-1">

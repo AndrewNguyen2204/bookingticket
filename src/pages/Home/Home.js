@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBannersAction } from '../../redux/actions/CarouselAction';
 import { getMoviesAction } from '../../redux/actions/MovieAction';
 import { getCinemasDataAction } from '../../redux/actions/CinemaAction';
-
+import './Home.css';
 
 export default function Home() {
 
@@ -18,6 +18,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+
         dispatch(getBannersAction());
 
         dispatch(getMoviesAction());
@@ -28,7 +29,7 @@ export default function Home() {
         window.scrollTo(0, 0)
 
 
-    }, []);
+    }, [dispatch]);
 
     return (
         <section className="home-section w-full">

@@ -43,17 +43,18 @@ export default function Detail(props) {
     });
 
 
+    const { id } = props.match.params;
 
 
     useEffect(() => {
-        let { id } = props.match.params;
+
 
         dispatch(getMoviesDetails(id));
 
         window.scrollTo(0, 0)
 
 
-    }, []);
+    }, [dispatch, id]);
 
 
 
@@ -303,7 +304,7 @@ function Review(props) {
                     </div>
                 </div>
                 <div className="flex items-center justify-center">
-                    <span  className="text-sm text-coolGray-100">Maybe later</span>
+                    <span className="text-sm text-coolGray-100">Maybe later</span>
                 </div>
             </div>
 

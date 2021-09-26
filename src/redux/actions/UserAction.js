@@ -211,11 +211,11 @@ export const addUserAction = (user) => {
     }
 }
 
-export const getUserEditAction = (account) => {
-
+export const getUserEditAction = (account,groupID) => {
+    
     return async (dispatch) => {
         try {
-            const result = await userService.searchUser(account);
+            const result = await userService.searchUser(account,groupID);
 
             if (result.status === STATUS.SUCCESS) {
 

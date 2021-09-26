@@ -10,11 +10,11 @@
 .movie-infomations .types span {
   @apply text-white opacity-20;
 }
-.types li:hover span {
+.detail .types li:hover span {
   @apply opacity-100;
 }
-.types li.active span {
-  @apply text-red-400 opacity-100;
+.detail .types li.active span {
+  @apply  opacity-100;
 }
 .detail .content-right{
   @apply  flex flex-col py-5 h-[500px] overflow-y-scroll border-none;

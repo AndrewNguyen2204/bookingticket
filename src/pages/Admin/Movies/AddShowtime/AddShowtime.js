@@ -23,16 +23,19 @@ export default function AddShowtime(props) {
         cinemas: []
     });
 
+
+
     useEffect(() => {
+
+
         async function fetchData() {
 
             try {
                 const result = await cinemaService.getGroups();
 
                 if (result.status === STATUS.SUCCESS) {
-                    setState({
-                        ...state, groups: result.data.content
-                    })
+                    setState(state => ({ ...state, groups: result.data.content }));
+
                 }
 
             } catch (e) {
@@ -41,6 +44,7 @@ export default function AddShowtime(props) {
         }
 
         fetchData();
+
 
     }, []);
 
@@ -71,14 +75,14 @@ export default function AddShowtime(props) {
 
             values.ngayChieuGioChieu = ngayChieuGioChieu;
 
-            
+
             try {
 
                 const result = await ticketService.createShowtime(values);
 
                 if (result.status === STATUS.SUCCESS) {
                     alert('create success!');
-                   
+
                 }
 
             } catch (e) {

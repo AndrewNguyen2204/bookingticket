@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Seat from '../../components/Seat/Seat';
 import { buyTicketAction, getRoomDetailsAction, setOtherTicketsAction } from '../../redux/actions/BookingTicketAction';
@@ -73,10 +73,15 @@ function BookingRoom(props) {
     }, 0);
 
     const dispatch = useDispatch();
+    
+    const {id} = props.match.params;
 
+    const clearSeats = useCallback (()=>{
+        connection.invoke('huyDat', taiKhoan,id);
+    },[taiKhoan,id]); 
 
     useEffect(() => {
-        const id = props.match.params.id;
+       
 
         dispatch(getRoomDetailsAction(id));
 
@@ -111,12 +116,9 @@ function BookingRoom(props) {
             clearSeats();
             window.addEventListener('beforeunload', clearSeats);
         }
-    }, []);
+    }, [id,taiKhoan,clearSeats,dispatch]);
 
-    const clearSeats = function (e) {
-        connection.invoke('huyDat', taiKhoan, props.match.params.id);
-    }
-
+    
 
     const { setDone } = props;
 
@@ -264,7 +266,7 @@ function BookingResult(props) {
 
     useEffect(() => {
         dispatch(getUserProfileAction());
-    }, []);
+    }, [dispatch]);
 
 
     const renderTicketInfomation = () => {

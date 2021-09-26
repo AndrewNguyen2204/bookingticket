@@ -6,10 +6,9 @@ import './Rating.css';
 
 
 export default function Rating(props) {
-    const { value, textColor = 'white', starColor = '#f7f406', text } = props;
-    const defaultValue = 3.5;
-
-    const _value = value ? (Number(value) / 2).toFixed(1) : defaultValue;
+    const { value='3.5', textColor = 'white', starColor = '#f7f406', text } = props;
+   
+    const _value = (Number(value) / 2).toFixed(1);
 
     const getStars = () => {
         let stars = [];
@@ -25,15 +24,15 @@ export default function Rating(props) {
         return getStars().map((star, index) => {
             let name = star === 0.5 ? 'star-half' : 'star';
 
-            return <span key={index} className="star" style={{ color: star === 0 ? '' : starColor }} ><ion-icon name={name}></ion-icon></span>
+            return <span key={index} className="rating-star" style={{ color: star === 0 ? '' : starColor }} ><ion-icon name={name}></ion-icon></span>
         })
     }
 
     return (
-        <div className="rating">
+        <div className="rating flex items-center">
             {renderStars()}
 
-            <span className={text ? 'inline' : 'hidden'} style={{ color: textColor }}>{_value}</span>
+            <span className={text ? 'rating-text inline' : 'hidden'} style={{ color: textColor }}>{_value}</span>
         </div>
     )
 }

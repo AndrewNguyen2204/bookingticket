@@ -15,7 +15,7 @@ const UserTemplate = (props) => {
 
 
     return <Route {...restProps} render={propsRoute => {
-        return <section className="userTempalte w-full h-screen">
+        return <section className="userTemplate w-full h-screen">
 
             <Component {...propsRoute} />
 

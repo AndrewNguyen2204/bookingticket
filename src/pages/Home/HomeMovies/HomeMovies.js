@@ -96,7 +96,7 @@ export default function HomeMovies(props) {
 
             {modal.open && <VideoModal url={modal.url} callback={closeModal} />}
 
-            <ul className="types mb-10 flex justify-center">
+            <ul className="types mb-10 flex flex-col md:flex-row justify-center items-center">
                 <li className={isActive ? "active" : ""} onClick={() => { reRenderMovies(true) }}><span>Now Showing</span></li>
                 <li className={!isActive ? "active" : ""} onClick={() => { reRenderMovies(false) }}><span >Coming Soon</span></li>
             </ul>

@@ -3,7 +3,7 @@ header .overlay{
   z-index: -1;
 }
 header .logo {
-  @apply flex  items-center h-[50px] w-[50px] rounded-full p-1;
+  @apply flex  items-center justify-center h-6 w-6 md:h-[50px] md:w-[50px] rounded-full p-1;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
@@ -37,9 +37,9 @@ header .navbar {
   transition: all 0.3s ease-out;
 }
 .navbar li.active:before {
-  box-shadow: 0 0 15px purple, 0 0 30px purple, 0 0 45px purple, 0 0 60px purple,
-    0 0 75px purple, 0 0 90px purple;
-  background: purple;
+  box-shadow: 0 0 15px var(--main-color), 0 0 30px var(--main-color), 0 0 45px var(--main-color), 0 0 60px var(--main-color),
+    0 0 75px var(--main-color), 0 0 90px var(--main-color);
+  background: var(--main-color);
   transition: all 0.3s ease-out;
 }
 

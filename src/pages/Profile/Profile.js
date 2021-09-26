@@ -18,18 +18,18 @@ export default function Profile(props) {
 
         // Fix userProfile {loaiNguoiDung, soDT} !== values{maLoaiNguoiDung, soDt}
 
-        let userLogin = JSON.parse(localStorage.getItem('USER_LOGIN'));
+        let { taiKhoan, maNhom } = JSON.parse(localStorage.getItem('USER_LOGIN'));
 
         dispatch(getUserProfileAction());
 
-        dispatch(getUserEditAction(userLogin.taiKhoan));
+        dispatch(getUserEditAction(taiKhoan, maNhom));
 
 
 
         window.scrollTo(0, 0);
 
 
-    }, []);
+    }, [dispatch]);
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -51,7 +51,7 @@ export default function Profile(props) {
 
     });
 
-
+   
     const renderTicketInfomation = () => {
         const { thongTinDatVe } = userProfile;
 

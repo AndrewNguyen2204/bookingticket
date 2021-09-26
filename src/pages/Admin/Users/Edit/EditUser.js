@@ -12,16 +12,18 @@ export default function EditUser(props) {
     const { userEdit } = useSelector(state => state.UserReducer);
 
     const dispatch = useDispatch();
+    
+    const { account } = props.match.params;
 
     useEffect(() => {
-        let { account } = props.match.params;
+       
 
         if (account !== undefined) {
             dispatch(getUserEditAction(account));
         }
-    }, [])
+    }, [dispatch,account]);
 
-    const { account } = props.match.params;
+    
 
     const isEdit = account !== undefined ? true : false;
 
