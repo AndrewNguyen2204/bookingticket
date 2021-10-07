@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import { LOG_OUT } from '../../../redux/types/UserType';
 import { USER_LOGIN } from '../../../util/settings/config';
-import { Redirect } from "react-router";
-import {history} from '../../../App';
-
+import { Redirect, useRouteMatch } from "react-router";
+import { history } from '../../../App';
+import { MENU_ITEMS } from './MENU_ITEMS';
 import './SideBar.css';
 
 
@@ -14,8 +14,8 @@ import './SideBar.css';
 export default function SideBar(props) {
 
 
+
    
-    const [trigger, setTrigger] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -24,12 +24,16 @@ export default function SideBar(props) {
         return <Redirect to='/home' />
     }
 
-    const userLogin = JSON.parse(localStorage.getItem('USER_LOGIN'));
 
 
+    const renderItems = () => {
+        return MENU_ITEMS.map((item, index) => {
+            return <MenuItem key={index} item={item}/>
+            
+        })
+    }
 
 
-    const isActive = trigger ? 'active' : '';
 
     const handleLogout = () => {
         dispatch({
@@ -42,57 +46,42 @@ export default function SideBar(props) {
 
 
     return (
-        <div className={`${isActive} admin-sidebar glass`}>
-            <button className="btn-show" onClick={() => setTrigger(!trigger)}>
-                <ion-icon name="chevron-forward-circle-outline"></ion-icon>
-                <ion-icon name="chevron-back-circle-outline"></ion-icon>
-            </button>
+        <div className="admin-sidebar glass">
 
-            <div className="profile mb-10">
-                <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="profile-avatar" />
-                <div className="profile-details hidden">
-                    <h2 className="text-lg font-semibold">{userLogin.hoTen}</h2>
-                    <span className="flex items-center space-x-1">
-                        <NavLink to="/profile" className="text-xs hover:text-blue-300 text-white">View profile</NavLink>
-                    </span>
+            <div className="sidebar-top">
+                <div className="sidebar-logo my-10">
+                    AMD
+
                 </div>
-            </div>
-            <div className="divide-y divide-coolGray-300">
-                <ul className="pt-2 pb-4 space-y-1 text-sm">
-                    <li className="item">
-                        <NavLink to="/dashboard" className="item-link" >
-                            <ion-icon name="cube-outline"></ion-icon>
-                            <span className="hidden">Dashboard</span>
-                        </NavLink>
-                    </li >
-                    <li className="item">
-                        <NavLink to="/dashboard/users" className="item-link">
-                            <ion-icon name="people-outline"></ion-icon>
-                            <span className="hidden">Users</span>
-                        </NavLink>
-                    </li>
-                    <li className="item">
-                        <NavLink to="/dashboard/movies" className="item-link">
-                            <ion-icon name="videocam-outline"></ion-icon>
-                            <span className="hidden">Movies</span>
-                        </NavLink>
-                    </li>
+
+                <ul className="sidebar-menu">
+
+                    {renderItems()}
 
                 </ul>
 
             </div>
-            <div className="divide-y divide-coolGray-300">
-                <ul className="pt-2 pb-4 space-y-1 text-sm">
-                    <li className="item">
+            <div className="sidebar-bottom">
+
+                <ul className="sidebar-menu">
+                    <li className="menu-item">
                         <NavLink to="/dashboard" className="item-link">
-                            <ion-icon name="settings-outline"></ion-icon>
-                            <span className="hidden">Setting</span>
+                            <span className="link-icon">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </span>
+                            <span className="link-title">Setting</span>
+
+
                         </NavLink>
                     </li>
-                    <li className="item">
+                    <li className="menu-item">
                         <button type="button" className="item-link" onClick={handleLogout}>
-                            <ion-icon name="log-out-outline"></ion-icon>
-                            <span className="hidden">Logout</span>
+                            <span className="link-icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span className="link-title">Logout</span>
+
+
                         </button>
                     </li>
                 </ul>
@@ -100,4 +89,28 @@ export default function SideBar(props) {
             </div>
         </div>
     )
+}
+
+
+function MenuItem({ item }) {
+
+    let {title, link, icon } = item;
+
+    let match = useRouteMatch({
+        path: link
+    })
+
+    let checkActive = match?.isExact ? 'active' : '';
+
+    return (
+        <li className={`menu-item ${checkActive}`}>
+            <NavLink to={link} className="item-link " >
+                <span className="link-icon">
+                    <ion-icon name={icon}></ion-icon>
+                </span>
+                <span className="link-title">{title}</span>
+            </NavLink>
+        </li >
+    )
+
 }

@@ -7,7 +7,6 @@ import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import './Checkout.css';
 import { connection } from '../..';
 import _ from 'lodash';
-import UserAvatar from '../../components/UserAvatar/UserAvatar';
 import { USER_LOGIN } from '../../util/settings/config';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
@@ -39,14 +38,14 @@ export default function Checkout(props) {
 
             <Breadcrumb pathname={pathname} />
 
-            <div className="w-full h-full text-white flex justify-center items-center py-20">
+            <div className="w-full h-full text-white flex justify-center items-center py-20 relative z-0">
                 <div className="checkout-container glass">
                     <div className="checkout-navbar w-full flex justify-between items-center p-10">
                         <ul className="tabs">
                             <li className={`tabPane ${done ? '' : 'active'}`}>01 Booking & Payment</li>
                             <li className={`tabPane ${done ? 'active' : ''}`}>02 Results</li>
                         </ul>
-                        <UserAvatar user={userLogin} />
+                        
                     </div>
                     <div className="checkout-content p-10">
                         {done ? <BookingResult {...props} /> : <BookingRoom {...props} setDone={setDone} userLogin={userLogin} />}

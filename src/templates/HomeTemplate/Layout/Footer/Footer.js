@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import _ from 'lodash';
 import './Footer.css';
 import { Button } from '../../../../components/Button/Button';
+import Logo from '../../../../components/Logo/Logo';
 
 export default function Footer(props) {
 
@@ -25,12 +26,7 @@ export default function Footer(props) {
             <div className="px-6 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 rounded-xl p-4">
                 <div className="grid grid-cols-12 gap-2">
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
-                        <NavLink to="/home" className="flex justify-center space-x-3 md:justify-start">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full">
-                                <img className="w-full" src="./Images/logo.png" alt="logo" />
-                            </div>
-                            <span className="self-center text-2xl font-semibold">Andrew Movie</span>
-                        </NavLink>
+                       <Logo/>
                     </div>
                     <div className="col-span-6 text-center md:text-left md:col-span-3">
                         <p className="pb-1 text-lg font-medium ">Partners</p>

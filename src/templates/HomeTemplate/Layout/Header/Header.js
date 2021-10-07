@@ -6,6 +6,7 @@ import UserAvatar from '../../../../components/UserAvatar/UserAvatar';
 import { MenuItems } from './MenuItems';
 import './Header.css';
 import { Button } from '../../../../components/Button/Button';
+import Logo from '../../../../components/Logo/Logo';
 
 
 export default function Header() {
@@ -28,11 +29,7 @@ export default function Header() {
             <div className="overlay glass"></div>
             <div className="flex flex-auto justify-between items-center h-8 md:h-16 mx-auto">
                 <div className="h-full flex items-center">
-                    <NavLink to="/home" aria-label="Back to homepage" className="logo">
-                        ADM
-
-
-                    </NavLink>
+                    <Logo />
                 </div>
                 <div className="flex justify-center">
                     <ul className="navbar">

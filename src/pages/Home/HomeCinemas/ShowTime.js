@@ -25,7 +25,7 @@ export default function ShowTime(props) {
 
 
     return (
-        <div className="showtime-content py-2 opacity-50 hover:opacity-100">
+        <div className="showtime-content py-2">
             <div className="flex-shrink-0 mb-2 sm:h-12 sm:w-12 w-8 h-8 sm:mb-6">
                 <img src={movie.hinhAnh} alt={movie.tenPhim} />
             </div >

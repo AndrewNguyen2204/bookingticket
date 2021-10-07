@@ -7,28 +7,36 @@
 .detail .left-content img {
   border-radius: inherit;
 }
-.movie-infomations .types span {
-  @apply text-white opacity-20;
+.detail .left-content .movie-details > h2{
+  @apply text-xl sm:text-4xl my-4 text-orange-500 break-all;
 }
-.detail .types li:hover span {
-  @apply opacity-100;
+.detail .movie-information .tab-content{
+  @apply bg-white bg-opacity-10 p-10 h-[500px] sm:h-[700px] overflow-y-auto;
 }
-.detail .types li.active span {
-  @apply  opacity-100;
+
+.detail .movie-information ul li{
+  @apply mr-2 p-2 border-b-2 border-white opacity-10 hover:opacity-100 duration-300;
 }
-.detail .content-right{
-  @apply  flex flex-col py-5 h-[500px] overflow-y-scroll border-none;
+.detail .movie-information ul li span {
+  @apply text-sm sm:text-2xl;
 }
-.detail .content-left{
-  @apply border-none;
+.movie-information ul li.active {
+  @apply bg-white bg-opacity-10 rounded-tl-md rounded-tr-md  opacity-100 border-mainColor text-mainColor font-bold;
 }
-.detail .content-left>ul{
-  @apply justify-start py-5  border-r-2 border-opacity-40;
+
+.detail .showtime-content .showtime-right{
+  @apply  flex flex-col py-5 h-[70%] overflow-y-auto border-none;
 }
-.detail .content-left>ul>li{
-  @apply mb-5 bg-white rounded-full;
+.detail .showtime-content .showtime-left{
+  @apply border-none w-full sm:w-36 min-w-max flex justify-center items-center;
 }
-.content-right .showtimes a {
+.detail .showtime-content .showtime-left ul{
+  @apply w-full h-full flex flex-row sm:flex-col items-center justify-between py-2 sm:py-5  border-b-2 sm:border-b-0 sm:border-r-2 border-opacity-40;
+}
+.detail .showtime-content .showtime-left ul li{
+  @apply w-8 h-8 sm:w-12 sm:h-12  overflow-hidden opacity-50 hover:opacity-100 duration-300 cursor-pointer my-1 mb-5 bg-white rounded-full;
+}
+.showtime-right .showtime a {
   @apply text-purple-400 text-2xl font-bold m-2 cursor-pointer opacity-70 hover:opacity-90;
 }
 .detail .tab-content {

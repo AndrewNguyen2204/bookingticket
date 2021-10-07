@@ -2,17 +2,6 @@ header .overlay{
   @apply absolute top-0 left-0 w-full h-full;   
   z-index: -1;
 }
-header .logo {
-  @apply flex  items-center justify-center h-6 w-6 md:h-[50px] md:w-[50px] rounded-full p-1;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-}
-header .logo:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25),
-    inset 0 0 5px rgba(255, 255, 255, 0.5),
-    inset 0 0 10px rgba(255, 255, 255, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.5);
-}
 
 header .navbar {
   @apply relative lg:flex hidden text-white h-full justify-center items-center overflow-hidden bg-white bg-opacity-10 rounded-full border border-white border-opacity-50;

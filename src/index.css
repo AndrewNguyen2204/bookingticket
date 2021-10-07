@@ -1,16 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@tailwind variants;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-:root{
-  --sub-color: #9E10EB;
-  --main-color: #F5059D;
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+:root {
+  --sub-color: #9e10eb;
+  --main-color: #f5059d;
 }
-
-
 
 * {
   margin: 0;
@@ -22,6 +22,8 @@
 body {
   background: black;
 }
+
+
 ::-webkit-scrollbar {
   width: 10px;
   background: transparent;
@@ -45,6 +47,6 @@ body {
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }

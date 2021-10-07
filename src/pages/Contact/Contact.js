@@ -11,8 +11,8 @@ export default function Contact() {
     return (
         <section 
         className="contact-section w-full h-screen pt-40 px-20 text-white">
-            <div className="glass w-[90%] h-[90%] flex items-center justify-center rounded-[30px]">
-                <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
+            <div className="glass w-[90%] h-[90%] rounded-[30px]">
+                <div className="grid w-full grid-cols-1 py-20 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6">
                         <h1 className="text-4xl font-bold">Get in touch</h1>
                         <p className="pt-2 pb-4">Fill in the form to start a conversation</p>

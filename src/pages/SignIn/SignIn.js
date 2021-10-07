@@ -2,12 +2,13 @@ import { useFormik } from 'formik'
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import Logo from '../../components/Logo/Logo';
 import { loginAction } from '../../redux/actions/UserAction';
 
 
 export default function SignIn(props) {
 
-    
+
 
     const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ export default function SignIn(props) {
         },
 
         onSubmit: values => {
-            
+
             dispatch(loginAction(values));
 
         },
@@ -29,22 +30,25 @@ export default function SignIn(props) {
 
 
     return (
-        <div className="container h-screen mx-auto flex justify-center items-center bg-gray px-2">
-            <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-white bg-opacity-10 text-white backdrop-filter backdrop-blur-sm border border-t-2 border-l-2 border-white border-opacity-10 shadow-md">
-                <h1 className="text-2xl font-bold text-center">User Login</h1>
+        <div className="container h-screen mx-auto flex justify-center items-center">
+            <div className="glass w-full max-w-md p-10  rounded-xl  text-white">
+                <div className="w-full flex justify-center">
+                    <Logo />
+                </div>
+                <h1 className="block text-4xl font-bold text-center my-10">User Login</h1>
                 <form noValidate className="space-y-6 ng-untouched ng-pristine ng-valid" onSubmit={formik.handleSubmit}>
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="username" className="block text-white">Username</label>
-                        <input type="text" name="taiKhoan" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none" onChange={formik.handleChange} />
+                        <label htmlFor="username" className="block text-white mb-2">Username</label>
+                        <input type="text" name="taiKhoan" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-full border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none" onChange={formik.handleChange} />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-white">Password</label>
-                        <input type="password" name="matKhau" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none" onChange={formik.handleChange} />
+                        <input type="password" name="matKhau" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-full border-coolGray-300 bg-coolGray-50 bg-opacity-10 text-white outline-none my-2" onChange={formik.handleChange} />
                         <div className="flex justify-end text-xs text-white">
                             <a href="/">Forgot Password?</a>
                         </div>
                     </div>
-                    <button type="submit" className="block w-full p-3 text-center rounded-sm text-white text-xl bg-violet-600 bg-opacity-40 hover:bg-opacity-90">LOGIN</button>
+                    <button type="submit" className="block w-full p-3 text-center rounded-full text-white text-xl bg-mainColor bg-opacity-20 hover:bg-opacity-90">LOGIN</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-coolGray-300" />
@@ -69,7 +73,7 @@ export default function SignIn(props) {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 text-white">Don't have an account?
-                    <NavLink to="/register" className="underline text-white ml-2">Sign up</NavLink>
+                    <NavLink to="/register" className="underline text-mainColor ml-2">Sign up</NavLink>
                 </p>
             </div>
 

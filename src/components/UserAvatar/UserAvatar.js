@@ -16,7 +16,7 @@ export default function UserAvatar(props) {
 
     const isHide = hide ? 'hide' : '';
 
-    const isAdmin = user.maLoaiNguoiDung === 'QuanTri' ? 'flex items-center p-2 space-x-3 rounded-md' : 'hidden';
+    const isAdmin = user?.maLoaiNguoiDung === 'QuanTri' ? 'flex items-center p-2 space-x-3 rounded-md' : 'hidden';
 
     const handleClick = () => {
         setHide(!hide);
@@ -31,21 +31,21 @@ export default function UserAvatar(props) {
     }
 
     return (
-        <div className="user-login relative flex items-center justify-center">
-            <span className="mr-2">Hello ! {user.taiKhoan}</span>
+        <div className="user-login">
+            <span className="user-login-name">Hello ! {user?.taiKhoan}</span>
             <div className="img-box  rounded-full overflow-hidden cursor-pointer border-white border-2 border-opacity-50" onClick={handleClick}>
 
-                <img className="avatar" src={`https://i.pravatar.cc/40?u=${user.taiKhoan}`} alt="avatar" />
+                <img className="avatar" src={`https://i.pravatar.cc/40?u=${user?.taiKhoan}`} alt="avatar" />
 
             </div>
             <div className={`user-dropdown glass ${isHide}`}>
 
                 <div className="flex items-center p-2 space-x-4">
                     <div className="img-box  rounded-full overflow-hidden cursor-pointer border-white border-2 border-opacity-50 flex-shrink-0">
-                        <img className="avatar" src={`https://i.pravatar.cc/40?u=${user.taiKhoan}`} alt="avatar" />
+                        <img className="avatar" src={`https://i.pravatar.cc/40?u=${user?.taiKhoan}`} alt="avatar" />
                     </div>
                     <div className="flex-shrink-1  flex-grow-1">
-                        <h5 className="text-sm capitalize font-semibold">{user.hoTen}</h5>
+                        <h5 className="text-sm capitalize font-semibold">{user?.hoTen}</h5>
                         <span className="flex items-center space-x-1">
                             <NavLink to="/profile" className="text-xs hover:text-blue-300 text-white">View profile</NavLink>
                         </span>

@@ -1,9 +1,17 @@
 
+.user-login {
+  @apply relative flex items-center justify-center;
+}
+.user-login .user-login-name{
+  @apply mr-2 hidden sm:inline-block;
+}
+
 .user-login .user-dropdown {
   @apply flex flex-col items-center absolute right-0 transform  p-4 w-full min-w-max rounded-md;
   top: 130%;
   opacity: 1;
   transition: all 0.3s ease-out; 
+  z-index: 999;
 }
 .user-login .user-dropdown.hide{
   visibility: hidden;

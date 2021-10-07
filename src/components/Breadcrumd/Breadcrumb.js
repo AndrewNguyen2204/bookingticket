@@ -1,14 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
 export default function Breadcrumb({ pathname }) {
+
+    const { userLogin } = useSelector(state => state.UserReducer);
 
     const pathnames = pathname.split('/').filter(x => x);
 
 
     return (
-        <nav aria-label="breadcrumb" className=" breadcrumb h-1/8 w-[90%] p-4 glass rounded-full text-white mx-auto mt-10">
-            <ol className="flex h-8 space-x-2">
+        <nav aria-label="breadcrumb" className=" breadcrumb relative h-1/8 w-[90%] flex items-center justify-between p-4   text-white mx-auto">
+            <div className="glass absolute top-0 left-0 w-full h-full rounded-full z-0"></div>
+            <ol className="flex h-8 space-x-2 z-10">
                 <li className="flex items-center">
                     <NavLink to="/home" title="Back to homepage" className="hover:underline">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 pr-1 text-white">
@@ -42,6 +47,7 @@ export default function Breadcrumb({ pathname }) {
                 })}
                
             </ol>
+            <UserAvatar user={userLogin} />
         </nav>
     )
 }

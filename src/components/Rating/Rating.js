@@ -24,7 +24,7 @@ export default function Rating(props) {
         return getStars().map((star, index) => {
             let name = star === 0.5 ? 'star-half' : 'star';
 
-            return <span key={index} className="rating-star" style={{ color: star === 0 ? '' : starColor }} ><ion-icon name={name}></ion-icon></span>
+            return <span key={index} className="rating-star" style={{ color: star === 0 ? 'transparent' : starColor }} ><ion-icon name={name}></ion-icon></span>
         })
     }
 

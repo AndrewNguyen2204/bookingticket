@@ -9,6 +9,7 @@ import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import VideoModal from '../../components/VideoModal/VideoModal';
+import Breadcrumb from '../../components/Breadcrumd/Breadcrumb';
 
 
 export default function Detail(props) {
@@ -56,21 +57,27 @@ export default function Detail(props) {
 
     }, [dispatch, id]);
 
-
+    const { location: { pathname } } = props;
 
     return (
-        <section className="detail" style={{ backgroundImage: `url(${hinhAnh})` }}>
+        <section className="detail" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),url(${hinhAnh})` }}>
             {modal.open && <VideoModal url={modal.url} callback={closeModal} />}
-            <div className="detail-container pt-48 pb-20">
-                <div className=" container mx-auto detail-content w-full flex flex-col md:flex-row justify-around items-center">
-                    <div className="detail-left w-full md:w-3/5 flex justify-end items-center mb-8 p-2">
+
+
+
+            <div className="detail-container p-10">
+
+                <Breadcrumb pathname={pathname} />
+
+                <div className="container mx-auto detail-content w-full flex flex-col md:flex-row  justify-around items-center mt-10">
+                    <div className="detail-left w-full md:w-3/5 flex justify-center md:justify-end items-center mb-8 p-2">
                         <div className="left-content flex items-center justify-end">
-                            <div className="p-4 glass rounded-xl" style={{ minWidth: 300, height: 400 }}>
+                            <div className="p-4 glass rounded-xl" style={{ minWidth: 200, minheight: 300, width: 300, height: 400 }}>
                                 <img src={hinhAnh} alt="movie" className="w-full h-full" />
                             </div>
                             <div className="movie-details text-white ml-4 min-w-max">
                                 <p>{moment(ngayKhoiChieu).format('DD.MM.YYYY')}</p>
-                                <h2 className="text-4xl my-4 text-orange-500">{tenPhim}</h2>
+                                <h2>{tenPhim}</h2>
                                 <p>2D/digital</p>
 
                             </div>
@@ -79,23 +86,23 @@ export default function Detail(props) {
                     <div className="detail-right w-2/5 h-full flex justify-center items-center">
                         <div className="detail-rating flex flex-col items-center">
                             <div className="mb-4">
-                                <h1 className="text-4xl text-green-700 font-bold">Rating</h1>
+                                <h1 className="text-4xl text-white font-bold">Rating</h1>
                             </div>
                             <div className="circle-chart">
                                 <ProgressBar
                                     size={120}
                                     progress={danhGia}
                                     strokeWidth={10}
-                                    circleOneStroke={'rgba(0,0,0,0.2)'}
-                                    circleTwoStroke={'orange'}
+                                    circleOneStroke={'rgba(255,255,255,0.2)'}
+                                    circleTwoStroke={'#9e10eb'}
                                 />
                             </div>
-                            <Rating value={danhGia} />
+                            <Rating starColor="#f5059d" value={danhGia} />
                         </div>
                     </div>
                 </div>
-                <div className="movie-infomations w-[90%] min-h-full mx-auto glass  text-white mt-8 p-10 rounded-[30px]">
-                    <ul className="types mb-10 flex justify-center items-center">
+                <div className="movie-information w-[90%] min-h-full mx-auto glass  text-white mt-8 p-10 rounded-[30px]">
+                    <ul className="mb-10 flex justify-start items-center">
                         <li
                             className={tabActive.index === 1 ? 'active' : ''}
                             onClick={() => {
@@ -119,7 +126,7 @@ export default function Detail(props) {
                                     tabContent: heThongRapChieu[0] ? <ShowTimes heThongRapChieu={heThongRapChieu} /> : <p className="font-bold text-4xl text-center text-gray-400">Empty</p>
                                 });
                             }}
-                        ><span>Showtimes</span></li>
+                        ><span>Showtime</span></li>
                         <li
                             className={tabActive.index === 3 ? 'active' : ''}
                             onClick={() => {
@@ -130,7 +137,7 @@ export default function Detail(props) {
 
                             }}><span>Review</span></li>
                     </ul>
-                    <div className="tab-content bg-black bg-opacity-40 overflow-hidden p-10 duration-300 ease-in-out">
+                    <div className="tab-content">
                         {tabActive.tabContent}
                     </div>
                 </div>
@@ -155,7 +162,7 @@ function ShowTimes({ heThongRapChieu }) {
         });
     }
 
-    const renderShowtimes = (list) => {
+    const renderShowtime = (list) => {
 
 
         const showtimes = _.map(list, lichChieu => ({
@@ -178,36 +185,36 @@ function ShowTimes({ heThongRapChieu }) {
 
 
         return cinemas?.map((cinema, index) => {
-            return <div key={index} className="w-full px-10 py-2 opacity-50 hover:opacity-100">
+            return <div key={index} className="w-full py-2 opacity-50 hover:opacity-100">
 
-                <div className="flex">
+                <div className="flex flex-col sm:flex-row">
                     <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-10 sm:w-10 sm:mb-0">
                         <img src={cinema.hinhAnh} alt={cinema.hinhAnh} className="w-full h-full" />
                     </div>
                     <div className="ml-2">
-                        <h2 className="text-xs md:text-sm font-semibold">{cinema.tenCumRap}</h2>
+                        <h2 className="text-xs sm:text-sm font-semibold">{cinema.tenCumRap}</h2>
                         <span className="text-xs">
                             {cinema.diaChi}
                         </span>
                     </div>
                 </div>
-                <div className="showtimes mt-2">
-                    {renderShowtimes(cinema.lichChieuPhim)}
+                <div className="showtime mt-2">
+                    {renderShowtime(cinema.lichChieuPhim)}
                 </div>
             </div>
         })
     }
 
     return (
-        <div className="showtimes-content flex w-full">
+        <div className="showtime-content w-full flex flex-col sm:flex-row">
 
-            <div className="content-left">
+            <div className="showtime-left">
                 <ul>
                     {renderLogos()}
                 </ul>
 
             </div>
-            <div className="content-right">
+            <div className="showtime-right">
                 {renderCinemas()}
             </div>
         </div>
@@ -229,11 +236,13 @@ function Information({ info, onClick }) {
     return (
         <div className="w-full">
             <h1 className="text-4xl font-bold">{tenPhim}</h1>
-            <div className="w-full my-5">
+            <div className="w-full my-5 flex flex-col">
                 <span>Action/Adventure</span>
-                <span className="px-2 py-1 bg-purple-500 text-white rounded-xl ml-2">PG-13</span>
-                <span className="px-2 py-1 bg-orange-500 text-white rounded-xl  ml-2">120 min</span>
-                <span className="px-2 py-1 bg-red-500 text-white rounded-xl  ml-2">CC</span>
+                <div className="mt-5">
+                    <span className="px-2 py-1 bg-purple-500 text-white rounded-xl ml-2">PG-13</span>
+                    <span className="px-2 py-1 bg-orange-500 text-white rounded-xl  ml-2">120 min</span>
+                    <span className="px-2 py-1 bg-red-500 text-white rounded-xl  ml-2">CC</span>
+                </div>
             </div>
             <Button buttonStyle="btn--outline" onClick={handlePlay}>
                 <span>Trailer</span>

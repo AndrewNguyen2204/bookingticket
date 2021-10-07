@@ -35,9 +35,10 @@ function App() {
       <Switch>
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/contact" exact Component={Contact} />
-        <HomeTemplate path="/news" exact Component={News} />
-        <HomeTemplate path="/detail/:id" exact Component={Detail} />
+        <HomeTemplate path="/news" exact Component={News} />  
 
+        <Route path="/detail/:id" exact component={Detail} />
+        
         <UserTemplate path="/login" exact Component={SignIn} />
         <UserTemplate path="/register" exact Component={Register} />
 
@@ -55,7 +56,7 @@ function App() {
         <AdminTemplate path="/dashboard/movies/edit/:id" exact Component={EditMovie} />
         <AdminTemplate path="/dashboard/movies/showtime/:id" exact Component={AddShowtime} />
 
-        <Route  path="/profile" exact component={Profile} />
+        <Route path="/profile" exact component={Profile} />
 
         <HomeTemplate path="/" exact Component={Home} />
 

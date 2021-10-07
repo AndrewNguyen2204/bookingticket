@@ -42,9 +42,11 @@ export default function SideBar(props) {
                             <Button type="button" buttonStyle="btn--transparent">
                                 <NavLink to="/login">Sign In</NavLink>
                             </Button>
+                            <div className="mt-10">
                             <Button type="button" buttonStyle="btn--outline">
                                 <NavLink to="/register">Sign Up</NavLink>
                             </Button>
+                            </div>
 
                         </>}
                 </div>

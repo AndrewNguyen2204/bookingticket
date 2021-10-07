@@ -1,0 +1,28 @@
+#logo {
+  font-family: "Audiowide", cursive;
+  @apply flex items-end cursor-pointer; 
+  
+}
+#logo:hover svg {
+    filter: drop-shadow(0 0 30px var(--main-color));
+    transition: all 0.3s ease-in-out;
+}
+#logo svg path {
+  transition: all 0.3s ease-in-out;
+  filter: drop-shadow(0 0 2px #fff);
+}
+#logo span {
+  font-family: inherit;
+  color: var(--main-color);
+  text-shadow: 0 1px 2px #fff;
+  transition: all 0.3s ease-in-out;
+}
+#logo:hover svg path {
+  stroke: var(--main-color);
+  filter: drop-shadow(0 0 20px var(--main-color));
+  
+}
+#logo:hover span {
+  color: #fff;
+  text-shadow: 2px 2px 5px var(--main-color);
+}
