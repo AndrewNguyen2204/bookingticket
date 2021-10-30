@@ -7,8 +7,11 @@
 .detail .left-content img {
   border-radius: inherit;
 }
+.detail .left-content .movie-details{
+  @apply text-white ml-4 flex-shrink-0 max-w-[300px];
+}
 .detail .left-content .movie-details > h2{
-  @apply text-xl sm:text-4xl my-4 text-orange-500 break-all;
+  @apply text-xl lg:text-2xl my-4 text-orange-500 break-words;
 }
 .detail .movie-information .tab-content{
   @apply bg-white bg-opacity-10 p-10 h-[500px] sm:h-[700px] overflow-y-auto;

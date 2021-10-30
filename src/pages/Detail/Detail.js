@@ -71,11 +71,11 @@ export default function Detail(props) {
 
                 <div className="container mx-auto detail-content w-full flex flex-col md:flex-row  justify-around items-center mt-10">
                     <div className="detail-left w-full md:w-3/5 flex justify-center md:justify-end items-center mb-8 p-2">
-                        <div className="left-content flex items-center justify-end">
-                            <div className="p-4 glass rounded-xl" style={{ minWidth: 200, minheight: 300, width: 300, height: 400 }}>
+                        <div className="left-content flex flex-col md:flex-row items-center">
+                            <div className="p-4 glass rounded-xl flex-1 mb-5 md:mb-0" style={{ minWidth: 200, minheight: 300, width: 300, height: 400 }}>
                                 <img src={hinhAnh} alt="movie" className="w-full h-full" />
                             </div>
-                            <div className="movie-details text-white ml-4 min-w-max">
+                            <div className="movie-details">
                                 <p>{moment(ngayKhoiChieu).format('DD.MM.YYYY')}</p>
                                 <h2>{tenPhim}</h2>
                                 <p>2D/digital</p>

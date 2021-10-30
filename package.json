@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "formik": "^2.2.9",
     "history": "^4.10.0",
     "lodash": "^4.17.21",
@@ -28,7 +29,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "cross-env TAILWIND_MODE=watch craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
