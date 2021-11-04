@@ -4,6 +4,7 @@ table {
   background: rgba(255, 255, 255, 0.25);
   border-collapse: collapse;  
   width: 100%;
+  
 }
 
 table td,
@@ -14,17 +15,17 @@ table th {
 }
 
 table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 table tr:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 table th {
   padding-top: 12px;
   padding-bottom: 12px;  
-  background-color: rgba(255, 166, 0, 0.5);
+  background-color: var(--main-color);
   color: white;
 }
 

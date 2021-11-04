@@ -232,7 +232,7 @@ export default function AddShowtime(props) {
                                     <div className="w-2/3">
                                         <button
                                             type="submit"
-                                            className="block w-auto px-6 py-2 text-center rounded-lg text-white text-xl bg-violet-600 opacity-40 hover:opacity-90"
+                                            className="block w-auto px-6 py-2 text-center rounded-full text-white text-xl bg-mainColor opacity-40 hover:opacity-90"
                                             onClick={formik.handleSubmit}
                                         >Create</button>
                                     </div>

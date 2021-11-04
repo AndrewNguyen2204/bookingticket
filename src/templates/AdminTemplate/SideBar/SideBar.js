@@ -7,6 +7,7 @@ import { Redirect, useRouteMatch } from "react-router";
 import { history } from '../../../App';
 import { MENU_ITEMS } from './MENU_ITEMS';
 import './SideBar.css';
+import Logo from '../../../components/Logo/Logo';
 
 
 
@@ -15,7 +16,7 @@ export default function SideBar(props) {
 
 
 
-   
+
 
     const dispatch = useDispatch();
 
@@ -28,8 +29,8 @@ export default function SideBar(props) {
 
     const renderItems = () => {
         return MENU_ITEMS.map((item, index) => {
-            return <MenuItem key={index} item={item}/>
-            
+            return <MenuItem key={index} item={item} />
+
         })
     }
 
@@ -50,7 +51,7 @@ export default function SideBar(props) {
 
             <div className="sidebar-top">
                 <div className="sidebar-logo my-10">
-                    AMD
+                    <Logo />
 
                 </div>
 
@@ -94,7 +95,7 @@ export default function SideBar(props) {
 
 function MenuItem({ item }) {
 
-    let {title, link, icon } = item;
+    let { title, link, icon } = item;
 
     let match = useRouteMatch({
         path: link

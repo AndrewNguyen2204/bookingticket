@@ -210,7 +210,7 @@ function BookingRoom(props) {
                             </div>
                             <div className="user-description">
                                 <span className="mx-2"><ion-icon name="person-outline"></ion-icon> : Your seat</span>
-                                <span className="mx-2"><ion-icon name="people-outline"></ion-icon> : Other's seat</span>
+                               
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,7 @@ function BookingRoom(props) {
 
                         </div>
                         <div className="ticket-details-button w-full mt-10">
-                            <button type="button" className="w-full bg-purple-700 bg-opacity-80 hover:bg-opacity-100 p-4 text-white font-bold text-2xl" onClick={handleClick} >Dat Ve</button>
+                            <button type="button" className="w-full bg-mainColor bg-opacity-50 hover:bg-opacity-100 p-4 text-white font-bold text-2xl" onClick={handleClick} >Buy Ticket</button>
                         </div>
                     </div>
                 </div>

@@ -14,8 +14,8 @@ export default function Seat(props) {
     const {
         daDat,
         loaiGhe,
-        taiKhoanNguoiDat,
-        tenGhe
+        taiKhoanNguoiDat
+       
     } = props.seat;
 
     const isClick = (props.check !== -1 || props.other !== -1) ? 'check' : '';
@@ -26,10 +26,10 @@ export default function Seat(props) {
 
     const isOther = props.other !== -1 ? 'other' : '';
 
-    let content = tenGhe;
+    let content = '';
 
     if (daDat || isClick !== '') {
-        content = (props.user === taiKhoanNguoiDat || props.check !== -1) ? <ion-icon name="person-outline"></ion-icon> : <ion-icon name="people-outline"></ion-icon>;
+        content = (props.user === taiKhoanNguoiDat || props.check !== -1) ? <ion-icon name="person-outline"></ion-icon> : '';
     }
 
     const handleClick = () => {

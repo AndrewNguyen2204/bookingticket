@@ -40,7 +40,7 @@
 }
 .seat.checked {
   opacity: 1;
-  background: purple;
+  background: var(--main-color);
   cursor: no-drop;
 }
 .seat.checked:hover {

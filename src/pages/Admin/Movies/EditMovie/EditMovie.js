@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { GROUPID } from '../../../../util/settings/config';
 import {  getEditMovie, updateMovieAction } from '../../../../redux/actions/MovieAction';
 import Breadcrumb from '../../../../components/Breadcrumd/Breadcrumb';
+import { Button } from '../../../../components/Button/Button';
 
 export default function EditMovie(props) {
 
@@ -167,7 +168,7 @@ export default function EditMovie(props) {
                                         checked={formik.values.dangChieu}
                                         value={formik.values.dangChieu}
                                         onChange={formik.handleChange} />
-                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-violet-600" />
+                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-mainColor" />
                                     <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-coolGray-100" />
                                 </span>
                             </label>
@@ -180,7 +181,7 @@ export default function EditMovie(props) {
                                         checked={formik.values.sapChieu}
                                         value={formik.values.sapChieu}
                                         onChange={formik.handleChange} />
-                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-violet-600" />
+                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-mainColor" />
                                     <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-coolGray-100" />
                                 </span>
                             </label>
@@ -193,7 +194,7 @@ export default function EditMovie(props) {
                                         value={formik.values.hot}
                                         checked={formik.values.hot}
                                         onChange={formik.handleChange} />
-                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-violet-600" />
+                                    <div className="w-10 h-6 rounded-full shadow-inner bg-coolGray-600 peer-checked:bg-mainColor" />
                                     <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-coolGray-100" />
                                 </span>
                             </label>
@@ -227,7 +228,11 @@ export default function EditMovie(props) {
                         </div>
                         <div className="flex items-center" >
                             <span className="block text-white mr-10">Action:</span>
-                            <button type="submit" className="block w-auto px-6 py-2 text-center rounded-lg text-white text-xl bg-violet-600 bg-opacity-40 hover:bg-opacity-90 mx-4">Edit</button>
+                            <button
+                                            type="submit"
+                                            className="block w-auto px-10 py-2 text-center rounded-full text-white text-xl bg-mainColor opacity-40 hover:opacity-90"
+                                            onClick={formik.handleSubmit}
+                                        >Edit</button>
 
                         </div>
                     </form>

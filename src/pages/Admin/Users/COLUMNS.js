@@ -46,12 +46,12 @@ export const COLUMNS = [
             const dispatch = useDispatch();
             return <div className="flex justify-around items-center">
 
-                <button className="bg-blue-500 text-white rounded-full shadow-lg mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
+                <button className="glass text-blue-500 rounded-full shadow-lg mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
 
                     history.push(`/dashboard/users/edit/${account}`);
 
                 }}><ion-icon name="create-outline"></ion-icon></button>
-                <button className="bg-rose-500 text-white  rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
+                <button className="glass text-rose-500   rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
                     if (window.confirm("Are you sure you want to delete this user?")) {
                         dispatch(deleteUserAction(account));
                     }

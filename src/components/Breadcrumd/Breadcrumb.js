@@ -11,7 +11,7 @@ export default function Breadcrumb({ pathname }) {
 
 
     return (
-        <nav aria-label="breadcrumb" className=" breadcrumb relative h-1/8 w-[90%] flex items-center justify-between p-4   text-white mx-auto">
+        <nav aria-label="breadcrumb" className=" breadcrumb relative h-[70px] w-[90%] flex items-center justify-between p-4   text-white mx-auto">
             <div className="glass absolute top-0 left-0 w-full h-full rounded-full z-0"></div>
             <ol className="flex h-8 space-x-2 z-10">
                 <li className="flex items-center">

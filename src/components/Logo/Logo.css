@@ -1,6 +1,6 @@
 #logo {
   font-family: "Audiowide", cursive;
-  @apply flex items-end cursor-pointer; 
+  @apply flex items-end justify-center cursor-pointer; 
   
 }
 #logo:hover svg {

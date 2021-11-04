@@ -200,7 +200,7 @@ export default function AddMovie(props) {
                         </div>
                         <div className="flex items-center" >
                             <span className="block text-white mr-10">Action:</span>
-                            <button type="submit" className="block w-auto px-6 py-2 text-center rounded-lg text-white text-xl bg-violet-600 bg-opacity-40 hover:bg-opacity-90 mx-4">Add</button>
+                            <button type="submit" className="block w-auto px-6 py-2 text-center rounded-full text-white text-xl bg-mainColor bg-opacity-40 hover:bg-opacity-90 mx-4">Add</button>
 
                         </div>
                     </form>

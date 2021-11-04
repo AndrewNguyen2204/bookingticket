@@ -42,7 +42,7 @@ export default function Table({ cols, data }) {
     return (
         <>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            <div className="w-full h-[800px] overflow-y-scroll">
+            <div className="w-full h-[800px] overflow-auto">
                 <table {...getTableProps() }>
                     <thead>
                         {headerGroups.map((headerGroup) => (
@@ -94,7 +94,7 @@ function GlobalFilter({ filter, setFilter }) {
 
 
     return (
-        <fieldset className="w-full space-y-1 text-white sm:my-10">
+        <fieldset className="w-full space-y-1 text-white sm:my-10 px-5">
             <label htmlFor="Search" className="hidden">Search</label>
             <div className="relative">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -104,7 +104,7 @@ function GlobalFilter({ filter, setFilter }) {
                         </svg>
                     </button>
                 </span>
-                <input type="search" name="Search" placeholder="Search..." className="glass w-32 py-2 pl-10 text-sm rounded-full sm:w-auto focus:outline-none  text-white " value={value || ''} onChange={handleChange} />
+                <input type="search" name="Search" placeholder="Search..." className="glass w-32 py-2 pl-10 text-sm rounded-full sm:w-auto focus:outline-none focus:w-full  text-white duration-500" value={value || ''} onChange={handleChange} />
             </div>
         </fieldset>
 
