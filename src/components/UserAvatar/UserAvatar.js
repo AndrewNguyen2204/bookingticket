@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { LOG_OUT } from '../../redux/types/UserType';
 import './UserAvatar.css';
-
+import { useHistory } from "react-router";
 
 
 export default function UserAvatar(props) {
@@ -13,6 +13,8 @@ export default function UserAvatar(props) {
     const [hide, setHide] = useState(true);
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const isHide = hide ? 'hide' : '';
 
@@ -24,10 +26,11 @@ export default function UserAvatar(props) {
 
     // window.addEventListener('mousedown', () => { setHide(true) });
 
-    const handleLogout = () => {
-        dispatch({
+    const handleLogout = async() => {
+        await dispatch({
             type: LOG_OUT
-        })
+        });
+        history.push('/home');
     }
 
     return (

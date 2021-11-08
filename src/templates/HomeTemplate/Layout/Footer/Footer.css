@@ -1,10 +1,52 @@
 .footer {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9) 80%),
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.9) 80%
+    ),
     url("../../../../assets/Images/backapp.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  @apply relative py-6 text-white;
 }
-.footer button{
-  @apply xl:px-8 xl:py-3;
+.footer-wrapper {
+  @apply px-6 space-y-6  md:space-y-12 rounded-xl p-4;
+}
+
+.footer-content {
+  @apply grid grid-cols-12 gap-2;
+}
+.footer-content .footer-content--logo {
+  @apply flex items-center justify-center md:justify-start pb-6 col-span-full md:pb-0 md:col-span-4;
+}
+
+.footer-content .footer-content--partners {
+  @apply col-span-6 text-center md:text-left md:col-span-4;
+}
+.footer-content .footer-content--partners p {
+  @apply pb-1 text-lg font-medium;
+}
+
+.footer-content .footer-content--partners .partner-wrapper {
+  @apply grid grid-cols-3 md:grid-cols-4 gap-4 mt-5;
+}
+
+.footer-content .footer-content--apps {
+  @apply col-span-6 text-center md:text-left md:col-span-4;
+}
+
+.footer-content .footer-content--apps p {
+  @apply pb-1 mb-2 text-lg text-center lg:text-left font-medium;
+}
+
+.footer-content .footer-content--apps .button-wrapper {
+  @apply flex flex-col items-center justify-center flex-shrink-0  mt-5 lg:flex-row lg:justify-start;
+}
+.footer-content--apps .button-wrapper button {
+  @apply inline-flex items-center px-4 py-3 mr-5 mb-5 border border-white/40 rounded-full bg-white/25 text-white backdrop-blur;
+}
+.footer-content--apps .button-wrapper svg {
+  @apply fill-current w-7 h-7 text-white;
 }

@@ -12,4 +12,5 @@ export const USER_LOGIN = 'USER_LOGIN';
 
 export const STATUS = {
     SUCCESS: 200,
+    BAD_REQUEST:400
 }

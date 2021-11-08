@@ -9,8 +9,8 @@ export default function Contact() {
 
 
     return (
-        <section 
-        className="contact-section w-full h-screen pt-40 px-20 text-white">
+        <section
+            className="contact-section">
             <div className="glass w-[90%] h-[90%] rounded-[30px]">
                 <div className="grid w-full grid-cols-1 py-20 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6">
@@ -40,18 +40,19 @@ export default function Contact() {
                     </div>
                     <form noValidate className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
                         <label className="block">
-                            <span className="mb-1">Full name</span>
-                            <input type="text" placeholder="Leroy Jenkins" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-coolGray-100" />
+                            <span className="inline-block mb-5">Full name</span>
+                            <input type="text" placeholder="Leroy Jenkins" className="block w-full rounded-full py-2 px-5 shadow-sm border border-transparent   bg-white/10 hover:bg-white/25  focus:bg-white/25 focus:border-white/40 focus:shadow-2xl duration-300 outline-none " />
                         </label>
                         <label className="block">
-                            <span className="mb-1">Email address</span>
-                            <input type="email" placeholder="leroy@jenkins.com" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-coolGray-100" />
+                            <span className="inline-block mb-5">Email address</span>
+                            <input type="email" placeholder="leroy@jenkins.com" className="block w-full rounded-full py-2 px-5 shadow-sm border border-transparent   bg-white/10 hover:bg-white/25  focus:bg-white/25 focus:border-white/40 focus:shadow-2xl duration-300 outline-none" />
                         </label>
                         <label className="block">
-                            <span className="mb-1">Message</span>
-                            <textarea rows={3} className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-coolGray-100" defaultValue={""} />
+                            <span className="inline-block mb-5">Message</span>
+                            <textarea rows={3} className="block w-full rounded-lg py-2 px-5 shadow-sm border border-transparent   bg-white/10 hover:bg-white/25  focus:bg-white/25 focus:border-white/40 focus:shadow-2xl duration-300 outline-none" defaultValue={""} />
                         </label>
-                        <button type="button" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-violet-600 text-coolGray-50 focus:ring-violet-600 hover:ring-violet-600">Submit</button>
+                        <button type="button" className="self-center w-full px-8 py-3 text-lg rounded-full focus:ring hover:ring focus:ring-opacity-75 bg-mainColor text-white focus:ring-mainColor
+                        hover:ring-mainColor">Submit</button>
                     </form>
                 </div>
             </div>

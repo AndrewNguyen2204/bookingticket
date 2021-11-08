@@ -1,3 +1,8 @@
 .contact-section{
-    background-image: url(../../assets/Images/bg-3.jpg);
+    background-image: linear-gradient(
+        to bottom,        
+        transparent,
+        rgba(0, 0, 0, 0.9) 90%
+      ), url(../../assets/Images/bg-3.jpg);
+    @apply w-full min-h-screen bg-center bg-cover bg-no-repeat pt-40 px-20 text-white flex justify-center items-center;
 }

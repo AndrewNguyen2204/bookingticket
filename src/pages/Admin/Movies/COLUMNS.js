@@ -44,22 +44,24 @@ export const COLUMNS = [
             }
 
             const dispatch = useDispatch();
-            return <div className="flex justify-around items-center">
-                <button className="glass text-blue-500  rounded-full shadow-lg  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
+            return <div className="flex flex-wrap justify-center">
+                <button className="glass text-blue-700  rounded-full shadow-lg  m-2 w-10 h-10 flex items-center justify-center" onClick={() => {
 
-                    history.push(`/dashboard/movies/edit/${id}`);
+                    history.push(`/dashboard/movies/edit-${id}`);
 
-                }}><ion-icon name="create-outline"></ion-icon></button>
-                <button className="glass text-rose-500   rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
+                }}><ion-icon name="pencil"></ion-icon></button>
+                <button className="glass text-green-700  rounded-full  m-2 w-10 h-10 flex items-center justify-center" onClick={() => {
+                    history.push(`/dashboard/movies/showtime-${id}`);
+                    localStorage.setItem('movieParams', JSON.stringify(movieParams));
+
+                }}><ion-icon name="calendar"></ion-icon></button>
+                
+                <button className="glass text-rose-700   rounded-full  m-2 w-10 h-10 flex items-center justify-center" onClick={() => {
                     if (window.confirm("Are you sure you want to delete this movie?")) {
                         dispatch(deleteMovieAction(id));
                     }
-                }}><ion-icon name="trash-outline"></ion-icon></button>
-                <button className="glass text-green-700  rounded-full  mx-2 w-12 h-12 flex items-center justify-center" onClick={() => {
-                    history.push(`/dashboard/movies/showtime/${id}`);
-                    localStorage.setItem('movieParams', JSON.stringify(movieParams));
-
-                }}><ion-icon name="calendar-clear-outline"></ion-icon></button>
+                }}><ion-icon name="trash-bin"></ion-icon></button>
+                
             </div>
         }
     }

@@ -8,3 +8,5 @@ export const SET_USERS = 'SET_USERS';
 
 
 export const SET_USER_EDIT = 'SET_USER_EDIT';
+
+export const CLEAR_USER_EDIT = 'CLEAR_USER_EDIT';

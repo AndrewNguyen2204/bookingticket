@@ -17,7 +17,7 @@ export default function ShowTime(props) {
         }));
 
         return _.uniqBy(showtimes, 'showtime').map((item, index) => {
-            return <NavLink to={`/checkout/${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
+            return <NavLink to={`/checkout-${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
         })
 
     }

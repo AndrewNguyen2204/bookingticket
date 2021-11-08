@@ -34,11 +34,11 @@ export default function Checkout(props) {
     const { location: { pathname } } = props;
 
     return (
-        <div className="checkout w-full flex min-height-screen  flex-col">
+        <div className="checkout w-full p-10 flex min-height-screen  flex-col">
 
             <Breadcrumb pathname={pathname} />
 
-            <div className="w-full h-full text-white flex justify-center items-center py-20 relative z-0">
+            <div className="w-full h-full text-white flex justify-center items-center mt-10 relative z-0">
                 <div className="checkout-container glass">
                     <div className="checkout-navbar w-full flex justify-between items-center p-10">
                         <ul className="tabs">
@@ -247,7 +247,7 @@ function BookingRoom(props) {
 
                         </div>
                         <div className="ticket-details-button w-full mt-10">
-                            <button type="button" className="w-full bg-mainColor bg-opacity-50 hover:bg-opacity-100 p-4 text-white font-bold text-2xl" onClick={handleClick} >Buy Ticket</button>
+                            <button type="button" className="w-full bg-mainColor rounded-full bg-opacity-50 hover:bg-opacity-100 p-4 text-white font-bold text-2xl" onClick={handleClick} >Buy Ticket</button>
                         </div>
                     </div>
                 </div>

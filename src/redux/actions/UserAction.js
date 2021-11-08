@@ -1,6 +1,6 @@
 import { userService } from "../../services/UserService";
 import { STATUS } from "../../util/settings/config";
-import { LOG_IN, SET_USER_PROFILE, SET_USERS, SET_USER_EDIT } from "../types/UserType";
+import { LOG_IN, SET_USER_PROFILE, SET_USERS, SET_USER_EDIT, CLEAR_USER_EDIT } from "../types/UserType";
 import { history } from '../../App';
 import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
 
@@ -24,6 +24,14 @@ export const setUserEditAction = (userEdit) => ({
     type: SET_USER_EDIT,
     userEdit
 })
+
+export const clearUserEditAction = () => ({
+    type: CLEAR_USER_EDIT,
+
+})
+
+
+
 // Thunk Actions
 
 
@@ -33,19 +41,21 @@ export const loginAction = (user) => {
 
 
     return async (dispatch) => {
-
+        
         try {
             const result = await userService.login(user);
 
             if (result.status === STATUS.SUCCESS) {
 
-                dispatch(setUserAction(result.data.content));
+                await dispatch(setUserAction(result.data.content));
 
-                if (history.location.pathname !== '/register') {
-                    history.goBack();
-                }
+                history.push('/home');
 
             }
+
+
+
+
 
         } catch (err) {
             console.log('error', err);
@@ -93,8 +103,15 @@ export const signupAction = (user) => {
                 history.push('/home');
             }
 
+
         } catch (err) {
+
+            if (err.response?.data.statusCode === STATUS.BAD_REQUEST) {
+                alert('Email already exists !')
+            }
+
             console.log('error', err.response?.data);
+
         }
 
     }
@@ -211,11 +228,11 @@ export const addUserAction = (user) => {
     }
 }
 
-export const getUserEditAction = (account,groupID) => {
-    
+export const getUserEditAction = (account, groupID) => {
+
     return async (dispatch) => {
         try {
-            const result = await userService.searchUser(account,groupID);
+            const result = await userService.searchUser(account, groupID);
 
             if (result.status === STATUS.SUCCESS) {
 

@@ -46,7 +46,7 @@ export default function MovieCard({ movie, onClick }) {
 
                         <button onClick={handlePlay} className="btn-trailer"><ion-icon name="play"></ion-icon></button>
                         <Button buttonStyle="btn--outline">
-                            <NavLink to={`/detail/${maPhim}`}>Details</NavLink>
+                            <NavLink to={`/detail-${tenPhim}-${maPhim}`}>Details</NavLink>
                         </Button>
 
 

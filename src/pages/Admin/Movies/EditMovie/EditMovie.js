@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { GROUPID } from '../../../../util/settings/config';
 import {  getEditMovie, updateMovieAction } from '../../../../redux/actions/MovieAction';
 import Breadcrumb from '../../../../components/Breadcrumd/Breadcrumb';
-import { Button } from '../../../../components/Button/Button';
+
 
 export default function EditMovie(props) {
 

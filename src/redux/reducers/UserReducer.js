@@ -1,6 +1,6 @@
 import { USER_LOGIN, TOKEN } from "../../util/settings/config";
 import { ThongTinTaiKhoan } from "../../_core/models/ThongTinTaiKhoan";
-import { LOG_IN, LOG_OUT, SET_USERS, SET_USER_EDIT, SET_USER_PROFILE } from "../types/UserType";
+import { CLEAR_USER_EDIT, LOG_IN, LOG_OUT, SET_USERS, SET_USER_EDIT, SET_USER_PROFILE } from "../types/UserType";
 
 let userDefault = null;
 
@@ -42,12 +42,16 @@ const UserReducer = (state = initialState, action) => {
             return { ...state, users: action.users };
         }
 
-        case SET_USER_EDIT:{
-            return {...state, userEdit: action.userEdit[0]};
+        case SET_USER_EDIT: {
+            return { ...state, userEdit: action.userEdit[0] };
+        }
+
+        case CLEAR_USER_EDIT: {
+            return { ...state, userEdit: new ThongTinTaiKhoan() };
         }
 
         default:
-            return { ...state }
+            return { ...state}
     }
 }
 

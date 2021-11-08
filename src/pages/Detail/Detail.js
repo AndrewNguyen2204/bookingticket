@@ -171,7 +171,7 @@ function ShowTimes({ heThongRapChieu }) {
         }));
 
         return _.uniqBy(showtimes, 'showtime')?.map((item, index) => {
-            return <NavLink to={`/checkout/${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
+            return <NavLink to={`/checkout-${item.showtimeId}`} key={index}>{item.showtime.slice(0, -2)}<small>{item.showtime.slice(-2)}</small></NavLink>
         })
 
     }
@@ -185,7 +185,7 @@ function ShowTimes({ heThongRapChieu }) {
 
 
         return cinemas?.map((cinema, index) => {
-            return <div key={index} className="w-full py-2 opacity-50 hover:opacity-100">
+            return <div key={index} className="w-full p-5 rounded-xl hover:bg-white/25">
 
                 <div className="flex flex-col sm:flex-row">
                     <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-10 sm:w-10 sm:mb-0">
@@ -206,7 +206,7 @@ function ShowTimes({ heThongRapChieu }) {
     }
 
     return (
-        <div className="showtime-content w-full flex flex-col sm:flex-row">
+        <div className="showtime-content w-full h-full flex flex-col sm:flex-row">
 
             <div className="showtime-left">
                 <ul>

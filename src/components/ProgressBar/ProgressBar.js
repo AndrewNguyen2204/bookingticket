@@ -1,33 +1,39 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-
 import './ProgressBar.css';
+
+const MAX_VALUE = 10;
 
 const ProgressBar = props => {
     const [offset, setOffset] = useState(0);
     const circleRef = useRef(null);
     const {
         size,
-        progress=0,
+        progress = 0,
         strokeWidth,
         circleOneStroke,
         circleTwoStroke,
     } = props;
+
+     // Fix progress prop > MAX_VALUE
+
+     const fixProgress = progress > MAX_VALUE ? MAX_VALUE : progress;
 
     const center = size / 2;
     const radius = size / 2 - strokeWidth / 2;
     const circumference = 2 * Math.PI * radius;
 
     useEffect(() => {
-        const progressOffset = ((10 - progress) / 10) * circumference;
+               
+        const progressOffset = ((MAX_VALUE - fixProgress) / MAX_VALUE) * circumference;
         setOffset(progressOffset);
 
         circleRef.current.style = 'transition: stroke-dashoffset 850ms ease-in-out';
 
-    }, [setOffset, progress, circumference, offset]);
+    }, [setOffset, fixProgress, circumference, offset]);
 
     return (
-        <div className="progressBar" style={{width:size,height:size}}>
+        <div className="progressBar" style={{ width: size, height: size }}>
             <svg
                 className="svg"
                 width={size}
@@ -54,7 +60,7 @@ const ProgressBar = props => {
                 />
             </svg>
             <span className="svg-circle-text">
-                {progress}
+                {fixProgress}
             </span>
         </div>
     );

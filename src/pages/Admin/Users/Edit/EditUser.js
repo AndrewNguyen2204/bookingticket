@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from 'yup';
 import { GROUPID } from '../../../../util/settings/config';
-import { addUserAction, getUserEditAction, editUserAction } from '../../../../redux/actions/UserAction';
+import { addUserAction, getUserEditAction, editUserAction, clearUserEditAction } from '../../../../redux/actions/UserAction';
 import Breadcrumb from '../../../../components/Breadcrumd/Breadcrumb';
 
 export default function EditUser(props) {
 
-    const { userEdit } = useSelector(state => state.UserReducer);
-
+    const { userEdit } = useSelector(state => state.UserReducer);    
     const dispatch = useDispatch();
     
     const { account } = props.match.params;
@@ -19,7 +18,10 @@ export default function EditUser(props) {
        
 
         if (account !== undefined) {
-            dispatch(getUserEditAction(account));
+            dispatch(getUserEditAction(account,GROUPID));
+        }
+        return () =>{
+            dispatch(clearUserEditAction());
         }
     }, [dispatch,account]);
 
@@ -37,20 +39,20 @@ export default function EditUser(props) {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: userEdit.taiKhoan,
-            matKhau: userEdit.matKhau,
-            email: userEdit.email,
-            soDt: userEdit.soDt,
-            maNhom: GROUPID,
-            maLoaiNguoiDung: userEdit.maLoaiNguoiDung,
-            hoTen: userEdit.hoTen
+            taiKhoan: userEdit.taiKhoan ||'',
+            matKhau: userEdit.matKhau ||'',
+            email: userEdit.email ||'',
+            soDt: userEdit.soDt ||'',
+            maNhom: GROUPID ||'',
+            maLoaiNguoiDung: userEdit.maLoaiNguoiDung ||'',
+            hoTen: userEdit.hoTen ||''
 
         },
 
         validationSchema: formSchema,
 
         onSubmit: values => {
-            console.log(values);
+            
             if (isEdit) {
                
                 dispatch(editUserAction(values));

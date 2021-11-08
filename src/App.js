@@ -37,24 +37,24 @@ function App() {
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />  
 
-        <Route path="/detail/:id" exact component={Detail} />
+        <Route path="/detail-:name-:id" exact component={Detail} />
         
         <UserTemplate path="/login" exact Component={SignIn} />
         <UserTemplate path="/register" exact Component={Register} />
 
-        <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
+        <CheckoutTemplate path="/checkout-:id" exact Component={Checkout} />
 
         <AdminTemplate path="/dashboard" exact Component={Dashboard} />
 
         <AdminTemplate path="/dashboard/users" exact Component={Users} />
-        <AdminTemplate path="/dashboard/users/edit/:account" exact Component={EditUser} />
+        <AdminTemplate path="/dashboard/users/edit-:account" exact Component={EditUser} />
         <AdminTemplate path="/dashboard/users/add" exact Component={EditUser} />
 
 
         <AdminTemplate path="/dashboard/movies" exact Component={Movies} />
         <AdminTemplate path="/dashboard/movies/add" exact Component={AddMovie} />
-        <AdminTemplate path="/dashboard/movies/edit/:id" exact Component={EditMovie} />
-        <AdminTemplate path="/dashboard/movies/showtime/:id" exact Component={AddShowtime} />
+        <AdminTemplate path="/dashboard/movies/edit-:id" exact Component={EditMovie} />
+        <AdminTemplate path="/dashboard/movies/showtime-:id" exact Component={AddShowtime} />
 
         <Route path="/profile" exact component={Profile} />
 
