@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useRef,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { LOG_OUT } from '../../redux/types/UserType';
@@ -10,7 +10,26 @@ export default function UserAvatar(props) {
 
     const { user } = props;
 
+    const ref = useRef(null);
+
     const [hide, setHide] = useState(true);
+
+
+    useEffect(() => {
+       
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                handleHide();
+            }
+        }
+
+       
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
 
     const dispatch = useDispatch();
 
@@ -20,12 +39,13 @@ export default function UserAvatar(props) {
 
     const isAdmin = user?.maLoaiNguoiDung === 'QuanTri' ? 'flex items-center p-2 space-x-3 rounded-md' : 'hidden';
 
+    
+    const handleHide = () => setHide(true);
+    
     const handleClick = () => {
         setHide(!hide);
     }
-
-    // window.addEventListener('mousedown', () => { setHide(true) });
-
+   
     const handleLogout = async() => {
         await dispatch({
             type: LOG_OUT
@@ -34,7 +54,7 @@ export default function UserAvatar(props) {
     }
 
     return (
-        <div className="user-login">
+        <div ref={ref} className="user-login">
             <span className="user-login-name">Hello ! {user?.taiKhoan}</span>
             <div className="img-box  rounded-full overflow-hidden cursor-pointer border-white border-2 border-opacity-50" onClick={handleClick}>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import './Dropdown.css';
 
 function defaultOnchange(value) {
@@ -8,12 +8,40 @@ function defaultOnchange(value) {
 
 function Dropdown({ title, options = [], multiSelect = false, onChange = defaultOnchange }) {
 
+    // useState
     const [open, setOpen] = useState(false);
 
     const [selection, setSelection] = useState([]);
 
+    // useRef
+
+    const wrapperRef = useRef(null);
+
+
+    // useEffect
+
+    useEffect(() => {
+       
+        function handleClickOutside(event) {
+            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+                closeDropdown();
+            }
+        }
+
+       
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [wrapperRef]);
+
+
+    // callback Function
 
     const toggle = () => setOpen(!open);
+
+    const closeDropdown = () => setOpen(false);
 
     const isOpen = open ? 'open' : '';
 
@@ -51,7 +79,7 @@ function Dropdown({ title, options = [], multiSelect = false, onChange = default
 
 
     return (
-        <div className="dropdown-wrapper">
+        <div ref={wrapperRef} className="dropdown-wrapper">
             <div
                 tabIndex={0}
                 className="dropdown-header"

@@ -1,4 +1,4 @@
-table {
+.table table {
   color: white;
   text-align: center;
   background: rgba(255, 255, 255, 0.25);
@@ -7,22 +7,22 @@ table {
   
 }
 
-table td,
-table th {
+.table table td,
+.table table th {
   border: 1px solid #ddd;
   padding: 8px;
   color:#fff;
 }
 
-table tr:nth-child(even) {
+.table table tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-table tr:hover {
+.table table tr:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-table th {
+.table table th {
   padding-top: 12px;
   padding-bottom: 12px;  
   background-color: var(--main-color);

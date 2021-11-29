@@ -42,7 +42,7 @@ export default function Table({ cols, data }) {
     return (
         <>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            <div className="w-full h-[800px] overflow-auto">
+            <div className="table w-full h-[800px] overflow-auto">
                 <table {...getTableProps() }>
                     <thead>
                         {headerGroups.map((headerGroup) => (
